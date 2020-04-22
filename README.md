@@ -5,7 +5,10 @@ A project for our Computer Science (Grade 11) class where we have to code an esc
 - [Java 1.8+](https://www.java.com/)
 
 ### Requirements to Contribute to Project
+##### Tutorial for most of these requirements
+[its a linux tutorial but its close enough](https://youtu.be/YCGmXVCvogY?list=PLrnO5Pu2zAHKAIjRtTLAXtZKMSA6JWnmf)
 - [Java 1.8+](https://www.java.com/)
 - Java Compatible IDE (Preferably [Eclipse IDE](eclipse.org/downloads/packages/installer)) (BlueJ isn't ideal for a project like this.)
-- [LWJGL3](https://www.lwjgl.org/) Getting Started Configuration (Think of it like PyGame for java)
-*(The jars are already in the repo just make sure to add them to your build path)*
+- [LibGDX](https://libgdx.badlogicgames.com/download.html) (Think of it like PyGame for java)
+- Gradle (Eclipse plugin is best)
+- 
