@@ -1,7 +1,10 @@
 package engine;
 
 import static org.lwjgl.glfw.GLFW.*;
-import org.lwjgl.opengl.GL11;
+
+import org.lwjgl.glfw.GLFW;
+import static org.lwjgl.opengl.GL11.*;
+import org.lwjgl.opengl.GL;
 
 public class Core {
 	
@@ -15,11 +18,30 @@ public class Core {
 			//poll the events at the beginning
 			glfwPollEvents();
 			
-			//technical background code stuff
-			GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
+			if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GL_TRUE) {
+				glfwSetWindowShouldClose(window, true);
+				//GLFW.glfwTerminate();
+				break;
+			}
+
+			//technical background code stuff (clears the screen so put before drawing anything)
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 			
-			// background is black
-			GL11.glClearColor(0, 0, 0, 1);
+			//make a test square
+			glBegin(GL_QUADS);
+			//top left
+				glColor4f(1,0,0,1);
+				glVertex2f(-0.5f, 0.5f);
+			//top right
+				glColor4f(1,0,0,1);
+				glVertex2f(0.5f, 0.5f);
+			//bottom right
+				glColor4f(1,0,0,1);
+				glVertex2f(0.5f, -0.5f);
+			//bottom left
+				glColor4f(1,0,0,1);
+				glVertex2f(-0.5f, -0.5f);
+			glEnd();
 			
 			// think pygame.display.flip()
 			glfwSwapBuffers(window);
