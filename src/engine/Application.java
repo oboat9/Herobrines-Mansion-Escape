@@ -8,9 +8,9 @@ import org.lwjgl.opengl.GL;
 
 public class Application {
 	
-	private static final String name = "Logic Engine";
-	private static int width = 800;
-	private static int height = 600;
+	private static final String name = "HME - Escape";
+	private static int width = 1280;
+	private static int height = 720;
 	private static long window;
 	
 	public static long Init() {
