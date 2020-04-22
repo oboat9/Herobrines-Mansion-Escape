@@ -6,6 +6,7 @@ import org.lwjgl.opengl.GL11;
 public class Core {
 	
 	public static void main(String[] args){
+		// init glfw
 		long window = Application.Init();
 		
 		//keeps the game open until the user closes it
