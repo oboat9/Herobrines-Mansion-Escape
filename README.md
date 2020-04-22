@@ -6,6 +6,6 @@ A project for our Computer Science (Grade 11) class where we have to code an esc
 
 ### Requirements to Contribute to Project
 - [Java 1.8+](https://www.java.com/)
-- Java Compatible IDE (Preferably [Eclipse IDE](eclipse.org/downloads/packages/installer)) (BlueJ isn't realistic with a project like this.)
+- Java Compatible IDE (Preferably [Eclipse IDE](eclipse.org/downloads/packages/installer)) (BlueJ isn't ideal for a project like this.)
 - [LWJGL3](https://www.lwjgl.org/) Getting Started Configuration (Think of it like PyGame for java)
 *(The jars are already in the repo just make sure to add them to your build path)*
