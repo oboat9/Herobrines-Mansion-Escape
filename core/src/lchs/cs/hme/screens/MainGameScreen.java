@@ -23,7 +23,7 @@ public class MainGameScreen implements Screen{
 	
 	@Override
 	public void show() {
-		img = new Texture("badlogic.jpg");
+		img = new Texture("icon_128.png");
 		
 	}
 
