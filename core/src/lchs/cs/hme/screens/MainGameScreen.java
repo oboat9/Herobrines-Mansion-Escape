@@ -42,6 +42,10 @@ public class MainGameScreen implements Screen{
 		if(Gdx.input.isKeyPressed(Keys.LEFT)) {
 			x -= SPEED*Gdx.graphics.getDeltaTime();
 		}
+		if(Gdx.input.isKeyPressed(Keys.ESCAPE)) {
+			this.dispose();
+			game.setScreen(new MainMenuScreen(game));
+		}
 		
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
