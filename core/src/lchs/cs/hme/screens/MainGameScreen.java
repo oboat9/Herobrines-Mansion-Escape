@@ -11,7 +11,7 @@ import lchs.cs.hme.SpaceGame;
 public class MainGameScreen implements Screen{
 
 	public static final float SPEED = 120;
-	Texture img;
+	Texture playerImg;
 	float x = 0;
 	float y = 0;
 	
@@ -23,7 +23,7 @@ public class MainGameScreen implements Screen{
 	
 	@Override
 	public void show() {
-		img = new Texture("icon_128.png");
+		playerImg = new Texture("Steve.png");
 		
 	}
 
@@ -53,7 +53,7 @@ public class MainGameScreen implements Screen{
 		// start drawing images to the screen
 		game.batch.begin();
 		//draw the img image
-		game.batch.draw(img, x, y);
+		game.batch.draw(playerImg, x, y, 128, 288);
 		// stop drawing things to the screen
 		game.batch.end();
 		
@@ -85,7 +85,7 @@ public class MainGameScreen implements Screen{
 
 	@Override
 	public void dispose() {
-		img.dispose();
+		playerImg.dispose();
 		
 	}
 
