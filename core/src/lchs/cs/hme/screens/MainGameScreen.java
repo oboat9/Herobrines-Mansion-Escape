@@ -10,7 +10,7 @@ import lchs.cs.hme.SpaceGame;
 
 public class MainGameScreen implements Screen{
 
-	public static final float SPEED = 120;
+	public static final float SPEED = 240;
 	Texture playerImg;
 	float x = 0;
 	float y = 0;
@@ -30,16 +30,16 @@ public class MainGameScreen implements Screen{
 	@Override
 	public void render(float delta) {
 		//character movement
-		if(Gdx.input.isKeyPressed(Keys.UP)) {
+		if(Gdx.input.isKeyPressed(Keys.UP) | Gdx.input.isKeyPressed(Keys.W)) {
 			y += SPEED*Gdx.graphics.getDeltaTime();
 		} 
-		if(Gdx.input.isKeyPressed(Keys.DOWN)) {
+		if(Gdx.input.isKeyPressed(Keys.DOWN) | Gdx.input.isKeyPressed(Keys.S)) {
 			y -= SPEED*Gdx.graphics.getDeltaTime();
 		} 
-		if(Gdx.input.isKeyPressed(Keys.RIGHT)) {
+		if(Gdx.input.isKeyPressed(Keys.RIGHT) | Gdx.input.isKeyPressed(Keys.D)) {
 			x += SPEED*Gdx.graphics.getDeltaTime();
 		} 
-		if(Gdx.input.isKeyPressed(Keys.LEFT)) {
+		if(Gdx.input.isKeyPressed(Keys.LEFT) | Gdx.input.isKeyPressed(Keys.A)) {
 			x -= SPEED*Gdx.graphics.getDeltaTime();
 		}
 		if(Gdx.input.isKeyPressed(Keys.ESCAPE)) {
