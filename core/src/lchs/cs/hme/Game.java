@@ -8,10 +8,14 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Game extends ApplicationAdapter {
+	
+	public static final float SPEED = 40;
+	
 	SpriteBatch batch;
 	Texture img;
 	float x = 0;
 	float y = 0;
+	
 	
 	@Override
 	public void create () {
@@ -23,16 +27,17 @@ public class Game extends ApplicationAdapter {
 	public void render () {
 		Gdx.gl.glClearColor(1, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		//System.out.println(Gdx.graphics.getDeltaTime());
 		
 		//character movement
 		if(Gdx.input.isKeyPressed(Keys.UP)) {
-			y += 5;
+			y += SPEED*Gdx.graphics.getDeltaTime();
 		} if(Gdx.input.isKeyPressed(Keys.DOWN)) {
-			y -= 5;
+			y -= SPEED*Gdx.graphics.getDeltaTime();
 		} if(Gdx.input.isKeyPressed(Keys.RIGHT)) {
-			x += 5;
+			x += SPEED*Gdx.graphics.getDeltaTime();
 		} if(Gdx.input.isKeyPressed(Keys.LEFT)) {
-			x -= 5;
+			x -= SPEED*Gdx.graphics.getDeltaTime();
 		}
 		
 		// start drawing images to the screen
