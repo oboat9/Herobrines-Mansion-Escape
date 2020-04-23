@@ -9,7 +9,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Game extends ApplicationAdapter {
 	
-	public static final float SPEED = 40;
+	public static final float SPEED = 120;
 	
 	SpriteBatch batch;
 	Texture img;
