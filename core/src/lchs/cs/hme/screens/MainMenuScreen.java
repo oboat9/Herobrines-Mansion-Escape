@@ -2,6 +2,7 @@ package lchs.cs.hme.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 
@@ -57,14 +58,25 @@ public class MainMenuScreen implements Screen {
 		int playY = PLAY_BUTTON_Y;
 		int exitY = EXIT_BUTTON_Y;
 		
+		if(Gdx.input.isKeyPressed(Keys.ESCAPE)) {
+			Gdx.app.exit();
+		} 
+		
 		if (Gdx.input.getX() < exitX + EXIT_BUTTON_WIDTH && Gdx.input.getX() > exitX && SpaceGame.HEIGHT - Gdx.input.getY() < exitY + EXIT_BUTTON_HEIGHT && SpaceGame.HEIGHT - Gdx.input.getY() > exitY) {
 			game.batch.draw(exitButtonActive, exitX, exitY, EXIT_BUTTON_WIDTH, EXIT_BUTTON_HEIGHT);
+			if (Gdx.input.isTouched()) {
+				Gdx.app.exit();
+			}
 		} else {
 			game.batch.draw(exitButtonInactive, exitX, exitY, EXIT_BUTTON_WIDTH, EXIT_BUTTON_HEIGHT);
 		}
 		
 		if (Gdx.input.getX() < playX + PLAY_BUTTON_WIDTH && Gdx.input.getX() > playX && SpaceGame.HEIGHT - Gdx.input.getY() < playY + PLAY_BUTTON_HEIGHT && SpaceGame.HEIGHT - Gdx.input.getY() > playY) {
 			game.batch.draw(playButtonActive, (SpaceGame.WIDTH/2) - (PLAY_BUTTON_WIDTH / 2), PLAY_BUTTON_Y, PLAY_BUTTON_WIDTH, PLAY_BUTTON_HEIGHT);
+			if (Gdx.input.isTouched()) {
+				this.dispose();
+				game.setScreen(new MainGameScreen(game));
+			}
 		} else {
 			game.batch.draw(playButtonInactive, playX, playY, PLAY_BUTTON_WIDTH, PLAY_BUTTON_HEIGHT);
 		}
