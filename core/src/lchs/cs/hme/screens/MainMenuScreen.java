@@ -24,6 +24,10 @@ public class MainMenuScreen implements Screen {
 	//private static final int TITLE_X = 200;
 	private static final int TITLE_Y = 575;
 	
+	private static final int BACKGROUND_WIDTH = SpaceGame.WIDTH;
+	private static final int BACKGROUND_HEIGHT = (int) (BACKGROUND_WIDTH*0.625);
+	
+	
 	
 	
 	
@@ -36,6 +40,8 @@ public class MainMenuScreen implements Screen {
 	
 	Texture titleTex;
 	
+	Texture wallpaper;
+	
 	public MainMenuScreen (SpaceGame game) {
 		this.game = game;
 		playButtonActive = new Texture("play_button_active.png");
@@ -44,6 +50,9 @@ public class MainMenuScreen implements Screen {
 		exitButtonInactive = new Texture("exit_button_inactive.png");
 		
 		titleTex = new Texture("title.png");
+		
+		wallpaper = new Texture("menu_wallpaper.png");
+		
 		
 	}
 	
@@ -72,6 +81,7 @@ public class MainMenuScreen implements Screen {
 		int playY = PLAY_BUTTON_Y;
 		int exitY = EXIT_BUTTON_Y;
 		
+		game.batch.draw(wallpaper, 0, 0, BACKGROUND_WIDTH, BACKGROUND_HEIGHT);
 		game.batch.draw(titleTex, titleX, TITLE_Y, TITLE_WIDTH, TITLE_HEIGHT);
 		
 		if (Gdx.input.getX() < exitX + EXIT_BUTTON_WIDTH && Gdx.input.getX() > exitX && SpaceGame.HEIGHT - Gdx.input.getY() < exitY + EXIT_BUTTON_HEIGHT && SpaceGame.HEIGHT - Gdx.input.getY() > exitY) {
