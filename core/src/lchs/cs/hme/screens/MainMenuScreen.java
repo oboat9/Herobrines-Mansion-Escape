@@ -9,13 +9,22 @@ import lchs.cs.hme.SpaceGame;
 
 public class MainMenuScreen implements Screen {
 
-	private static final int EXIT_BUTTON_WIDTH = 300;
-	private static final int EXIT_BUTTON_HEIGHT = 150;
-	private static final int EXIT_BUTTON_Y = 100;
+	private static final int EXIT_BUTTON_WIDTH = 296;
+	private static final int EXIT_BUTTON_HEIGHT = 62;
+	private static final int EXIT_BUTTON_Y = 150;
 	
-	private static final int PLAY_BUTTON_WIDTH = 330;
-	private static final int PLAY_BUTTON_HEIGHT = 135;
+	private static final int PLAY_BUTTON_WIDTH = 600;
+	private static final int PLAY_BUTTON_HEIGHT = 60;
 	private static final int PLAY_BUTTON_Y = 250;
+	
+	
+	private static final int TITLE_WIDTH = 1424;
+	private static final int TITLE_HEIGHT = 112;
+	
+	//private static final int TITLE_X = 200;
+	private static final int TITLE_Y = 575;
+	
+	
 	
 	
 	SpaceGame game;
@@ -25,12 +34,16 @@ public class MainMenuScreen implements Screen {
 	Texture playButtonActive;
 	Texture playButtonInactive;
 	
+	Texture titleTex;
+	
 	public MainMenuScreen (SpaceGame game) {
 		this.game = game;
 		playButtonActive = new Texture("play_button_active.png");
 		playButtonInactive = new Texture("play_button_inactive.png");
 		exitButtonActive = new Texture("exit_button_active.png");
 		exitButtonInactive = new Texture("exit_button_inactive.png");
+		
+		titleTex = new Texture("title.png");
 		
 	}
 	
@@ -43,7 +56,7 @@ public class MainMenuScreen implements Screen {
 	public void render(float delta) {
 		
 		
-		Gdx.gl.glClearColor(0, 0, .1f, 1);
+		Gdx.gl.glClearColor(0, 0, .2f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
 		
@@ -54,8 +67,12 @@ public class MainMenuScreen implements Screen {
 		int playX = (SpaceGame.WIDTH/2) - (PLAY_BUTTON_WIDTH /2);
 		int exitX = (SpaceGame.WIDTH/2) - (EXIT_BUTTON_WIDTH / 2);
 		
+		int titleX = (SpaceGame.WIDTH/2) - (TITLE_WIDTH /2);
+		
 		int playY = PLAY_BUTTON_Y;
 		int exitY = EXIT_BUTTON_Y;
+		
+		game.batch.draw(titleTex, titleX, TITLE_Y, TITLE_WIDTH, TITLE_HEIGHT);
 		
 		if (Gdx.input.getX() < exitX + EXIT_BUTTON_WIDTH && Gdx.input.getX() > exitX && SpaceGame.HEIGHT - Gdx.input.getY() < exitY + EXIT_BUTTON_HEIGHT && SpaceGame.HEIGHT - Gdx.input.getY() > exitY) {
 			game.batch.draw(exitButtonActive, exitX, exitY, EXIT_BUTTON_WIDTH, EXIT_BUTTON_HEIGHT);
