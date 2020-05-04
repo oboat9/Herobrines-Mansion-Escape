@@ -4,6 +4,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import lchs.cs.hme.screens.MainMenuScreen;
+import lchs.cs.hme.screens.MainGameScreen;
 
 public class SpaceGame extends Game {
 	

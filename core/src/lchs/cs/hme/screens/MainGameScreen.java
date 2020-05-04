@@ -31,16 +31,14 @@ public class MainGameScreen implements Screen{
 	
 	float stateTime; 
 	
-	Texture playerImg;
-	
 	SpaceGame game;
+	
+	Texture playerImg;
 	
 	public MainGameScreen (SpaceGame game) {
 		this.game = game;
 		y = 15;
 		x = SpaceGame.WIDTH /2 - SHIPWIDTH /2;
-		
-		
 
 	}
 	
