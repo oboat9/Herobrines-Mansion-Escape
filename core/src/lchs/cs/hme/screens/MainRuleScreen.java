@@ -2,6 +2,7 @@ package lchs.cs.hme.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 
@@ -42,6 +43,8 @@ public class MainRuleScreen implements Screen {
 	
 	Texture wallpaper;
 	
+	Sound clickSound;
+	
 	public MainRuleScreen (HerobrineEscape game) {
 		this.game = game;
 		okButtonActive = new Texture("continue_button_active.png");
@@ -52,6 +55,8 @@ public class MainRuleScreen implements Screen {
 		titleTex = new Texture("How-To-Play.png");
 		
 		wallpaper = new Texture("rules_wallpaper.png");
+		
+		clickSound = Gdx.audio.newSound(Gdx.files.internal("buttonclick.wav"));
 		
 		
 	}
@@ -87,7 +92,9 @@ public class MainRuleScreen implements Screen {
 		if (Gdx.input.getX() < exitX + EXIT_BUTTON_WIDTH && Gdx.input.getX() > exitX && HerobrineEscape.HEIGHT - Gdx.input.getY() < exitY + EXIT_BUTTON_HEIGHT && HerobrineEscape.HEIGHT - Gdx.input.getY() > exitY) {
 			game.batch.draw(exitButtonActive, exitX, exitY, EXIT_BUTTON_WIDTH, EXIT_BUTTON_HEIGHT);
 			if (Gdx.input.isTouched()) {
-				Gdx.app.exit();
+				clickSound.play(1.0f);
+				this.dispose();
+				game.setScreen(new MainMenuScreen(game));
 			}
 		} else {
 			game.batch.draw(exitButtonInactive, exitX, exitY, EXIT_BUTTON_WIDTH, EXIT_BUTTON_HEIGHT);
@@ -96,6 +103,7 @@ public class MainRuleScreen implements Screen {
 		if (Gdx.input.getX() < okX + OK_BUTTON_WIDTH && Gdx.input.getX() > okX && HerobrineEscape.HEIGHT - Gdx.input.getY() < okY + OK_BUTTON_HEIGHT && HerobrineEscape.HEIGHT - Gdx.input.getY() > okY) {
 			game.batch.draw(okButtonActive, (HerobrineEscape.WIDTH/2) - (OK_BUTTON_WIDTH / 2), OK_BUTTON_Y, OK_BUTTON_WIDTH, OK_BUTTON_HEIGHT);
 			if (Gdx.input.isTouched()) {
+				clickSound.play(1.0f);
 				this.dispose();
 				game.setScreen(new MainGameScreen(game));
 			}
