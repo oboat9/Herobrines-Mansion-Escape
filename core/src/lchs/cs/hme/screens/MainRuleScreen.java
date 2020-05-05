@@ -22,8 +22,12 @@ public class MainRuleScreen implements Screen {
 	private static final int TITLE_WIDTH = 588;
 	private static final int TITLE_HEIGHT = 103;
 	
+	private static final int RULES_WIDTH = 783;
+	private static final int RULES_HEIGHT = 196;
+	
 	//private static final int TITLE_X = 200;
-	private static final int TITLE_Y = HerobrineEscape.HEIGHT-200;
+	private static final int TITLE_Y = HerobrineEscape.HEIGHT-150;
+	private static final int RULES_Y = TITLE_Y - (RULES_HEIGHT+100);
 	
 	private static final int BACKGROUND_WIDTH = HerobrineEscape.WIDTH;
 	private static final int BACKGROUND_HEIGHT = (int) (BACKGROUND_WIDTH*0.625);
@@ -40,6 +44,8 @@ public class MainRuleScreen implements Screen {
 	Texture okButtonInactive;
 	
 	Texture titleTex;
+
+	Texture rulesTex;
 	
 	Texture wallpaper;
 	
@@ -53,6 +59,8 @@ public class MainRuleScreen implements Screen {
 		exitButtonInactive = new Texture("images/buttons/back_button_inactive.png");
 		
 		titleTex = new Texture("images/titles/How-To-Play.png");
+
+		rulesTex = new Texture("images/titles/rules.png");
 		
 		wallpaper = new Texture("images/backgrounds/rules_wallpaper.png");
 		
@@ -83,11 +91,14 @@ public class MainRuleScreen implements Screen {
 		
 		int titleX = (HerobrineEscape.WIDTH/2) - (TITLE_WIDTH /2);
 		
+		int rulesX = (HerobrineEscape.WIDTH/2) - (RULES_WIDTH /2);
+		
 		int okY = OK_BUTTON_Y;
 		int exitY = EXIT_BUTTON_Y;
 		
 		game.batch.draw(wallpaper, 0, 0, BACKGROUND_WIDTH, BACKGROUND_HEIGHT);
 		game.batch.draw(titleTex, titleX, TITLE_Y, TITLE_WIDTH, TITLE_HEIGHT);
+		game.batch.draw(rulesTex, rulesX, RULES_Y, RULES_WIDTH, RULES_HEIGHT);
 		
 		if (Gdx.input.getX() < exitX + EXIT_BUTTON_WIDTH && Gdx.input.getX() > exitX && HerobrineEscape.HEIGHT - Gdx.input.getY() < exitY + EXIT_BUTTON_HEIGHT && HerobrineEscape.HEIGHT - Gdx.input.getY() > exitY) {
 			game.batch.draw(exitButtonActive, exitX, exitY, EXIT_BUTTON_WIDTH, EXIT_BUTTON_HEIGHT);
