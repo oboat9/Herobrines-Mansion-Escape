@@ -5,8 +5,10 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 
 import lchs.cs.hme.HerobrineEscape;
+import lchs.cs.hme.tools.TextInput;
 
 public class MainGameScreen implements Screen{
 
@@ -51,24 +53,42 @@ public class MainGameScreen implements Screen{
 
 	@Override
 	public void render(float delta) {
-		//character movement
-		if(Gdx.input.isKeyPressed(Keys.UP) | Gdx.input.isKeyPressed(Keys.W)) {
-			y += SPEED*Gdx.graphics.getDeltaTime();
-		} 
-		if(Gdx.input.isKeyPressed(Keys.DOWN) | Gdx.input.isKeyPressed(Keys.S)) {
-			y -= SPEED*Gdx.graphics.getDeltaTime();
-		} 
-		if(Gdx.input.isKeyPressed(Keys.RIGHT) | Gdx.input.isKeyPressed(Keys.D)) {
-			x += SPEED*Gdx.graphics.getDeltaTime();
-		} 
-		if(Gdx.input.isKeyPressed(Keys.LEFT) | Gdx.input.isKeyPressed(Keys.A)) {
-			x -= SPEED*Gdx.graphics.getDeltaTime();
+		
+		if(Gdx.input.isKeyJustPressed(Keys.SPACE)) {
+			TextInput listener = new TextInput();
+			Gdx.input.getTextInput(listener, "Enter Command", "", "");
 		}
+		
 		if(Gdx.input.isKeyPressed(Keys.ESCAPE)) {
 			game.menuMusic.play();
 			this.dispose();
 			game.setScreen(new MainMenuScreen(game));
 		}
+
+		//text command handling
+		switch(TextInput.getText()) {
+			case "up":
+				y += 100;
+				System.out.println("going up!");
+				TextInput.currentCommand = "none";
+				break;
+			case "down":
+				y -= 100;
+				System.out.println("going down!");
+				TextInput.currentCommand = "none";
+				break;
+			case "left":
+				x -= 100;
+				System.out.println("going left!");
+				TextInput.currentCommand = "none";
+				break;
+			case "right":
+				x  += 100;
+				System.out.println("going right!");
+				TextInput.currentCommand = "none";
+				break;
+		}
+		
 		
 		time += Gdx.graphics.getDeltaTime();
 		//System.out.println(time);
