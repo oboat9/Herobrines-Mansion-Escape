@@ -76,7 +76,8 @@ public class MainGameScreen implements Screen{
 		int minutes = (int) ((time % 3600) / 60);
 		int seconds = (int) (time % 60);
 		
-		System.out.println((9-minutes)+":"+(60-seconds));
+		//System.out.println((9-minutes)+":"+(60-seconds));
+		Gdx.graphics.setTitle("Herobrine's Mansion Escape" + " - Time Remaining: " + (9-minutes) + ":" + (59-seconds));
 
 		//timeString = String.format("%02d:%02d:%02d", hours, minutes, seconds);
 		
