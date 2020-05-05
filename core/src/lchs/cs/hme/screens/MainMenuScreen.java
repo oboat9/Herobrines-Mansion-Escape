@@ -2,6 +2,7 @@ package lchs.cs.hme.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
@@ -47,6 +48,8 @@ public class MainMenuScreen implements Screen {
 	
 	Sound clickSound;
 	
+	Music menuMusic;
+	
 	public MainMenuScreen (HerobrineEscape game) {
 		this.game = game;
 		playButtonActive = new Texture("play_button_active.png");
@@ -58,13 +61,17 @@ public class MainMenuScreen implements Screen {
 		
 		wallpaper = new Texture("menu_wallpaper_mansion_lowerbit.png");
 		
+		menuMusic = Gdx.audio.newMusic(Gdx.files.internal("titlescreenmusic.wav"));
 		clickSound = Gdx.audio.newSound(Gdx.files.internal("buttonclick.wav"));
+		
 		
 		
 	}
 	
 	@Override
 	public void show() {
+		menuMusic.setVolume(0.2f);
+		menuMusic.play();
 		
 	}
 
@@ -96,6 +103,7 @@ public class MainMenuScreen implements Screen {
 			if (Gdx.input.isTouched()) {
 				//clickSound.play(1.0f);
 				clickSound.play(1.0f);
+				menuMusic.dispose();
 				Gdx.app.exit();
 			}
 		} else {
@@ -106,6 +114,7 @@ public class MainMenuScreen implements Screen {
 			game.batch.draw(playButtonActive, (HerobrineEscape.WIDTH/2) - (PLAY_BUTTON_WIDTH / 2), PLAY_BUTTON_Y, PLAY_BUTTON_WIDTH, PLAY_BUTTON_HEIGHT);
 			if (Gdx.input.isTouched()) {
 				clickSound.play(1.0f);
+				menuMusic.dispose();
 				this.dispose();
 				game.setScreen(new MainRuleScreen(game));
 			}
