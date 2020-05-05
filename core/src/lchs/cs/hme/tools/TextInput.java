@@ -11,19 +11,7 @@ public class TextInput extends ApplicationAdapter implements TextInputListener{
 	
 	@Override
 	public void input(String text) {
-		
-		if(text == "up") {
-			System.out.println("itsgoodduck");
-		}
-		
-		//System.out.println(text);
 		currentCommand = text;
-		
-		if(currentCommand == "up") {
-			System.out.println("FORK");
-		}
-		
-		//System.out.println(currentCommand);
 		}
 	
 	@Override
