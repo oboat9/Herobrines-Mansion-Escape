@@ -14,11 +14,11 @@ public class MainGameScreen implements Screen{
 
 	public static final float SPEED = 300;
 	public static final float SHIP_ANIMATION_SPEED = 0.5f;
-	public static final int SHIP_WIDTH_PIXEL = 32;
-	public static final int SHIP_HEIGHT_PIXEL = 72;
+	public static final int PLAYER_WIDTH_PIXEL = 32;
+	public static final int PLAYER_HEIGHT_PIXEL = 72;
 	
-	public static final int SHIPWIDTH = SHIP_WIDTH_PIXEL * 3;
-	public static final int SHIPHEIGHT = SHIP_HEIGHT_PIXEL * 3;
+	public static final int PLAYERWIDTH = PLAYER_WIDTH_PIXEL * 3;
+	public static final int PLAYERHEIGHT = PLAYER_HEIGHT_PIXEL * 3;
 
 	//Animation<TextureRegion>[] rolls;
 	
@@ -37,8 +37,8 @@ public class MainGameScreen implements Screen{
 	
 	public MainGameScreen (HerobrineEscape game) {
 		this.game = game;
-		y = 15;
-		x = HerobrineEscape.WIDTH /2 - SHIPWIDTH /2;
+		y = 50;
+		x = HerobrineEscape.WIDTH /2 - PLAYERWIDTH /2;
 		game.menuMusic.pause();
 
 	}
@@ -78,7 +78,7 @@ public class MainGameScreen implements Screen{
 		// start drawing images to the screen
 		game.batch.begin();
 		//draw the img image
-		game.batch.draw(playerImg, x, y, SHIPWIDTH, SHIPHEIGHT);
+		game.batch.draw(playerImg, x, y, PLAYERWIDTH, PLAYERHEIGHT);
 		// stop drawing things to the screen
 		game.batch.end();
 		

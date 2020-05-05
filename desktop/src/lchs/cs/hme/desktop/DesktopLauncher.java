@@ -11,6 +11,7 @@ public class DesktopLauncher {
 		config.width = HerobrineEscape.WIDTH;
 		config.height = HerobrineEscape.HEIGHT;
 		config.resizable = false;
+		config.fullscreen = false;
 		new LwjglApplication(new HerobrineEscape(), config);
 	}
 }

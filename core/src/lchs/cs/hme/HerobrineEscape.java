@@ -1,5 +1,7 @@
 package lchs.cs.hme;
 
+import java.awt.Dimension;
+
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
@@ -10,8 +12,11 @@ import lchs.cs.hme.screens.MainMenuScreen;
 public class HerobrineEscape extends Game {
 	
 	public SpriteBatch batch;
+	static Dimension dimension = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 	
+	//public static final int WIDTH = (int) dimension.getWidth();
 	public static final int WIDTH = 1600;
+	//public static final int HEIGHT = (int) dimension.getHeight();
 	public static final int HEIGHT = 900;
 	
 	public Music menuMusic;
