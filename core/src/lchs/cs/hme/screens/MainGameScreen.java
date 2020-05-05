@@ -29,10 +29,15 @@ public class MainGameScreen implements Screen{
 	// mostly redundant time sync
 	float stateTime; 
 	
+	String currentBackground;
+	
 	HerobrineEscape game;
 	
 	// init textures
 	Texture playerImg;
+	
+	Texture doorClosedTex;
+	Texture doorOpenTex;
 	
 	// runs when the Main Game Screen is shown
 	public MainGameScreen (HerobrineEscape game) {
@@ -41,6 +46,8 @@ public class MainGameScreen implements Screen{
 		// sets player starting location (temp)
 		y = 50;
 		x = HerobrineEscape.WIDTH /2 - PLAYERWIDTH /2;
+		
+		currentBackground = "lvl1doorclosed";
 		
 		// pauses the menu music (will be used when/if we get different music for puzzles)
 		//game.menuMusic.pause();
@@ -51,6 +58,8 @@ public class MainGameScreen implements Screen{
 	@Override
 	public void show() {
 		playerImg = new Texture ("images/Steve.png");
+		doorClosedTex = new Texture ("images/backgrounds/levelone/doorclosed.png");
+		doorOpenTex = new Texture ("images/backgrounds/levelone/dooropen.png");
 		
 	}
 
@@ -72,8 +81,7 @@ public class MainGameScreen implements Screen{
 
 		// text command handling
 		switch(TextInput.getText()) {
-		
-		//player movement
+		//player movement temp
 			case "up":
 				y += 100;
 				TextInput.currentCommand = "none";
@@ -90,6 +98,18 @@ public class MainGameScreen implements Screen{
 				x  += 100;
 				TextInput.currentCommand = "none";
 				break;
+		}
+		
+		/*
+		 *  LEVEL ONE
+		 */
+		if (currentBackground == "lvl1doorclosed") {
+			switch(TextInput.getText()) {
+				case "flip lever":
+					currentBackground = "lvl1dooropen";
+					TextInput.currentCommand = "none";
+					break;
+			}
 		}
 		
 		// escape timer
@@ -109,6 +129,17 @@ public class MainGameScreen implements Screen{
 		
 		// start drawing images to the screen
 		game.batch.begin();
+		
+		//handles the background rendering
+		switch (currentBackground) {	
+			case "lvl1doorclosed":
+				game.batch.draw(doorClosedTex, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+				break;
+			case "lvl1dooropen":
+				game.batch.draw(doorOpenTex, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+				break;
+		}
+		
 		
 		//draw the player image (temp)
 		game.batch.draw(playerImg, x, y, PLAYERWIDTH, PLAYERHEIGHT);
