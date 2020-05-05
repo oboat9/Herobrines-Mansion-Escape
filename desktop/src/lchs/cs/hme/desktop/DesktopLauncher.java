@@ -10,6 +10,7 @@ public class DesktopLauncher {
 		config.foregroundFPS = 60;
 		config.width = HerobrineEscape.WIDTH;
 		config.height = HerobrineEscape.HEIGHT;
+		config.resizable = false;
 		new LwjglApplication(new HerobrineEscape(), config);
 	}
 }

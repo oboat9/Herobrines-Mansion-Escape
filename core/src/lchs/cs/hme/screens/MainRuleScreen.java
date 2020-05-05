@@ -10,13 +10,13 @@ import lchs.cs.hme.HerobrineEscape;
 
 public class MainRuleScreen implements Screen {
 
-	private static final int EXIT_BUTTON_WIDTH = 296;
-	private static final int EXIT_BUTTON_HEIGHT = 62;
+	private static final int EXIT_BUTTON_WIDTH = 191;
+	private static final int EXIT_BUTTON_HEIGHT = 54;
 	private static final int EXIT_BUTTON_Y = 50;
 	
 	private static final int OK_BUTTON_WIDTH = 254;
 	private static final int OK_BUTTON_HEIGHT = 54;
-	private static final int OK_BUTTON_Y = 150;
+	private static final int OK_BUTTON_Y = 140;
 	
 	
 	private static final int TITLE_WIDTH = 588;
@@ -49,8 +49,8 @@ public class MainRuleScreen implements Screen {
 		this.game = game;
 		okButtonActive = new Texture("continue_button_active.png");
 		okButtonInactive = new Texture("continue_button_inactive.png");
-		exitButtonActive = new Texture("exit_button_active.png");
-		exitButtonInactive = new Texture("exit_button_inactive.png");
+		exitButtonActive = new Texture("back_button_active.png");
+		exitButtonInactive = new Texture("back_button_inactive.png");
 		
 		titleTex = new Texture("How-To-Play.png");
 		
