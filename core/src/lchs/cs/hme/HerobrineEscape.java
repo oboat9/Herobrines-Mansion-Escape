@@ -23,23 +23,32 @@ public class HerobrineEscape extends Game {
 	
 	@Override
 	public void create () {
-		menuMusic = Gdx.audio.newMusic(Gdx.files.internal("sounds/titlescreenmusic.wav"));
+		// libGDX stuff (whos knows what is does)
 		batch = new SpriteBatch();
+		
+		//sets the screen to the menu screen
 		this.setScreen(new MainMenuScreen(this));
+		
+		// starts the music
+		menuMusic = Gdx.audio.newMusic(Gdx.files.internal("sounds/titlescreenmusic.wav"));
 		menuMusic.setVolume(0.3f);
 		menuMusic.setLooping(true); 
 		menuMusic.play();
+		
+		// sets the window title
 		Gdx.graphics.setTitle("Herobrine's Mansion Escape");
 	}
 
 	@Override
 	public void render () {
+		// renders the entire window
 		super.render();
 
 	}
 	
 	@Override
 	public void dispose () {
+		// cleans up after the game closes
 		batch.dispose();
 	}
 }

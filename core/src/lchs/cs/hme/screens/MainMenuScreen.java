@@ -12,6 +12,8 @@ import lchs.cs.hme.HerobrineEscape;
 
 public class MainMenuScreen implements Screen {
 
+	
+	// sets the settings for things
 	private static final int EXIT_BUTTON_WIDTH = 296;
 	private static final int EXIT_BUTTON_HEIGHT = 62;
 	private static final int EXIT_BUTTON_Y = 120;
@@ -24,7 +26,6 @@ public class MainMenuScreen implements Screen {
 	private static final int TITLE_WIDTH = HerobrineEscape.WIDTH-(HerobrineEscape.WIDTH/4);
 	private static final int TITLE_HEIGHT = (int) (TITLE_WIDTH*0.07865);
 	
-	//private static final int TITLE_X = 200;
 	private static final int TITLE_Y = HerobrineEscape.HEIGHT - 200;
 	
 	private static final int BACKGROUND_WIDTH = HerobrineEscape.WIDTH;
@@ -36,6 +37,7 @@ public class MainMenuScreen implements Screen {
 	
 	HerobrineEscape game;
 	
+	// init textures
 	Texture exitButtonActive;
 	Texture exitButtonInactive;
 	Texture playButtonActive;
@@ -48,7 +50,10 @@ public class MainMenuScreen implements Screen {
 	Sound clickSound;
 		
 	public MainMenuScreen (HerobrineEscape game) {
+		// passes the game through
 		this.game = game;
+		
+		//loads textures from files
 		playButtonActive = new Texture("images/buttons/play_button_active.png");
 		playButtonInactive = new Texture("images/buttons/play_button_inactive.png");
 		exitButtonActive = new Texture("images/buttons/exit_button_active.png");
@@ -69,10 +74,11 @@ public class MainMenuScreen implements Screen {
 		
 	}
 
+	// renders the game every frame
 	@Override
 	public void render(float delta) {
 		
-		
+		// clears the screen between frames
 		Gdx.gl.glClearColor(0, 0, .2f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
@@ -80,7 +86,7 @@ public class MainMenuScreen implements Screen {
 		// start drawing images to the screen
 		game.batch.begin();
 		
-		
+		// sets the coords of various things on the screen
 		int playX = (HerobrineEscape.WIDTH/2) - (PLAY_BUTTON_WIDTH /2);
 		int exitX = (HerobrineEscape.WIDTH/2) - (EXIT_BUTTON_WIDTH / 2);
 		
@@ -89,20 +95,24 @@ public class MainMenuScreen implements Screen {
 		int playY = PLAY_BUTTON_Y;
 		int exitY = EXIT_BUTTON_Y;
 		
+		//draws static images (wallpaper, title)
 		game.batch.draw(wallpaper, 0, 0, BACKGROUND_WIDTH, BACKGROUND_HEIGHT);
 		game.batch.draw(titleTex, titleX, TITLE_Y, TITLE_WIDTH, TITLE_HEIGHT);
 		
 		if (Gdx.input.getX() < exitX + EXIT_BUTTON_WIDTH && Gdx.input.getX() > exitX && HerobrineEscape.HEIGHT - Gdx.input.getY() < exitY + EXIT_BUTTON_HEIGHT && HerobrineEscape.HEIGHT - Gdx.input.getY() > exitY) {
+			// mouse hovers over button
 			game.batch.draw(exitButtonActive, exitX, exitY, EXIT_BUTTON_WIDTH, EXIT_BUTTON_HEIGHT);
 			if (Gdx.input.isTouched()) {
 				clickSound.play(1.0f);
 				Gdx.app.exit();
 			}
 		} else {
+			// mouse does not over button
 			game.batch.draw(exitButtonInactive, exitX, exitY, EXIT_BUTTON_WIDTH, EXIT_BUTTON_HEIGHT);
 		}
 		
 		if (Gdx.input.getX() < playX + PLAY_BUTTON_WIDTH && Gdx.input.getX() > playX && HerobrineEscape.HEIGHT - Gdx.input.getY() < playY + PLAY_BUTTON_HEIGHT && HerobrineEscape.HEIGHT - Gdx.input.getY() > playY) {
+			// mouse hovers over button
 			game.batch.draw(playButtonActive, (HerobrineEscape.WIDTH/2) - (PLAY_BUTTON_WIDTH / 2), PLAY_BUTTON_Y, PLAY_BUTTON_WIDTH, PLAY_BUTTON_HEIGHT);
 			if (Gdx.input.isTouched()) {
 				clickSound.play(1.0f);
@@ -110,6 +120,7 @@ public class MainMenuScreen implements Screen {
 				game.setScreen(new MainRuleScreen(game));
 			}
 		} else {
+			// mouse does not over button
 			game.batch.draw(playButtonInactive, playX, playY, PLAY_BUTTON_WIDTH, PLAY_BUTTON_HEIGHT);
 		}
 		
