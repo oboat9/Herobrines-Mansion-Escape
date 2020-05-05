@@ -5,7 +5,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 
-import lchs.cs.hme.SpaceGame;
+import lchs.cs.hme.HerobrineEscape;
 
 public class MainRuleScreen implements Screen {
 
@@ -24,14 +24,14 @@ public class MainRuleScreen implements Screen {
 	//private static final int TITLE_X = 200;
 	private static final int TITLE_Y = 675;
 	
-	private static final int BACKGROUND_WIDTH = SpaceGame.WIDTH;
+	private static final int BACKGROUND_WIDTH = HerobrineEscape.WIDTH;
 	private static final int BACKGROUND_HEIGHT = (int) (BACKGROUND_WIDTH*0.625);
 	
 	
 	
 	
 	
-	SpaceGame game;
+	HerobrineEscape game;
 	
 	Texture exitButtonActive;
 	Texture exitButtonInactive;
@@ -42,7 +42,7 @@ public class MainRuleScreen implements Screen {
 	
 	Texture wallpaper;
 	
-	public MainRuleScreen (SpaceGame game) {
+	public MainRuleScreen (HerobrineEscape game) {
 		this.game = game;
 		okButtonActive = new Texture("continue_button_active.png");
 		okButtonInactive = new Texture("continue_button_inactive.png");
@@ -73,10 +73,10 @@ public class MainRuleScreen implements Screen {
 		game.batch.begin();
 		
 		
-		int okX = (SpaceGame.WIDTH/2) - (OK_BUTTON_WIDTH /2);
-		int exitX = (SpaceGame.WIDTH/2) - (EXIT_BUTTON_WIDTH / 2);
+		int okX = (HerobrineEscape.WIDTH/2) - (OK_BUTTON_WIDTH /2);
+		int exitX = (HerobrineEscape.WIDTH/2) - (EXIT_BUTTON_WIDTH / 2);
 		
-		int titleX = (SpaceGame.WIDTH/2) - (TITLE_WIDTH /2);
+		int titleX = (HerobrineEscape.WIDTH/2) - (TITLE_WIDTH /2);
 		
 		int okY = OK_BUTTON_Y;
 		int exitY = EXIT_BUTTON_Y;
@@ -84,7 +84,7 @@ public class MainRuleScreen implements Screen {
 		game.batch.draw(wallpaper, 0, 0, BACKGROUND_WIDTH, BACKGROUND_HEIGHT);
 		game.batch.draw(titleTex, titleX, TITLE_Y, TITLE_WIDTH, TITLE_HEIGHT);
 		
-		if (Gdx.input.getX() < exitX + EXIT_BUTTON_WIDTH && Gdx.input.getX() > exitX && SpaceGame.HEIGHT - Gdx.input.getY() < exitY + EXIT_BUTTON_HEIGHT && SpaceGame.HEIGHT - Gdx.input.getY() > exitY) {
+		if (Gdx.input.getX() < exitX + EXIT_BUTTON_WIDTH && Gdx.input.getX() > exitX && HerobrineEscape.HEIGHT - Gdx.input.getY() < exitY + EXIT_BUTTON_HEIGHT && HerobrineEscape.HEIGHT - Gdx.input.getY() > exitY) {
 			game.batch.draw(exitButtonActive, exitX, exitY, EXIT_BUTTON_WIDTH, EXIT_BUTTON_HEIGHT);
 			if (Gdx.input.isTouched()) {
 				Gdx.app.exit();
@@ -93,8 +93,8 @@ public class MainRuleScreen implements Screen {
 			game.batch.draw(exitButtonInactive, exitX, exitY, EXIT_BUTTON_WIDTH, EXIT_BUTTON_HEIGHT);
 		}
 		
-		if (Gdx.input.getX() < okX + OK_BUTTON_WIDTH && Gdx.input.getX() > okX && SpaceGame.HEIGHT - Gdx.input.getY() < okY + OK_BUTTON_HEIGHT && SpaceGame.HEIGHT - Gdx.input.getY() > okY) {
-			game.batch.draw(okButtonActive, (SpaceGame.WIDTH/2) - (OK_BUTTON_WIDTH / 2), OK_BUTTON_Y, OK_BUTTON_WIDTH, OK_BUTTON_HEIGHT);
+		if (Gdx.input.getX() < okX + OK_BUTTON_WIDTH && Gdx.input.getX() > okX && HerobrineEscape.HEIGHT - Gdx.input.getY() < okY + OK_BUTTON_HEIGHT && HerobrineEscape.HEIGHT - Gdx.input.getY() > okY) {
+			game.batch.draw(okButtonActive, (HerobrineEscape.WIDTH/2) - (OK_BUTTON_WIDTH / 2), OK_BUTTON_Y, OK_BUTTON_WIDTH, OK_BUTTON_HEIGHT);
 			if (Gdx.input.isTouched()) {
 				this.dispose();
 				game.setScreen(new MainGameScreen(game));

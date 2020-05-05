@@ -8,7 +8,7 @@ import com.badlogic.gdx.graphics.Texture;
 //import com.badlogic.gdx.graphics.g2d.Animation;
 //import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
-import lchs.cs.hme.SpaceGame;
+import lchs.cs.hme.HerobrineEscape;
 
 public class MainGameScreen implements Screen{
 
@@ -31,14 +31,14 @@ public class MainGameScreen implements Screen{
 	
 	float stateTime; 
 	
-	SpaceGame game;
+	HerobrineEscape game;
 	
 	Texture playerImg;
 	
-	public MainGameScreen (SpaceGame game) {
+	public MainGameScreen (HerobrineEscape game) {
 		this.game = game;
 		y = 15;
-		x = SpaceGame.WIDTH /2 - SHIPWIDTH /2;
+		x = HerobrineEscape.WIDTH /2 - SHIPWIDTH /2;
 
 	}
 	

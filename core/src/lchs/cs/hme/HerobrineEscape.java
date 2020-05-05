@@ -1,12 +1,13 @@
 package lchs.cs.hme;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import lchs.cs.hme.screens.MainMenuScreen;
 import lchs.cs.hme.screens.MainGameScreen;
 
-public class SpaceGame extends Game {
+public class HerobrineEscape extends Game {
 	
 	public SpriteBatch batch;
 	
@@ -17,6 +18,7 @@ public class SpaceGame extends Game {
 	public void create () {
 		batch = new SpriteBatch();
 		this.setScreen(new MainMenuScreen(this));
+		Gdx.graphics.setTitle("Herobrine's Mansion Escape");
 	}
 
 	@Override
