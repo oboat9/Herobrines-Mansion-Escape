@@ -5,7 +5,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import lchs.cs.hme.screens.MainMenuScreen;
-import lchs.cs.hme.screens.MainGameScreen;
 
 public class HerobrineEscape extends Game {
 	
