@@ -20,8 +20,8 @@ public class TextInput extends ApplicationAdapter implements TextInputListener{
 		}
 		
 	public static String getText(){
-		//System.out.println(currentCommand);
-		return currentCommand;
+
+		return currentCommand.toLowerCase();
 		}
 
 }
