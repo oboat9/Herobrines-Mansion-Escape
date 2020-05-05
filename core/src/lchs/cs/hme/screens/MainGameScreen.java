@@ -1,12 +1,10 @@
 package lchs.cs.hme.screens;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
-//import com.badlogic.gdx.graphics.g2d.Animation;
-//import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 import lchs.cs.hme.HerobrineEscape;
 
@@ -24,6 +22,8 @@ public class MainGameScreen implements Screen{
 	
 	float x = 0;
 	float y = 0;
+	
+	float time=0;
 	
 	
 	
@@ -69,6 +69,16 @@ public class MainGameScreen implements Screen{
 			this.dispose();
 			game.setScreen(new MainMenuScreen(game));
 		}
+		
+		time += Gdx.graphics.getDeltaTime();
+		//System.out.println(time);
+		
+		int minutes = (int) ((time % 3600) / 60);
+		int seconds = (int) (time % 60);
+		
+		System.out.println((9-minutes)+":"+(60-seconds));
+
+		//timeString = String.format("%02d:%02d:%02d", hours, minutes, seconds);
 		
 		stateTime += delta;
 		
