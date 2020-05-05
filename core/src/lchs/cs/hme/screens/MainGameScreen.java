@@ -39,6 +39,7 @@ public class MainGameScreen implements Screen{
 		this.game = game;
 		y = 15;
 		x = HerobrineEscape.WIDTH /2 - SHIPWIDTH /2;
+		game.menuMusic.pause();
 
 	}
 	
@@ -64,6 +65,7 @@ public class MainGameScreen implements Screen{
 			x -= SPEED*Gdx.graphics.getDeltaTime();
 		}
 		if(Gdx.input.isKeyPressed(Keys.ESCAPE)) {
+			game.menuMusic.play();
 			this.dispose();
 			game.setScreen(new MainMenuScreen(game));
 		}
