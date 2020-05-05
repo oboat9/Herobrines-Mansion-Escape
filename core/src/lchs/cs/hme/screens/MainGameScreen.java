@@ -46,7 +46,7 @@ public class MainGameScreen implements Screen{
 	
 	@Override
 	public void show() {
-		playerImg = new Texture ("Steve.png");
+		playerImg = new Texture ("images/Steve.png");
 		
 	}
 

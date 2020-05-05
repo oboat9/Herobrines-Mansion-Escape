@@ -13,9 +13,9 @@ public class DesktopLauncher {
 		config.height = HerobrineEscape.HEIGHT;
 		config.resizable = false;
 		config.fullscreen = false;
-		config.addIcon("icon_128.png", FileType.Internal);
-		config.addIcon("icon_32.png", FileType.Internal);
-		config.addIcon("icon_16.png", FileType.Internal);
+		config.addIcon("images/icons/icon_128.png", FileType.Internal);
+		config.addIcon("images/icons/icon_32.png", FileType.Internal);
+		config.addIcon("images/icons/icon_16.png", FileType.Internal);
 		new LwjglApplication(new HerobrineEscape(), config);
 	}
 }

@@ -23,7 +23,7 @@ public class HerobrineEscape extends Game {
 	
 	@Override
 	public void create () {
-		menuMusic = Gdx.audio.newMusic(Gdx.files.internal("titlescreenmusic.wav"));
+		menuMusic = Gdx.audio.newMusic(Gdx.files.internal("sounds/titlescreenmusic.wav"));
 		batch = new SpriteBatch();
 		this.setScreen(new MainMenuScreen(this));
 		menuMusic.setVolume(0.3f);

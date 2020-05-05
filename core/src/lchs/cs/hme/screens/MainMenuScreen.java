@@ -49,16 +49,16 @@ public class MainMenuScreen implements Screen {
 		
 	public MainMenuScreen (HerobrineEscape game) {
 		this.game = game;
-		playButtonActive = new Texture("play_button_active.png");
-		playButtonInactive = new Texture("play_button_inactive.png");
-		exitButtonActive = new Texture("exit_button_active.png");
-		exitButtonInactive = new Texture("exit_button_inactive.png");
+		playButtonActive = new Texture("images/buttons/play_button_active.png");
+		playButtonInactive = new Texture("images/buttons/play_button_inactive.png");
+		exitButtonActive = new Texture("images/buttons/exit_button_active.png");
+		exitButtonInactive = new Texture("images/buttons/exit_button_inactive.png");
 		
-		titleTex = new Texture("title.png");
+		titleTex = new Texture("images/titles/title.png");
 		
-		wallpaper = new Texture("menu_wallpaper_mansion_lowerbit.png");
+		wallpaper = new Texture("images/backgrounds/menu_wallpaper_mansion_lowerbit.png");
 		
-		clickSound = Gdx.audio.newSound(Gdx.files.internal("buttonclick.wav"));
+		clickSound = Gdx.audio.newSound(Gdx.files.internal("sounds/buttonclick.wav"));
 		
 		
 		

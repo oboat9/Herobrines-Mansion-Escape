@@ -47,16 +47,16 @@ public class MainRuleScreen implements Screen {
 	
 	public MainRuleScreen (HerobrineEscape game) {
 		this.game = game;
-		okButtonActive = new Texture("continue_button_active.png");
-		okButtonInactive = new Texture("continue_button_inactive.png");
-		exitButtonActive = new Texture("back_button_active.png");
-		exitButtonInactive = new Texture("back_button_inactive.png");
+		okButtonActive = new Texture("images/buttons/continue_button_active.png");
+		okButtonInactive = new Texture("images/buttons/continue_button_inactive.png");
+		exitButtonActive = new Texture("images/buttons/back_button_active.png");
+		exitButtonInactive = new Texture("images/buttons/back_button_inactive.png");
 		
-		titleTex = new Texture("How-To-Play.png");
+		titleTex = new Texture("images/titles/How-To-Play.png");
 		
-		wallpaper = new Texture("rules_wallpaper.png");
+		wallpaper = new Texture("images/backgrounds/rules_wallpaper.png");
 		
-		clickSound = Gdx.audio.newSound(Gdx.files.internal("buttonclick.wav"));
+		clickSound = Gdx.audio.newSound(Gdx.files.internal("sounds/buttonclick.wav"));
 		
 		
 	}
