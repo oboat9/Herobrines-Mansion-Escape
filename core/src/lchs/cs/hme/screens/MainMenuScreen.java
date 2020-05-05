@@ -51,7 +51,7 @@ public class MainMenuScreen implements Screen {
 		
 		titleTex = new Texture("title.png");
 		
-		wallpaper = new Texture("menu_wallpaper.png");
+		wallpaper = new Texture("menu_wallpaper_mansion_lowerbit.png");
 		
 		
 	}
@@ -97,7 +97,7 @@ public class MainMenuScreen implements Screen {
 			game.batch.draw(playButtonActive, (SpaceGame.WIDTH/2) - (PLAY_BUTTON_WIDTH / 2), PLAY_BUTTON_Y, PLAY_BUTTON_WIDTH, PLAY_BUTTON_HEIGHT);
 			if (Gdx.input.isTouched()) {
 				this.dispose();
-				game.setScreen(new MainGameScreen(game));
+				game.setScreen(new MainRuleScreen(game));
 			}
 		} else {
 			game.batch.draw(playButtonInactive, playX, playY, PLAY_BUTTON_WIDTH, PLAY_BUTTON_HEIGHT);
