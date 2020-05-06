@@ -20,12 +20,18 @@ public class MainGameScreen implements Screen{
 	public static final int PLAYERWIDTH = PLAYER_WIDTH_PIXEL * 3;
 	public static final int PLAYERHEIGHT = PLAYER_HEIGHT_PIXEL * 3;
 	
+	public static final int LVL1LOOKWIDTH = 600;
+	public static final int LVL1LOOKHEIGHT = 300;
+	
 	//temp player starting location
 	float x = 0;
 	float y = 0;
 	
 	// resets the escape timer
 	float time=0;
+	
+	// i would hope this is self explanitory
+	boolean isLooking = false;
 	
 	// mostly redundant time sync
 	float stateTime; 
@@ -37,9 +43,12 @@ public class MainGameScreen implements Screen{
 	// init textures
 	Texture playerImg;
 	
-	Texture doorClosedTex;
-	Texture doorOpenTex;
+	// level one assets
+	Texture lvl1doorClosedTex;
+	Texture lvl1doorOpenTex;
+	Texture lvl1Description;
 	
+	Sound clickSound;
 	Sound pistonDoor;
 	
 	// runs when the Main Game Screen is shown
@@ -60,11 +69,16 @@ public class MainGameScreen implements Screen{
 	// runs when the game starts (loads the images)
 	@Override
 	public void show() {
-		playerImg = new Texture ("images/Steve.png");
-		doorClosedTex = new Texture ("images/backgrounds/levelone/doorclosed.png");
-		doorOpenTex = new Texture ("images/backgrounds/levelone/dooropen.png");
 		
+		//load images
+		playerImg = new Texture ("images/Steve.png");
+		lvl1doorClosedTex = new Texture ("images/backgrounds/levelone/doorclosed.png");
+		lvl1doorOpenTex = new Texture ("images/backgrounds/levelone/dooropen.png");
+		lvl1Description = new Texture ("images/scenedescriptions/levelone.png");
+		
+		//load sound
 		pistonDoor = Gdx.audio.newSound(Gdx.files.internal("sounds/pistondoor.wav"));
+		clickSound = Gdx.audio.newSound(Gdx.files.internal("sounds/buttonclick.wav"));
 		
 	}
 
@@ -79,10 +93,16 @@ public class MainGameScreen implements Screen{
 		}
 		// back to main menu
 		if(Gdx.input.isKeyPressed(Keys.ESCAPE)) {
+			clickSound.play(1.0f);
 			game.menuMusic.play();
 			this.dispose();
 			game.setScreen(new MainMenuScreen(game));
 		}
+		if(Gdx.input.isKeyJustPressed(Keys.ENTER)) {
+			clickSound.play(1.0f);
+			isLooking = false;
+		}
+		
 
 		// text command handling
 		switch(TextInput.getText()) {
@@ -105,6 +125,11 @@ public class MainGameScreen implements Screen{
 			case "east":
 			case "e":
 				x  += 100;
+				TextInput.currentCommand = "none";
+				break;
+			case "look":
+			case "l":
+				isLooking = true;
 				TextInput.currentCommand = "none";
 				break;
 		}
@@ -143,17 +168,25 @@ public class MainGameScreen implements Screen{
 		//handles the background rendering
 		switch (currentBackground) {	
 			case "lvl1doorclosed":
-				game.batch.draw(doorClosedTex, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+				game.batch.draw(lvl1doorClosedTex, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
 				break;
 			case "lvl1dooropen":
-				game.batch.draw(doorOpenTex, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+				game.batch.draw(lvl1doorOpenTex, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
 				break;
 		}
+		
 		
 		
 		//draw the player image (temp)
 		game.batch.draw(playerImg, x, y, PLAYERWIDTH, PLAYERHEIGHT);
 		
+		if (isLooking) {
+			switch(currentBackground) {
+			case "lvl1doorclosed":
+			case "lvl1dooropen":
+				game.batch.draw(lvl1Description, (HerobrineEscape.WIDTH/2)-(LVL1LOOKWIDTH/2), HerobrineEscape.HEIGHT/2-(LVL1LOOKHEIGHT/2), LVL1LOOKWIDTH, LVL1LOOKHEIGHT);					
+			}
+		}
 		// stop drawing things to the screen
 		game.batch.end();
 		

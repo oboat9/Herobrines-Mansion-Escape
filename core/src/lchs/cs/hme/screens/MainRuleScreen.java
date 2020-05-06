@@ -22,8 +22,8 @@ public class MainRuleScreen implements Screen {
 	private static final int TITLE_WIDTH = 588;
 	private static final int TITLE_HEIGHT = 109;
 	
-	private static final int RULES_WIDTH = 783;
-	private static final int RULES_HEIGHT = 239;
+	private static final int RULES_WIDTH = 596;
+	private static final int RULES_HEIGHT = 280;
 	
 	//private static final int TITLE_X = 200;
 	private static final int TITLE_Y = HerobrineEscape.HEIGHT-150;
