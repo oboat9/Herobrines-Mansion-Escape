@@ -31,7 +31,7 @@ public class HerobrineEscape extends Game {
 		
 		// starts the music
 		menuMusic = Gdx.audio.newMusic(Gdx.files.internal("sounds/titlescreenmusic.wav"));
-		menuMusic.setVolume(0.3f);
+		menuMusic.setVolume(0.25f);
 		menuMusic.setLooping(true); 
 		menuMusic.play();
 		

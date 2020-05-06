@@ -87,19 +87,23 @@ public class MainGameScreen implements Screen{
 		// text command handling
 		switch(TextInput.getText()) {
 		//player movement temp
-			case "up":
+			case "north":
+			case "n":
 				y += 100;
 				TextInput.currentCommand = "none";
 				break;
-			case "down":
+			case "south":
+			case "s":
 				y -= 100;
 				TextInput.currentCommand = "none";
 				break;
-			case "left":
+			case "west":
+			case "w":
 				x -= 100;
 				TextInput.currentCommand = "none";
 				break;
-			case "right":
+			case "east":
+			case "e":
 				x  += 100;
 				TextInput.currentCommand = "none";
 				break;
@@ -110,7 +114,8 @@ public class MainGameScreen implements Screen{
 		 */
 		if (currentBackground == "lvl1doorclosed") {
 			switch(TextInput.getText()) {
-				case "flip lever":
+				case "interact lever":
+				case "lever":
 					pistonDoor.play(2.0f);
 					currentBackground = "lvl1dooropen";
 					TextInput.currentCommand = "none";
