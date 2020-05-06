@@ -114,8 +114,7 @@ public class MainGameScreen implements Screen{
 		 */
 		if (currentBackground == "lvl1doorclosed") {
 			switch(TextInput.getText()) {
-				case "interact lever":
-				case "lever":
+				case "use lever":
 					pistonDoor.play(2.0f);
 					currentBackground = "lvl1dooropen";
 					TextInput.currentCommand = "none";
