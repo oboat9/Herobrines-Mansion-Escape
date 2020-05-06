@@ -3,6 +3,7 @@ package lchs.cs.hme.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 
@@ -39,6 +40,8 @@ public class MainGameScreen implements Screen{
 	Texture doorClosedTex;
 	Texture doorOpenTex;
 	
+	Sound pistonDoor;
+	
 	// runs when the Main Game Screen is shown
 	public MainGameScreen (HerobrineEscape game) {
 		// passes through the main game stuff
@@ -60,6 +63,8 @@ public class MainGameScreen implements Screen{
 		playerImg = new Texture ("images/Steve.png");
 		doorClosedTex = new Texture ("images/backgrounds/levelone/doorclosed.png");
 		doorOpenTex = new Texture ("images/backgrounds/levelone/dooropen.png");
+		
+		pistonDoor = Gdx.audio.newSound(Gdx.files.internal("sounds/pistondoor.wav"));
 		
 	}
 
@@ -106,6 +111,7 @@ public class MainGameScreen implements Screen{
 		if (currentBackground == "lvl1doorclosed") {
 			switch(TextInput.getText()) {
 				case "flip lever":
+					pistonDoor.play(2.0f);
 					currentBackground = "lvl1dooropen";
 					TextInput.currentCommand = "none";
 					break;
