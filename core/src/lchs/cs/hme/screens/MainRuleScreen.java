@@ -20,7 +20,7 @@ public class MainRuleScreen implements Screen {
 	
 	
 	private static final int TITLE_WIDTH = 588;
-	private static final int TITLE_HEIGHT = 103;
+	private static final int TITLE_HEIGHT = 109;
 	
 	private static final int RULES_WIDTH = 783;
 	private static final int RULES_HEIGHT = 196;

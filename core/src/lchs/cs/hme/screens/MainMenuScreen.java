@@ -23,8 +23,8 @@ public class MainMenuScreen implements Screen {
 	private static final int PLAY_BUTTON_Y = EXIT_BUTTON_Y + 100;
 	
 	
-	private static final int TITLE_WIDTH = HerobrineEscape.WIDTH-(HerobrineEscape.WIDTH/4);
-	private static final int TITLE_HEIGHT = (int) (TITLE_WIDTH*0.07865);
+	private static final int TITLE_WIDTH = HerobrineEscape.WIDTH-(HerobrineEscape.WIDTH/16);
+	private static final int TITLE_HEIGHT = (int) (TITLE_WIDTH*0.09773);
 	
 	private static final int TITLE_Y = HerobrineEscape.HEIGHT - 200;
 	
