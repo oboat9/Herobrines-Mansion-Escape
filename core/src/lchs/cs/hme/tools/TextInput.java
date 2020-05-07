@@ -16,7 +16,7 @@ public class TextInput extends ApplicationAdapter implements TextInputListener{
 	
 	@Override
 	public void canceled() {
-		System.out.println("oof");
+		//System.out.println("oof");
 		}
 		
 	public static String getText(){
