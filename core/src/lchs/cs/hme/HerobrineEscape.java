@@ -1,10 +1,28 @@
 package lchs.cs.hme;
 
+/*
+ * Herobrine's Mansion Escape
+ * Java escape game using LibGDX library/engine
+ * 
+ * Authors: 
+ * 
+ * Owen Stevenson (Programmer), 
+ * 
+ * Steven Grabia (Music Man),
+ * 
+ * Braden Horn (Group Leader),
+ * 
+ * Jacob Templado (Original Level Design),
+ * 
+ * Carter Krause (Human),
+ * 
+ * Jackson Daigneault (Human),
+ */
+
 import java.awt.Dimension;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import lchs.cs.hme.screens.MainMenuScreen;
@@ -19,7 +37,9 @@ public class HerobrineEscape extends Game {
 	//public static final int HEIGHT = (int) dimension.getHeight();
 	public static final int HEIGHT = 720;
 	
-	public Music menuMusic;
+	public static boolean isMenuMusicPlaying = false;
+	
+	
 	
 	@Override
 	public void create () {
@@ -30,10 +50,8 @@ public class HerobrineEscape extends Game {
 		this.setScreen(new MainMenuScreen(this));
 		
 		// starts the music
-		menuMusic = Gdx.audio.newMusic(Gdx.files.internal("sounds/titlescreenmusic.wav"));
-		menuMusic.setVolume(0.25f);
-		menuMusic.setLooping(true); 
-		menuMusic.play();
+		
+		
 		
 		// sets the window title
 		Gdx.graphics.setTitle("Herobrine's Mansion Escape");

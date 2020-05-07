@@ -2,6 +2,7 @@ package lchs.cs.hme.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
@@ -48,6 +49,8 @@ public class MainMenuScreen implements Screen {
 	Texture wallpaper;
 	
 	Sound clickSound;
+	
+	static Music menuMusic;
 		
 	public MainMenuScreen (HerobrineEscape game) {
 		// passes the game through
@@ -65,13 +68,21 @@ public class MainMenuScreen implements Screen {
 		
 		clickSound = Gdx.audio.newSound(Gdx.files.internal("sounds/buttonclick.wav"));
 		
+		menuMusic = Gdx.audio.newMusic(Gdx.files.internal("sounds/titlescreenmusic.wav"));
+		menuMusic.setVolume(0.25f);
+		menuMusic.setLooping(true); 
+		
+		
 		
 		
 	}
 	
 	@Override
 	public void show() {
-		
+		if (!HerobrineEscape.isMenuMusicPlaying) {
+			menuMusic.play();
+			HerobrineEscape.isMenuMusicPlaying = true;
+		}
 	}
 
 	// renders the game every frame

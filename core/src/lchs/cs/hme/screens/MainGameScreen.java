@@ -3,6 +3,7 @@ package lchs.cs.hme.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
@@ -31,7 +32,7 @@ public class MainGameScreen implements Screen{
 	float time=0;
 	
 	// i would hope this is self explanitory
-	boolean isLooking = false;
+	boolean isLooking = true;
 	
 	// mostly redundant time sync
 	float stateTime; 
@@ -49,7 +50,13 @@ public class MainGameScreen implements Screen{
 	Texture lvl1Description;
 	
 	Sound clickSound;
-	Sound pistonDoor;
+	Sound badCommandSound;
+	Sound pistonDoorSound;
+	
+	Sound puzzleClearSound;
+	Sound victorySound;
+	
+	Music puzzleMusic;
 	
 	// runs when the Main Game Screen is shown
 	public MainGameScreen (HerobrineEscape game) {
@@ -60,9 +67,7 @@ public class MainGameScreen implements Screen{
 		x = HerobrineEscape.WIDTH /2 - PLAYERWIDTH /2;
 		
 		currentBackground = "lvl1doorclosed";
-		
-		// pauses the menu music (will be used when/if we get different music for puzzles)
-		//game.menuMusic.pause();
+
 
 	}
 	
@@ -77,8 +82,16 @@ public class MainGameScreen implements Screen{
 		lvl1Description = new Texture ("images/scenedescriptions/levelone.png");
 		
 		//load sound
-		pistonDoor = Gdx.audio.newSound(Gdx.files.internal("sounds/pistondoor.wav"));
+		pistonDoorSound = Gdx.audio.newSound(Gdx.files.internal("sounds/pistondoor.wav"));
 		clickSound = Gdx.audio.newSound(Gdx.files.internal("sounds/buttonclick.wav"));
+		badCommandSound = Gdx.audio.newSound(Gdx.files.internal("sounds/badcommand.wav"));
+		victorySound = Gdx.audio.newSound(Gdx.files.internal("sounds/victorymusic.wav"));
+		puzzleClearSound = Gdx.audio.newSound(Gdx.files.internal("sounds/puzzleclear.wav"));
+		
+		puzzleMusic = Gdx.audio.newMusic(Gdx.files.internal("sounds/puzzlemusic.ogg"));
+		puzzleMusic.setVolume(0.40f);
+		puzzleMusic.setLooping(true); 
+		puzzleMusic.play();
 		
 	}
 
@@ -94,7 +107,7 @@ public class MainGameScreen implements Screen{
 		// back to main menu
 		if(Gdx.input.isKeyPressed(Keys.ESCAPE)) {
 			clickSound.play(1.0f);
-			game.menuMusic.play();
+			puzzleMusic.dispose();
 			this.dispose();
 			game.setScreen(new MainMenuScreen(game));
 		}
@@ -132,20 +145,33 @@ public class MainGameScreen implements Screen{
 				isLooking = true;
 				TextInput.currentCommand = "none";
 				break;
-		}
-		
-		/*
-		 *  LEVEL ONE
-		 */
-		if (currentBackground == "lvl1doorclosed") {
-			switch(TextInput.getText()) {
-				case "use lever":
-					pistonDoor.play(2.0f);
+			case "none":
+				break;
+				/*
+				 *  LEVEL ONE
+				 */
+			case "use lever":
+				if (currentBackground == "lvl1doorclosed") {
+					puzzleMusic.pause();
+					pistonDoorSound.play(1.0f);
+					
+					puzzleClearSound.play();
 					currentBackground = "lvl1dooropen";
 					TextInput.currentCommand = "none";
-					break;
-			}
+				}
+				break;
+				/*
+				 * Other (command doesnt exist)
+				 */
+			default:
+				badCommandSound.play();
+				TextInput.currentCommand = "none";
+				break;
 		}
+		
+		
+			
+		
 		
 		// escape timer
 		time += Gdx.graphics.getDeltaTime();

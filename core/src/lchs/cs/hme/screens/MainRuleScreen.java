@@ -121,6 +121,9 @@ public class MainRuleScreen implements Screen {
 			game.batch.draw(okButtonActive, (HerobrineEscape.WIDTH/2) - (OK_BUTTON_WIDTH / 2), OK_BUTTON_Y, OK_BUTTON_WIDTH, OK_BUTTON_HEIGHT);
 			if (Gdx.input.isTouched()) {
 				clickSound.play(1.0f);
+				MainMenuScreen.menuMusic.stop();
+				MainMenuScreen.menuMusic.dispose();
+				HerobrineEscape.isMenuMusicPlaying = false;
 				this.dispose();
 				game.setScreen(new MainGameScreen(game));
 			}
