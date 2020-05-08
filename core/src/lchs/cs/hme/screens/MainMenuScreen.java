@@ -10,7 +10,6 @@ import com.badlogic.gdx.graphics.Texture;
 import lchs.cs.hme.HerobrineEscape;
 
 
-
 public class MainMenuScreen implements Screen {
 
 	
@@ -31,8 +30,6 @@ public class MainMenuScreen implements Screen {
 	
 	private static final int BACKGROUND_WIDTH = HerobrineEscape.WIDTH;
 	private static final int BACKGROUND_HEIGHT = (int) (BACKGROUND_WIDTH*0.625);
-	
-	
 	
 	
 	
@@ -71,9 +68,6 @@ public class MainMenuScreen implements Screen {
 		menuMusic = Gdx.audio.newMusic(Gdx.files.internal("sounds/titlescreenmusic.wav"));
 		menuMusic.setVolume(0.25f);
 		menuMusic.setLooping(true); 
-		
-		
-		
 		
 	}
 	

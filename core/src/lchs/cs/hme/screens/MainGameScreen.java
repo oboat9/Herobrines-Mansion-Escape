@@ -68,7 +68,6 @@ public class MainGameScreen implements Screen{
 		
 		currentBackground = "lvl1doorclosed";
 
-
 	}
 	
 	// runs when the game starts (loads the images)
