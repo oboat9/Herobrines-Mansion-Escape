@@ -2,21 +2,22 @@ package lchs.cs.hme;
 
 /*
  * Herobrine's Mansion Escape
- * Java escape game using LibGDX library/engine
+ * Java escape game using LibGDX engine for java
  * 
  * Authors: 
  * 
- * Owen Stevenson (Programmer), 
+ * Owen Stevenson, 
  * 
- * Steven Grabia (Music Man),
+ * Steven Grabia,
  * 
- * Braden Horn (Group Leader),
+ * Braden Horn,
  * 
- * Jacob Templado (Original Level Design),
+ * Jacob Templado,
  * 
- * Carter Krause (Human),
+ * Carter Krause,
  * 
- * Jackson Daigneault (Human),
+ * Jackson Daigneault
+ * 
  */
 
 import java.awt.Dimension;

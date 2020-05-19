@@ -27,7 +27,7 @@ public class OwenPuzzle implements Screen{
 	public static final int PLAYERHEIGHT = PLAYER_HEIGHT_PIXEL * 3;
 	
 	public static final int LVL1LOOKWIDTH = 600;
-	public static final int LVL1LOOKHEIGHT = 300;
+	public static final int LVL1LOOKHEIGHT = 100;
 	
 	//temp player starting location
 	float x = 0;
@@ -103,9 +103,10 @@ public class OwenPuzzle implements Screen{
 	@Override
 	public void render(float delta) {
 		
-		if (MainMenuScreen.time > 60) {
+		if (MainMenuScreen.time > 10) {
 			this.dispose();
-			game.setScreen(new OwenPuzzle2(game));
+			// TODO change to the game over screen
+			game.setScreen(new GameOverScreen(game));
 		}
 		
 		// opens command window
@@ -157,7 +158,7 @@ public class OwenPuzzle implements Screen{
 				if (currentBackground == "lvl1dooropen") {
 					TextInput.currentCommand = "none";
 					this.dispose();
-					game.setScreen(new OwenPuzzle2(game));
+					game.setScreen(new MainRuleScreen(game));
 				}
 				/*
 				 * Other (command doesnt exist)
