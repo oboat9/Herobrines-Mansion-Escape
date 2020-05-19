@@ -103,7 +103,7 @@ public class OwenPuzzle implements Screen{
 	@Override
 	public void render(float delta) {
 		
-		if (MainMenuScreen.time > 10) {
+		if (MainMenuScreen.time > 600) {
 			this.dispose();
 			// TODO change to the game over screen
 			game.setScreen(new GameOverScreen(game));
