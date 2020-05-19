@@ -1,5 +1,10 @@
 package lchs.cs.hme.screens;
 
+/*
+ * Owen's Puzzle
+ * Author: Owen Stevnson
+ */
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.Screen;
@@ -29,7 +34,7 @@ public class OwenPuzzle implements Screen{
 	float y = 0;
 	
 	// resets the escape timer
-	float time=0;
+	
 	
 	// i would hope this is self explanitory
 	boolean isLooking = true;
@@ -98,6 +103,11 @@ public class OwenPuzzle implements Screen{
 	@Override
 	public void render(float delta) {
 		
+		if (MainMenuScreen.time > 60) {
+			this.dispose();
+			game.setScreen(new OwenPuzzle2(game));
+		}
+		
 		// opens command window
 		if(Gdx.input.isKeyJustPressed(Keys.SPACE)) {
 			TextInput listener = new TextInput();
@@ -106,7 +116,6 @@ public class OwenPuzzle implements Screen{
 		// back to main menu
 		if(Gdx.input.isKeyPressed(Keys.ESCAPE)) {
 			clickSound.play(1.0f);
-			puzzleMusic.dispose();
 			this.dispose();
 			game.setScreen(new MainMenuScreen(game));
 		}
@@ -118,27 +127,9 @@ public class OwenPuzzle implements Screen{
 
 		// text command handling
 		switch(TextInput.getText()) {
-		//player movement temp
-			case "north":
-			case "n":
-				y += 100;
-				TextInput.currentCommand = "none";
-				break;
-			case "south":
-			case "s":
-				y -= 100;
-				TextInput.currentCommand = "none";
-				break;
-			case "west":
-			case "w":
-				x -= 100;
-				TextInput.currentCommand = "none";
-				break;
-			case "east":
-			case "e":
-				x  += 100;
-				TextInput.currentCommand = "none";
-				break;
+		/*
+		 * Generic
+		 */
 			case "look":
 			case "l":
 				isLooking = true;
@@ -146,9 +137,10 @@ public class OwenPuzzle implements Screen{
 				break;
 			case "none":
 				break;
-				/*
-				 *  LEVEL ONE
-				 */
+
+			/*
+			 *  Level Specific
+			 */
 			case "use lever":
 				if (currentBackground == "lvl1doorclosed") {
 					puzzleMusic.pause();
@@ -159,6 +151,14 @@ public class OwenPuzzle implements Screen{
 					TextInput.currentCommand = "none";
 				}
 				break;
+				
+			case "north":
+			case "n":
+				if (currentBackground == "lvl1dooropen") {
+					TextInput.currentCommand = "none";
+					this.dispose();
+					game.setScreen(new OwenPuzzle2(game));
+				}
 				/*
 				 * Other (command doesnt exist)
 				 */
@@ -173,10 +173,10 @@ public class OwenPuzzle implements Screen{
 		
 		
 		// escape timer
-		time += Gdx.graphics.getDeltaTime();
+		MainMenuScreen.time += Gdx.graphics.getDeltaTime();
 		// converts timer from seconds to minutes:seconds
-		int minutes = (int) ((time % 3600) / 60);
-		int seconds = (int) (time % 60);
+		int minutes = (int) ((MainMenuScreen.time % 3600) / 60);
+		int seconds = (int) (MainMenuScreen.time % 60);
 		// updates the timer in the title bar
 		Gdx.graphics.setTitle("Herobrine's Mansion Escape" + " - Time Remaining: " + (9-minutes) + ":" + (59-seconds));
 		
@@ -240,7 +240,12 @@ public class OwenPuzzle implements Screen{
 
 	@Override
 	public void dispose() {
-		
+		puzzleMusic.dispose();
+		pistonDoorSound.dispose();
+		puzzleClearSound.dispose();
+		victorySound.dispose();
+		clickSound.dispose();
+		badCommandSound.dispose();
 	}
 
 }

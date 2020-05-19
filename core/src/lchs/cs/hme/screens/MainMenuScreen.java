@@ -48,6 +48,8 @@ public class MainMenuScreen implements Screen {
 	Sound clickSound;
 	
 	static Music menuMusic;
+	
+	public static float time=0;
 		
 	public MainMenuScreen (HerobrineEscape game) {
 		// passes the game through
