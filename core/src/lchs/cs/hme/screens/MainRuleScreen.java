@@ -125,7 +125,7 @@ public class MainRuleScreen implements Screen {
 				MainMenuScreen.menuMusic.dispose();
 				HerobrineEscape.isMenuMusicPlaying = false;
 				this.dispose();
-				game.setScreen(new MainGameScreen(game));
+				game.setScreen(new OwenPuzzle(game));
 			}
 		} else {
 			// when the mouse is not hovering over the button

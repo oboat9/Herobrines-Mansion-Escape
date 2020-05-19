@@ -11,7 +11,7 @@ import com.badlogic.gdx.graphics.Texture;
 import lchs.cs.hme.HerobrineEscape;
 import lchs.cs.hme.tools.TextInput;
 
-public class MainGameScreen implements Screen{
+public class OwenPuzzle implements Screen{
 
 	//sets all the main settings for the game
 	
@@ -59,7 +59,7 @@ public class MainGameScreen implements Screen{
 	Music puzzleMusic;
 	
 	// runs when the Main Game Screen is shown
-	public MainGameScreen (HerobrineEscape game) {
+	public OwenPuzzle (HerobrineEscape game) {
 		// passes through the main game stuff
 		this.game = game;
 		// sets player starting location (temp)
