@@ -1,5 +1,7 @@
 package lchs.cs.hme.screens;
 
+import java.util.concurrent.TimeUnit;
+
 /*
  * Owen's Puzzle
  * Author: Owen Stevnson
@@ -21,13 +23,15 @@ public class OwenPuzzle implements Screen{
 	//sets all the main settings for the game
 	
 	//temp
-	public static final int PLAYER_WIDTH_PIXEL = 32;
-	public static final int PLAYER_HEIGHT_PIXEL = 72;
-	public static final int PLAYERWIDTH = PLAYER_WIDTH_PIXEL * 3;
-	public static final int PLAYERHEIGHT = PLAYER_HEIGHT_PIXEL * 3;
+	private static final int PLAYER_WIDTH_PIXEL = 32;
+	private static final int PLAYER_HEIGHT_PIXEL = 72;
+	private static final int PLAYERWIDTH = PLAYER_WIDTH_PIXEL * 3;
+	private static final int PLAYERHEIGHT = PLAYER_HEIGHT_PIXEL * 3;
 	
-	public static final int LVL1LOOKWIDTH = 600;
-	public static final int LVL1LOOKHEIGHT = 100;
+	private static final int LVL1LOOKWIDTH = 600;
+	private static final int LVL1LOOKHEIGHT = 100;
+	
+	
 	
 	//temp player starting location
 	float x = 0;
@@ -38,6 +42,9 @@ public class OwenPuzzle implements Screen{
 	
 	// i would hope this is self explanitory
 	boolean isLooking = true;
+	
+	boolean isComplete = false;
+	double winChimeWaiter = 0;
 	
 	// mostly redundant time sync
 	float stateTime; 
@@ -106,7 +113,7 @@ public class OwenPuzzle implements Screen{
 		if (MainMenuScreen.time > 600) {
 			this.dispose();
 			// TODO change to the game over screen
-			game.setScreen(new GameOverScreen(game));
+			game.setScreen(new SuccessScreen(game));
 		}
 		
 		// opens command window
@@ -150,6 +157,8 @@ public class OwenPuzzle implements Screen{
 					puzzleClearSound.play();
 					currentBackground = "lvl1dooropen";
 					TextInput.currentCommand = "none";
+					
+					isComplete = true;
 				}
 				break;
 				
@@ -171,10 +180,18 @@ public class OwenPuzzle implements Screen{
 		
 		
 			
-		
-		
+		if(isComplete) {
+			winChimeWaiter += Gdx.graphics.getDeltaTime();			
+		}
+		if(winChimeWaiter > 8) {
+			this.dispose();
+			game.setScreen(new SuccessScreen(game));
+		}
 		// escape timer
-		MainMenuScreen.time += Gdx.graphics.getDeltaTime();
+		if (!isComplete) {
+			MainMenuScreen.time += Gdx.graphics.getDeltaTime();
+		}
+		
 		// converts timer from seconds to minutes:seconds
 		int minutes = (int) ((MainMenuScreen.time % 3600) / 60);
 		int seconds = (int) (MainMenuScreen.time % 60);

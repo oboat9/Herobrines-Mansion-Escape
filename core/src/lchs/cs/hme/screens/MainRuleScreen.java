@@ -109,11 +109,9 @@ public class MainRuleScreen implements Screen {
 			game.batch.draw(okButtonActive, (HerobrineEscape.WIDTH/2) - (OK_BUTTON_WIDTH / 2), OK_BUTTON_Y, OK_BUTTON_WIDTH, OK_BUTTON_HEIGHT);
 			if (Gdx.input.isTouched()) {
 				clickSound.play(1.0f);
-				MainMenuScreen.menuMusic.stop();
-				MainMenuScreen.menuMusic.dispose();
-				HerobrineEscape.isMenuMusicPlaying = false;
 				this.dispose();
-				game.setScreen(new OwenPuzzle(game));
+				
+				game.setScreen(new LoadingScreen(game));
 			}
 		} else {
 			// when the mouse is not hovering over the button
@@ -146,7 +144,13 @@ public class MainRuleScreen implements Screen {
 
 	@Override
 	public void dispose() {
-
+		exitButtonActive.dispose();
+		exitButtonInactive.dispose();
+		okButtonActive.dispose();
+		okButtonInactive.dispose();
+		rulesTex.dispose();
+		wallpaper.dispose();
+		clickSound.dispose();
 	}
 
 	
