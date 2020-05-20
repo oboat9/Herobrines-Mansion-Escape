@@ -1,7 +1,5 @@
 package lchs.cs.hme.screens;
 
-import java.util.concurrent.TimeUnit;
-
 /*
  * Owen's Puzzle
  * Author: Owen Stevnson
