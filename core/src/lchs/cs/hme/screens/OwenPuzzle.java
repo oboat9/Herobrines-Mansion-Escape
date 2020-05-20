@@ -151,14 +151,12 @@ public class OwenPuzzle implements Screen{
 			 */
 			case "use lever":
 				if (currentBackground == "lvl1doorclosed") {
-					puzzleMusic.pause();
-					pistonDoorSound.play(1.0f);
 					
-					puzzleClearSound.play();
+					pistonDoorSound.play(1.0f);
 					currentBackground = "lvl1dooropen";
 					TextInput.currentCommand = "none";
 					
-					isComplete = true;
+					
 				}
 				break;
 				
@@ -166,8 +164,9 @@ public class OwenPuzzle implements Screen{
 			case "n":
 				if (currentBackground == "lvl1dooropen") {
 					TextInput.currentCommand = "none";
-					this.dispose();
-					game.setScreen(new MainRuleScreen(game));
+					puzzleMusic.pause();
+					puzzleClearSound.play();
+					isComplete = true;
 				}
 				/*
 				 * Other (command doesnt exist)
