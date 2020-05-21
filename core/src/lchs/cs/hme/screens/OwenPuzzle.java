@@ -110,8 +110,7 @@ public class OwenPuzzle implements Screen{
 		
 		if (MainMenuScreen.time > 600) {
 			this.dispose();
-			// TODO change to the game over screen
-			game.setScreen(new SuccessScreen(game));
+			game.setScreen(new GameOverScreen(game));
 		}
 		
 		// opens command window
