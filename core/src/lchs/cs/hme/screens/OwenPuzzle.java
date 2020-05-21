@@ -33,7 +33,7 @@ public class OwenPuzzle implements Screen{
 	
 	
 	// i would hope this is self explanitory
-	boolean isLooking = true;
+	boolean isObserving = true;
 	
 	boolean isComplete = false;
 	double winChimeWaiter = 0;
@@ -117,7 +117,7 @@ public class OwenPuzzle implements Screen{
 		}
 		if(Gdx.input.isKeyJustPressed(Keys.ENTER)) {
 			clickSound.play(1.0f);
-			isLooking = false;
+			isObserving = false;
 		}
 		
 
@@ -128,7 +128,7 @@ public class OwenPuzzle implements Screen{
 		 */
 			case "look":
 			case "l":
-				isLooking = true;
+				isObserving = true;
 				TextInput.currentCommand = "none";
 				break;
 			case "none":
@@ -210,7 +210,7 @@ public class OwenPuzzle implements Screen{
 		//draw the player image (temp)
 		//game.batch.draw(playerImg, x, y, PLAYERWIDTH, PLAYERHEIGHT);
 		
-		if (isLooking) {
+		if (isObserving) {
 			switch(currentBackground) {
 			case "lvl1doorclosed":
 			case "lvl1dooropen":
