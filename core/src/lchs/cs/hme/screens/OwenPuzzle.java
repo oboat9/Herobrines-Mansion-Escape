@@ -20,12 +20,6 @@ public class OwenPuzzle implements Screen{
 
 	//sets all the main settings for the game
 	
-	//temp
-	private static final int PLAYER_WIDTH_PIXEL = 32;
-	private static final int PLAYER_HEIGHT_PIXEL = 72;
-	private static final int PLAYERWIDTH = PLAYER_WIDTH_PIXEL * 3;
-	private static final int PLAYERHEIGHT = PLAYER_HEIGHT_PIXEL * 3;
-	
 	private static final int LVL1LOOKWIDTH = 600;
 	private static final int LVL1LOOKHEIGHT = 100;
 	
@@ -72,9 +66,6 @@ public class OwenPuzzle implements Screen{
 	public OwenPuzzle (HerobrineEscape game) {
 		// passes through the main game stuff
 		this.game = game;
-		// sets player starting location (temp)
-		y = 50;
-		x = HerobrineEscape.WIDTH /2 - PLAYERWIDTH /2;
 		
 		currentBackground = "lvl1doorclosed";
 
@@ -217,7 +208,7 @@ public class OwenPuzzle implements Screen{
 		
 		
 		//draw the player image (temp)
-		game.batch.draw(playerImg, x, y, PLAYERWIDTH, PLAYERHEIGHT);
+		//game.batch.draw(playerImg, x, y, PLAYERWIDTH, PLAYERHEIGHT);
 		
 		if (isLooking) {
 			switch(currentBackground) {
