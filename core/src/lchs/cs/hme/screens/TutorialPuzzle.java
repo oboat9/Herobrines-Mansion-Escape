@@ -112,7 +112,7 @@ public class TutorialPuzzle implements Screen{
 		}
 		
 		// opens command window upon pressing space
-		if(Gdx.input.isKeyJustPressed(Keys.SPACE)) {
+		if(Gdx.input.isKeyJustPressed(Keys.ENTER)) {
 			TextInput listener = new TextInput();
 			Gdx.input.getTextInput(listener, "Enter Command", "", "");
 		}
@@ -125,7 +125,7 @@ public class TutorialPuzzle implements Screen{
 		}
 		
 		// closes the obervation text upon pressing enter
-		if(Gdx.input.isKeyJustPressed(Keys.ENTER)) {
+		if(Gdx.input.isKeyJustPressed(Keys.SPACE)) {
 			clickSound.play(1.0f);
 			isObserving = false;
 		}
