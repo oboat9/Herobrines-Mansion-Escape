@@ -61,6 +61,7 @@ public class LoadingScreen implements Screen {
 					game.setScreen(new TestPuzzle(game));
 					break;
 				default:
+					System.err.println("This should not have happened (previousPuzzle does not exist)");
 					game.setScreen(new GameOverScreen(game));
 					break;
 			}
