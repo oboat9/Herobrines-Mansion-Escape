@@ -114,7 +114,7 @@ public class MainRuleScreen implements Screen {
 				clickSound.play(1.0f);
 				this.dispose();
 				
-				game.setScreen(new LoadingScreen(game,"MainRuleScreen"));
+				game.setScreen(new LoadingScreen(game,"TutorialPuzzle"));
 			}
 		} else {
 			// when the mouse is not hovering over the button

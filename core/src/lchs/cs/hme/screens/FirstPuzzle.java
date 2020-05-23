@@ -8,7 +8,6 @@ package lchs.cs.hme.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
@@ -16,7 +15,7 @@ import com.badlogic.gdx.graphics.Texture;
 import lchs.cs.hme.HerobrineEscape;
 import lchs.cs.hme.tools.TextInput;
 
-public class OwenPuzzle implements Screen{
+public class FirstPuzzle implements Screen{
 
 	/*
 	 * all the main settings for the screen
@@ -56,15 +55,12 @@ public class OwenPuzzle implements Screen{
 	Sound puzzleClearSound;
 	Sound victorySound;
 	
-	// Music
-	Music puzzleMusic;
-	
 	/*
 	 * END INIT ASSETS
 	 */
 	
 	//constructor (runs when the screen starts)
-	public OwenPuzzle (HerobrineEscape game) {
+	public FirstPuzzle (HerobrineEscape game) {
 		// passes through the main game stuff
 		this.game = game;
 		
@@ -78,8 +74,8 @@ public class OwenPuzzle implements Screen{
 	public void show() {
 		
 		//load images
-		lvl1doorClosedTex = new Texture ("images/backgrounds/levelone/doorclosed.png");
-		lvl1doorOpenTex = new Texture ("images/backgrounds/levelone/dooropen.png");
+		lvl1doorClosedTex = new Texture ("images/backgrounds/leveltwo/lvl2background1.png");
+		lvl1doorOpenTex = new Texture ("images/backgrounds/leveltwo/lvl2background2.png");
 		lvl1Description = new Texture ("images/scenedescriptions/levelone.png");
 		
 		//load sound
@@ -89,11 +85,8 @@ public class OwenPuzzle implements Screen{
 		victorySound = Gdx.audio.newSound(Gdx.files.internal("sounds/victorymusic.wav"));
 		puzzleClearSound = Gdx.audio.newSound(Gdx.files.internal("sounds/puzzleclear.wav"));
 		
-		//load music
-		puzzleMusic = Gdx.audio.newMusic(Gdx.files.internal("sounds/puzzlemusic.ogg"));
-		puzzleMusic.setVolume(0.40f);
-		puzzleMusic.setLooping(true); 
-		puzzleMusic.play();
+		//start music
+		TutorialPuzzle.puzzleMusic.play();
 	}
 
 	/*
@@ -158,7 +151,7 @@ public class OwenPuzzle implements Screen{
 				//goes through the door only if it is open
 				if (currentBackground == "lvl1dooropen") {
 					TextInput.currentCommand = "none";
-					puzzleMusic.pause();
+					TutorialPuzzle.puzzleMusic.pause();
 					puzzleClearSound.play();
 					isComplete = true;
 				}
@@ -178,7 +171,7 @@ public class OwenPuzzle implements Screen{
 		// waits for the puzzle end chime to end before going to the next level
 		if(winChimeWaiter > 8) {
 			this.dispose();
-			game.setScreen(new LoadingScreen(game, "OwenPuzzle"));
+			game.setScreen(new LoadingScreen(game,"SuccessScreen"));
 		}
 		
 		// runs the escape timer (realtime)
@@ -190,7 +183,7 @@ public class OwenPuzzle implements Screen{
 		int minutes = (int) ((MainMenuScreen.time % 3600) / 60);
 		int seconds = (int) (MainMenuScreen.time % 60);
 		// updates the timer in the title bar
-		Gdx.graphics.setTitle("Herobrine's Mansion Escape" + "Owen's Puzzle" + " - Time Remaining: " + (9-minutes) + ":" + (59-seconds));
+		Gdx.graphics.setTitle("Herobrine's Mansion Escape " + "First Puzzle" + " - Time Remaining: " + (9-minutes) + ":" + (59-seconds));
 		
 		//clears the screen before drawing every frame
 		Gdx.gl.glClearColor(0, 0, 0, 1);
@@ -235,7 +228,6 @@ public class OwenPuzzle implements Screen{
 		lvl1Description.dispose();
 		
 		//dispose audio
-		puzzleMusic.dispose();
 		pistonDoorSound.dispose();
 		puzzleClearSound.dispose();
 		victorySound.dispose();

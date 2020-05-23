@@ -16,15 +16,15 @@ public class LoadingScreen implements Screen {
 	
 	HerobrineEscape game;
 	
-	private String previousPuzzle;
+	private String nextPuzzle;
 	
 	Texture wallpaper;
 	
-	//second argument is the current puzzle, the LoadingScreen class then determines the next puzzle to load based on that
+	//second argument is the next puzzle, the LoadingScreen class then determines the next puzzle to load based on that
 	public LoadingScreen (HerobrineEscape game, String prevPuzzle) {
 		this.game = game;
 		wallpaper = new Texture("images/titles/loadingscreen.png");	
-		previousPuzzle = prevPuzzle;
+		nextPuzzle = prevPuzzle;
 	}
 	
 	@Override
@@ -51,17 +51,20 @@ public class LoadingScreen implements Screen {
 		game.batch.end();
 		
 		loadtime += Gdx.graphics.getDeltaTime();
-		if (loadtime > 0.05) {
+		if (loadtime > 0.1) {
 			this.dispose();
-			switch(previousPuzzle) {
-				case "MainRuleScreen":
-					game.setScreen(new OwenPuzzle(game));
+			switch(nextPuzzle) {
+				case "TutorialPuzzle":
+					game.setScreen(new TutorialPuzzle(game));
 					break;
-				case "OwenPuzzle":
-					game.setScreen(new TestPuzzle(game));
+				case "FirstPuzzle":
+					game.setScreen(new FirstPuzzle(game));
+					break;
+				case"SuccessScreen":
+					game.setScreen(new SuccessScreen(game));
 					break;
 				default:
-					System.err.println("This should not have happened (previousPuzzle does not exist)");
+					System.err.println("This should not have happened (nextPuzzle does not exist)");
 					game.setScreen(new GameOverScreen(game));
 					break;
 			}

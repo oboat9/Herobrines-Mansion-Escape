@@ -1,7 +1,7 @@
 package lchs.cs.hme.screens;
 
 /*
- * Owen's Puzzle
+ * Tutorial Puzzle
  * Author: Owen Stevnson
  */
 
@@ -16,7 +16,7 @@ import com.badlogic.gdx.graphics.Texture;
 import lchs.cs.hme.HerobrineEscape;
 import lchs.cs.hme.tools.TextInput;
 
-public class TestPuzzle implements Screen{
+public class TutorialPuzzle implements Screen{
 
 	/*
 	 * all the main settings for the screen
@@ -57,14 +57,14 @@ public class TestPuzzle implements Screen{
 	Sound victorySound;
 	
 	// Music
-	Music puzzleMusic;
+	static Music puzzleMusic;
 	
 	/*
 	 * END INIT ASSETS
 	 */
 	
 	//constructor (runs when the screen starts)
-	public TestPuzzle (HerobrineEscape game) {
+	public TutorialPuzzle (HerobrineEscape game) {
 		// passes through the main game stuff
 		this.game = game;
 		
@@ -78,8 +78,8 @@ public class TestPuzzle implements Screen{
 	public void show() {
 		
 		//load images
-		lvl1doorClosedTex = new Texture ("images/backgrounds/leveltwo/lvl2background1.png");
-		lvl1doorOpenTex = new Texture ("images/backgrounds/leveltwo/lvl2background2.png");
+		lvl1doorClosedTex = new Texture ("images/backgrounds/levelone/doorclosed.png");
+		lvl1doorOpenTex = new Texture ("images/backgrounds/levelone/dooropen.png");
 		lvl1Description = new Texture ("images/scenedescriptions/levelone.png");
 		
 		//load sound
@@ -178,7 +178,7 @@ public class TestPuzzle implements Screen{
 		// waits for the puzzle end chime to end before going to the next level
 		if(winChimeWaiter > 8) {
 			this.dispose();
-			game.setScreen(new SuccessScreen(game));
+			game.setScreen(new LoadingScreen(game, "FirstPuzzle"));
 		}
 		
 		// runs the escape timer (realtime)
@@ -190,7 +190,7 @@ public class TestPuzzle implements Screen{
 		int minutes = (int) ((MainMenuScreen.time % 3600) / 60);
 		int seconds = (int) (MainMenuScreen.time % 60);
 		// updates the timer in the title bar
-		Gdx.graphics.setTitle("Herobrine's Mansion Escape" + "Test Puzzle" + " - Time Remaining: " + (9-minutes) + ":" + (59-seconds));
+		Gdx.graphics.setTitle("Herobrine's Mansion Escape " + "Tutorial Puzzle" + " - Time Remaining: " + (9-minutes) + ":" + (59-seconds));
 		
 		//clears the screen before drawing every frame
 		Gdx.gl.glClearColor(0, 0, 0, 1);
@@ -235,7 +235,7 @@ public class TestPuzzle implements Screen{
 		lvl1Description.dispose();
 		
 		//dispose audio
-		puzzleMusic.dispose();
+		//puzzleMusic.dispose();
 		pistonDoorSound.dispose();
 		puzzleClearSound.dispose();
 		victorySound.dispose();
