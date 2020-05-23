@@ -17,15 +17,10 @@ public class GameOverScreen implements Screen {
 	private static final int BACKGROUND_WIDTH = HerobrineEscape.WIDTH;
 	private static final int BACKGROUND_HEIGHT = HerobrineEscape.HEIGHT;
 	
-	
-	
-	
-	
 	HerobrineEscape game;
 	
 	Texture okButtonActive;
 	Texture okButtonInactive;
-	
 	Texture wallpaper;
 	
 	Sound clickSound;
@@ -34,7 +29,6 @@ public class GameOverScreen implements Screen {
 		this.game = game;
 		okButtonActive = new Texture("images/buttons/continue_button_active.png");
 		okButtonInactive = new Texture("images/buttons/continue_button_inactive.png");
-		
 		wallpaper = new Texture("images/titles/gameover.png");
 		
 		clickSound = Gdx.audio.newSound(Gdx.files.internal("sounds/buttonclick.wav"));
@@ -80,7 +74,7 @@ public class GameOverScreen implements Screen {
 		// stop drawing things to the screen 
 		game.batch.end();
 	}
-	// all code below here is part of LibGDX and should not be changed
+	// all code below here is part of LibGDX and should not be changed unless you know what you are doing
 	@Override
 	public void resize(int width, int height) {
 		
@@ -108,7 +102,4 @@ public class GameOverScreen implements Screen {
 		wallpaper.dispose();
 		clickSound.dispose();
 	}
-
-	
-	
 }

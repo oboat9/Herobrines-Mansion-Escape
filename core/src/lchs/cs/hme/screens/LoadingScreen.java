@@ -79,7 +79,4 @@ public class LoadingScreen implements Screen {
 	public void dispose() {
 		wallpaper.dispose();
 	}
-
-	
-	
 }

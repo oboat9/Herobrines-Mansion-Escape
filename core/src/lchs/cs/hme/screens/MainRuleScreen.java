@@ -9,7 +9,9 @@ import com.badlogic.gdx.graphics.Texture;
 import lchs.cs.hme.HerobrineEscape;
 
 public class MainRuleScreen implements Screen {
-
+	/*
+	 * all the main settings for the screen
+	 */
 	private static final int EXIT_BUTTON_WIDTH = 191;
 	private static final int EXIT_BUTTON_HEIGHT = 54;
 	private static final int EXIT_BUTTON_Y = 30;
@@ -27,48 +29,49 @@ public class MainRuleScreen implements Screen {
 	private static final int BACKGROUND_WIDTH = HerobrineEscape.WIDTH;
 	private static final int BACKGROUND_HEIGHT = (int) (BACKGROUND_WIDTH*0.625);
 	
+	/*
+	 *  INIT ASSETS
+	 */
 	
-	
-	
-	
+	// pass through the main game file from HerobrineEscape.java
 	HerobrineEscape game;
 	
+	// Textures
 	Texture exitButtonActive;
 	Texture exitButtonInactive;
 	Texture okButtonActive;
 	Texture okButtonInactive;
-
 	Texture rulesTex;
-	
 	Texture wallpaper;
 	
+	// Sounds
 	Sound clickSound;
+	// music is still loaded from MainMenu
 	
+	//constructor (runs when the screen starts)
 	public MainRuleScreen (HerobrineEscape game) {
 		this.game = game;
+	}
+	
+	// runs when the game starts (loads the assets into memory from the file)
+	@Override
+	public void show() {
+		//load images
 		okButtonActive = new Texture("images/buttons/continue_button_active.png");
 		okButtonInactive = new Texture("images/buttons/continue_button_inactive.png");
 		exitButtonActive = new Texture("images/buttons/back_button_active.png");
 		exitButtonInactive = new Texture("images/buttons/back_button_inactive.png");
-
 		rulesTex = new Texture("images/titles/rules.png");
-		
 		wallpaper = new Texture("images/backgrounds/rules_wallpaper.png");
 		
+		//load sound
 		clickSound = Gdx.audio.newSound(Gdx.files.internal("sounds/buttonclick.wav"));
-		
-		
-	}
-	
-	@Override
-	public void show() {
-		
+		// music is still loaded from MainMenu
 	}
 
 	@Override
 	public void render(float delta) {
-		
-		
+		 //clears the screen before the frame is rendered
 		Gdx.gl.glClearColor(0, 0, .2f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
@@ -121,7 +124,20 @@ public class MainRuleScreen implements Screen {
 		// stop drawing things to the screen 
 		game.batch.end();
 	}
-	// all code below here is part of LibGDX and should not be changed
+	/*
+	 * this gets rid of all the assets used in the level to clean it up after closing the game
+	 */
+	@Override
+	public void dispose() {
+		exitButtonActive.dispose();
+		exitButtonInactive.dispose();
+		okButtonActive.dispose();
+		okButtonInactive.dispose();
+		rulesTex.dispose();
+		wallpaper.dispose();
+		clickSound.dispose();
+	}
+	// all code below here is part of LibGDX and should not be changed unless you know what you are doing
 	@Override
 	public void resize(int width, int height) {
 		
@@ -141,18 +157,4 @@ public class MainRuleScreen implements Screen {
 	public void hide() {
 
 	}
-
-	@Override
-	public void dispose() {
-		exitButtonActive.dispose();
-		exitButtonInactive.dispose();
-		okButtonActive.dispose();
-		okButtonInactive.dispose();
-		rulesTex.dispose();
-		wallpaper.dispose();
-		clickSound.dispose();
-	}
-
-	
-	
 }

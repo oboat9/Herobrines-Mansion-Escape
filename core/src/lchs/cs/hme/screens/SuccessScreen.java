@@ -18,15 +18,10 @@ public class SuccessScreen implements Screen {
 	private static final int BACKGROUND_WIDTH = HerobrineEscape.WIDTH;
 	private static final int BACKGROUND_HEIGHT = HerobrineEscape.HEIGHT;
 	
-	
-	
-	
-	
 	HerobrineEscape game;
 	
 	Texture okButtonActive;
 	Texture okButtonInactive;
-	
 	Texture wallpaper;
 	
 	Sound clickSound;
@@ -88,6 +83,14 @@ public class SuccessScreen implements Screen {
 		// stop drawing things to the screen 
 		game.batch.end();
 	}
+	@Override
+	public void dispose() {
+		okButtonActive.dispose();
+		okButtonInactive.dispose();
+		wallpaper.dispose();
+		clickSound.dispose();
+		winMusic.dispose();
+	}
 	// all code below here is part of LibGDX and should not be changed
 	@Override
 	public void resize(int width, int height) {
@@ -108,16 +111,4 @@ public class SuccessScreen implements Screen {
 	public void hide() {
 
 	}
-
-	@Override
-	public void dispose() {
-		okButtonActive.dispose();
-		okButtonInactive.dispose();
-		wallpaper.dispose();
-		clickSound.dispose();
-		winMusic.dispose();
-	}
-
-	
-	
 }
