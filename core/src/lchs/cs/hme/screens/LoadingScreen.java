@@ -16,11 +16,15 @@ public class LoadingScreen implements Screen {
 	
 	HerobrineEscape game;
 	
+	private String previousPuzzle;
+	
 	Texture wallpaper;
 	
-	public LoadingScreen (HerobrineEscape game) {
+	//second argument is the current puzzle, the LoadingScreen class then determines the next puzzle to load based on that
+	public LoadingScreen (HerobrineEscape game, String prevPuzzle) {
 		this.game = game;
 		wallpaper = new Texture("images/titles/loadingscreen.png");	
+		previousPuzzle = prevPuzzle;
 	}
 	
 	@Override
@@ -33,15 +37,9 @@ public class LoadingScreen implements Screen {
 	@Override
 	public void render(float delta) {
 		
-		
+		// clears the screen before rendering the frame
 		Gdx.gl.glClearColor(0, 0, .2f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		
-		loadtime += Gdx.graphics.getDeltaTime();
-		if (loadtime > 1) {
-			this.dispose();
-			game.setScreen(new OwenPuzzle(game));
-		}
 		
 		// start drawing images to the screen
 		game.batch.begin();
@@ -52,7 +50,21 @@ public class LoadingScreen implements Screen {
 		// stop drawing things to the screen 
 		game.batch.end();
 		
-		
+		loadtime += Gdx.graphics.getDeltaTime();
+		if (loadtime > 0.05) {
+			this.dispose();
+			switch(previousPuzzle) {
+				case "MainRuleScreen":
+					game.setScreen(new OwenPuzzle(game));
+					break;
+				case "OwenPuzzle":
+					game.setScreen(new TestPuzzle(game));
+					break;
+				default:
+					game.setScreen(new GameOverScreen(game));
+					break;
+			}
+		}
 	}
 	// all code below here is part of LibGDX and should not be changed
 	@Override

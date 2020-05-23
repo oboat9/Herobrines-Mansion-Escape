@@ -178,7 +178,7 @@ public class OwenPuzzle implements Screen{
 		// waits for the puzzle end chime to end before going to the next level
 		if(winChimeWaiter > 8) {
 			this.dispose();
-			game.setScreen(new SuccessScreen(game));
+			game.setScreen(new LoadingScreen(game, "OwenPuzzle"));
 		}
 		
 		// runs the escape timer (realtime)
