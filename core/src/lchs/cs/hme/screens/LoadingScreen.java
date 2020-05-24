@@ -21,10 +21,10 @@ public class LoadingScreen implements Screen {
 	Texture wallpaper;
 	
 	//second argument is the next puzzle, the LoadingScreen class then determines the next puzzle to load based on that
-	public LoadingScreen (HerobrineEscape game, String prevPuzzle) {
+	public LoadingScreen (HerobrineEscape game, String nextPuzzle) {
 		this.game = game;
 		wallpaper = new Texture("images/titles/loadingscreen.png");	
-		nextPuzzle = prevPuzzle;
+		this.nextPuzzle = nextPuzzle;
 	}
 	
 	@Override
@@ -53,22 +53,36 @@ public class LoadingScreen implements Screen {
 		loadtime += Gdx.graphics.getDeltaTime();
 		if (loadtime > 0.1) {
 			this.dispose();
-			switch(nextPuzzle) {
+			switch(this.nextPuzzle) {
+			
 				case "TutorialPuzzle":
 					game.setScreen(new TutorialPuzzle(game));
 					break;
+					
 				case "FirstPuzzle":
 					game.setScreen(new FirstPuzzle(game));
 					break;
+					
 				case "SecondPuzzle":
 					game.setScreen(new SecondPuzzle(game));
 					break;
+					
+				case "ThirdPuzzle":
+					game.setScreen(new ThirdPuzzle(game));
+					break;
+					
+				case "FourthPuzzle":
+					game.setScreen(new FourthPuzzle(game));
+					break;
+					
 				case "SuccessScreen":
 					game.setScreen(new SuccessScreen(game));
+					System.out.println("does this work?");
 					break;
+					
 				default:
 					System.err.println("This should not have happened (nextPuzzle does not exist)");
-					game.setScreen(new GameOverScreen(game));
+					game.setScreen(new GameCrashScreen(game));
 					break;
 			}
 		}
