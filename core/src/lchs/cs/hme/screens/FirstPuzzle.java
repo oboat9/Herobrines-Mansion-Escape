@@ -1,7 +1,7 @@
 package lchs.cs.hme.screens;
 
 /*
- * Owen's Puzzle
+ * First (real) Puzzle
  * Author: Owen Stevnson
  */
 
