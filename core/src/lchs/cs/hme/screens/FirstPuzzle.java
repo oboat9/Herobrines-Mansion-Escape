@@ -154,7 +154,11 @@ public class FirstPuzzle implements Screen{
 					TutorialPuzzle.puzzleMusic.pause();
 					puzzleClearSound.play();
 					isComplete = true;
+				} else {
+					badCommandSound.play();
+					TextInput.currentCommand = "none";
 				}
+				break;
 			//runs if the player enters an invalid command
 			default:
 				badCommandSound.play();

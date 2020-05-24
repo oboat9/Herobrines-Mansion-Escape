@@ -161,7 +161,11 @@ public class TutorialPuzzle implements Screen{
 					puzzleMusic.pause();
 					puzzleClearSound.play();
 					isComplete = true;
+				} else {
+					badCommandSound.play();
+					TextInput.currentCommand = "none";
 				}
+				break;
 			//runs if the player enters an invalid command
 			default:
 				badCommandSound.play();
