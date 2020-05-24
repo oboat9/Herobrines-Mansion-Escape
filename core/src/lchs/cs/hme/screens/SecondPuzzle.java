@@ -15,7 +15,7 @@ import com.badlogic.gdx.graphics.Texture;
 import lchs.cs.hme.HerobrineEscape;
 import lchs.cs.hme.tools.TextInput;
 
-public class FirstPuzzle implements Screen{
+public class SecondPuzzle implements Screen{
 
 	/*
 	 * all the main settings for the screen
@@ -60,7 +60,7 @@ public class FirstPuzzle implements Screen{
 	 */
 	
 	//constructor (runs when the screen starts)
-	public FirstPuzzle (HerobrineEscape game) {
+	public SecondPuzzle (HerobrineEscape game) {
 		// passes through the main game stuff
 		this.game = game;
 		
@@ -175,7 +175,7 @@ public class FirstPuzzle implements Screen{
 		// waits for the puzzle end chime to end before going to the next level
 		if(winChimeWaiter > 8) {
 			this.dispose();
-			game.setScreen(new LoadingScreen(game,"SecondPuzzle"));
+			game.setScreen(new LoadingScreen(game,"SuccessScreen"));
 		}
 		
 		// runs the escape timer (realtime)
@@ -187,7 +187,7 @@ public class FirstPuzzle implements Screen{
 		int minutes = (int) ((MainMenuScreen.time % 3600) / 60);
 		int seconds = (int) (MainMenuScreen.time % 60);
 		// updates the timer in the title bar
-		Gdx.graphics.setTitle("Herobrine's Mansion Escape " + "First Puzzle" + " - Time Remaining: " + (9-minutes) + ":" + (59-seconds));
+		Gdx.graphics.setTitle("Herobrine's Mansion Escape " + "Second Puzzle" + " - Time Remaining: " + (9-minutes) + ":" + (59-seconds));
 		
 		//clears the screen before drawing every frame
 		Gdx.gl.glClearColor(0, 0, 0, 1);

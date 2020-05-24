@@ -60,7 +60,10 @@ public class LoadingScreen implements Screen {
 				case "FirstPuzzle":
 					game.setScreen(new FirstPuzzle(game));
 					break;
-				case"SuccessScreen":
+				case "SecondPuzzle":
+					game.setScreen(new SecondPuzzle(game));
+					break;
+				case "SuccessScreen":
 					game.setScreen(new SuccessScreen(game));
 					break;
 				default:
