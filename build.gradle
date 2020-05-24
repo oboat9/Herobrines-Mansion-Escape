@@ -19,7 +19,7 @@ buildscript {
 allprojects {
     apply plugin: "eclipse"
 
-    version = '0.125'
+    version = '0.13'
     ext {
         appName = "HerobrineMansionEscape"
         gdxVersion = '1.9.10'
