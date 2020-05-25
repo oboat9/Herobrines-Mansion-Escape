@@ -15,7 +15,7 @@ import com.badlogic.gdx.graphics.Texture;
 import lchs.cs.hme.HerobrineEscape;
 import lchs.cs.hme.tools.TextInput;
 
-public class FourthPuzzle implements Screen{
+public class FifthPuzzle implements Screen{
 
 	/*
 	 * all the main settings for the screen
@@ -60,7 +60,7 @@ public class FourthPuzzle implements Screen{
 	 */
 	
 	//constructor (runs when the screen starts)
-	public FourthPuzzle (HerobrineEscape game) {
+	public FifthPuzzle (HerobrineEscape game) {
 		// passes through the main game stuff
 		this.game = game;
 		
@@ -175,7 +175,7 @@ public class FourthPuzzle implements Screen{
 		// waits for the puzzle end chime to end before going to the next level
 		if(winChimeWaiter > 8) {
 			this.dispose();
-			game.setScreen(new LoadingScreen(game, "FifthPuzzle"));
+			game.setScreen(new LoadingScreen(game, "SuccessScreen"));
 		}
 		
 		// runs the escape timer (realtime)

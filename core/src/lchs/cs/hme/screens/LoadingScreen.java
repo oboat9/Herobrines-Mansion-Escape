@@ -77,7 +77,6 @@ public class LoadingScreen implements Screen {
 					
 				case "SuccessScreen":
 					game.setScreen(new SuccessScreen(game));
-					System.out.println("does this work?");
 					break;
 					
 				default:
