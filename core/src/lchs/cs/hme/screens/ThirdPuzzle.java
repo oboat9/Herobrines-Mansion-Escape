@@ -33,6 +33,8 @@ public class ThirdPuzzle implements Screen{
 	//a timer to wait the puzzle complete chime to finish before going to the next scene
 	double winChimeWaiter = 0;
 	
+	String facing = "north";
+	
 	/*
 	 *  INIT ASSETS
 	 */
@@ -44,6 +46,11 @@ public class ThirdPuzzle implements Screen{
 	String currentBackground;
 	
 	// Textures
+	Texture compassNorth;
+	Texture compassSouth;
+	Texture compassWest;
+	Texture compassEast;
+	
 	Texture lvl1doorClosedTex;
 	Texture lvl1doorOpenTex;
 	Texture lvl1Description;
@@ -77,6 +84,11 @@ public class ThirdPuzzle implements Screen{
 		lvl1doorClosedTex = new Texture ("images/backgrounds/leveltwo/lvl2background1.png");
 		lvl1doorOpenTex = new Texture ("images/backgrounds/leveltwo/lvl2background2.png");
 		lvl1Description = new Texture ("images/scenedescriptions/levelone.png");
+
+		compassNorth = new Texture ("images/compass/compass-north.gif");
+		compassSouth = new Texture ("images/compass/compass-south.gif");
+		compassWest = new Texture ("images/compass/compass-west.gif");
+		compassEast = new Texture ("images/compass/compass-east.gif");
 		
 		//load sound
 		pistonDoorSound = Gdx.audio.newSound(Gdx.files.internal("sounds/pistondoor.wav"));
@@ -110,12 +122,15 @@ public class ThirdPuzzle implements Screen{
 			Gdx.input.getTextInput(listener, "Enter Command", "", "");
 		}
 		
-		// back to main menu upon pressing escape
+		/// back to main menu upon pressing escape
+		/*
 		if(Gdx.input.isKeyPressed(Keys.ESCAPE)) {
+			TutorialPuzzle.puzzleMusic.stop();
 			clickSound.play(1.0f);
 			this.dispose();
 			game.setScreen(new MainMenuScreen(game));
 		}
+		*/
 		
 		// closes the obervation text upon pressing enter
 		if(Gdx.input.isKeyJustPressed(Keys.SPACE)) {
@@ -209,6 +224,10 @@ public class ThirdPuzzle implements Screen{
 			case "lvl1dooropen":
 				game.batch.draw(lvl1doorOpenTex, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
 				break;
+		}
+
+		if(facing.equals("north")) {
+			game.batch.draw(compassNorth, (HerobrineEscape.WIDTH-160), HerobrineEscape.HEIGHT-160, 160, 160);
 		}
 		
 		//if the observation text is supposed to be open it renders it
