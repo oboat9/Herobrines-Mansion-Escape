@@ -176,7 +176,7 @@ public class FirstPuzzle implements Screen{
 					badCommandSound.play();
 					TextInput.currentCommand = "none";
 				}
-			
+				break;
 			//opens the door
 			case "use bridge":
 
