@@ -173,14 +173,30 @@ public class FirstPuzzle implements Screen{
 			case "west":
 			case "w":
 				//goes through the door only if it is open
-				if (currentBackground == "bg1") {
+				if (currentBackground.equals("bg1")) {
 					TextInput.currentCommand = "none";
-					TutorialPuzzle.puzzleMusic.pause();
-					puzzleClearSound.play();
-					isComplete = true;
+					currentBackground = "bg2";
+					
+				} else if (currentBackground.equals("bg2")){
+					TextInput.currentCommand = "none";
+					facing = "south";
+					currentBackground = "bg3";
+				} else if (currentBackground.equals("bg3")) {
+					TextInput.currentCommand = "none";
+					facing = "south";
+					currentBackground = "bg4";
 				} else {
 					badCommandSound.play();
 					TextInput.currentCommand = "none";
+				}
+				break;
+				
+			case "south":
+			case "s":
+				if(currentBackground.equals("bg4")) {
+					TextInput.currentCommand = "none";
+					facing = "east";
+					currentBackground = "bg5";
 				}
 				break;
 			//runs if the player enters an invalid command
