@@ -35,6 +35,8 @@ public class SecondPuzzle implements Screen{
 	
 	String facing = "east";
 	
+	int currentMazePos = 0;
+	
 	/*
 	 *  INIT ASSETS
 	 */
@@ -229,7 +231,204 @@ public class SecondPuzzle implements Screen{
 				TextInput.currentCommand = "none";
 				break;
 				
-		}// CLOSES TEXT INPUT
+		} //closes main movement switch
+		
+		
+		/*
+		 * MAZE MOVEMENT
+		 */
+		if(currentMazePos == 1) {
+			switch(TextInput.getText()){
+				
+				case "north":
+				case "n":
+					
+				case "south":
+				case "s":
+					
+				case "east":
+				case "e":
+					
+				case "west":
+				case "w":
+			}
+			
+		} else if(currentMazePos == 2) {
+			switch(TextInput.getText()){
+			
+			case "north":
+			case "n":
+				
+			case "south":
+			case "s":
+				
+			case "east":
+			case "e":
+				
+			case "west":
+			case "w":
+			}
+			
+		} else if(currentMazePos == 3) {
+			switch(TextInput.getText()){
+			
+			case "north":
+			case "n":
+				
+			case "south":
+			case "s":
+				
+			case "east":
+			case "e":
+				
+			case "west":
+			case "w":
+			}	
+			
+		} else if(currentMazePos == 4) {
+			switch(TextInput.getText()){
+			
+			case "north":
+			case "n":
+				
+			case "south":
+			case "s":
+				
+			case "east":
+			case "e":
+				
+			case "west":
+			case "w":
+			}
+			
+		} else if(currentMazePos == 5) {
+			switch(TextInput.getText()){
+			
+			case "north":
+			case "n":
+				
+			case "south":
+			case "s":
+				
+			case "east":
+			case "e":
+				
+			case "west":
+			case "w":
+			}
+			
+		} else if(currentMazePos == 6) {
+			switch(TextInput.getText()){
+			
+			case "north":
+			case "n":
+				
+			case "south":
+			case "s":
+				
+			case "east":
+			case "e":
+				
+			case "west":
+			case "w":
+			}
+			
+		} else if(currentMazePos == 7) {
+			switch(TextInput.getText()){
+			
+			case "north":
+			case "n":
+				
+			case "south":
+			case "s":
+				
+			case "east":
+			case "e":
+				
+			case "west":
+			case "w":
+			}
+			
+		} else if(currentMazePos == 8) {
+			switch(TextInput.getText()){
+			
+			case "north":
+			case "n":
+				
+			case "south":
+			case "s":
+				
+			case "east":
+			case "e":
+				
+			case "west":
+			case "w":
+			}
+			
+		} else if(currentMazePos == 9) {
+			switch(TextInput.getText()){
+			
+			case "north":
+			case "n":
+				
+			case "south":
+			case "s":
+				
+			case "east":
+			case "e":
+				
+			case "west":
+			case "w":
+			}
+			
+		} else if(currentMazePos == 10) {
+			switch(TextInput.getText()){
+			
+			case "north":
+			case "n":
+				
+			case "south":
+			case "s":
+				
+			case "east":
+			case "e":
+				
+			case "west":
+			case "w":
+			}
+			
+		} else if(currentMazePos == 11) {
+			switch(TextInput.getText()){
+			
+			case "north":
+			case "n":
+				
+			case "south":
+			case "s":
+				
+			case "east":
+			case "e":
+				
+			case "west":
+			case "w":
+			}
+			
+		} else if(currentMazePos == 12) {
+			switch(TextInput.getText()){
+			
+			case "north":
+			case "n":
+				
+			case "south":
+			case "s":
+				
+			case "east":
+			case "e":
+				
+			case "west":
+			case "w":
+			}
+		}
 		
 		
 
