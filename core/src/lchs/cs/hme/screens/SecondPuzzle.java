@@ -161,6 +161,7 @@ public class SecondPuzzle implements Screen{
 		}
 		
 		// text input handling
+		if(currentMazePos == 0) {
 		switch(TextInput.getText()) {
 			//opens the observation text
 			case "look":
@@ -233,14 +234,14 @@ public class SecondPuzzle implements Screen{
 				break;
 				
 		} //closes main movement switch
-		
+		} // if currentMazePos = 0;
 		
 		/*
 		 * MAZE MOVEMENT
 		 */
 		if(currentMazePos == 1) {
 			switch(TextInput.getText()){
-				
+			
 				case "north":
 				case "n":
 					break;
@@ -254,13 +255,14 @@ public class SecondPuzzle implements Screen{
 				case "w":
 					currentMazePos = 2;
 					TextInput.currentCommand = "none";
-				break;
+					break;
+				case "none":
+					break;
 				default:
 					badCommandSound.play();
 					TextInput.currentCommand = "none";
 					break;
 			}
-			
 		} else if(currentMazePos == 2) {
 			switch(TextInput.getText()){
 			
@@ -285,7 +287,6 @@ public class SecondPuzzle implements Screen{
 				TextInput.currentCommand = "none";
 				break;
 			}
-			
 		} else if(currentMazePos == 3) {
 			switch(TextInput.getText()){
 			
@@ -347,11 +348,11 @@ public class SecondPuzzle implements Screen{
 				break;
 			case "east":
 			case "e":
+				currentMazePos = 6;
+				TextInput.currentCommand = "none";
 				break;
 			case "west":
 			case "w":
-				currentMazePos = 6;
-				TextInput.currentCommand = "none";
 				break;
 			case "none":
 				break;
@@ -397,11 +398,11 @@ public class SecondPuzzle implements Screen{
 				break;
 			case "east":
 			case "e":
+				currentMazePos = 8;
+				TextInput.currentCommand = "none";
 				break;
 			case "west":
 			case "w":
-				currentMazePos = 8;
-				TextInput.currentCommand = "none";
 				break;
 			case "none":
 				break;
@@ -447,11 +448,11 @@ public class SecondPuzzle implements Screen{
 				break;
 			case "east":
 			case "e":
-				currentMazePos = 10;
-				TextInput.currentCommand = "none";
 				break;
 			case "west":
 			case "w":
+				currentMazePos = 10;
+				TextInput.currentCommand = "none";
 				break;
 			case "none":
 				break;
@@ -497,11 +498,11 @@ public class SecondPuzzle implements Screen{
 				break;
 			case "east":
 			case "e":
-				currentMazePos = 12;
-				TextInput.currentCommand = "none";
 				break;
 			case "west":
 			case "w":
+				currentMazePos = 12;
+				TextInput.currentCommand = "none";
 				break;
 			case "none":
 				break;
@@ -516,11 +517,11 @@ public class SecondPuzzle implements Screen{
 			
 			case "north":
 			case "n":
-				currentBackground = "bg5";
-				TextInput.currentCommand = "none";
 				break;
 			case "south":
 			case "s":
+				currentBackground = "bg5";
+				TextInput.currentCommand = "none";
 				break;
 			case "east":
 			case "e":
