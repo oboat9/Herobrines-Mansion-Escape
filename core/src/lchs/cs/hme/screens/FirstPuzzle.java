@@ -169,7 +169,7 @@ public class FirstPuzzle implements Screen{
 					TextInput.currentCommand = "none";
 				}
 				break;
-			//goes through the door
+
 			case "west":
 			case "w":
 				//goes through the door only if it is open
@@ -185,7 +185,14 @@ public class FirstPuzzle implements Screen{
 					TextInput.currentCommand = "none";
 					facing = "south";
 					currentBackground = "bg4";
-				} else {
+					
+				} else if(currentBackground.equals("bg5")) {
+					TextInput.currentCommand = "none";
+					facing = "south";
+					currentBackground = "bg4";
+					
+				}
+				else {
 					badCommandSound.play();
 					TextInput.currentCommand = "none";
 				}
@@ -193,6 +200,7 @@ public class FirstPuzzle implements Screen{
 				
 			case "south":
 			case "s":
+				//goes through the door only if it is open
 				if(currentBackground.equals("bg4")) {
 					TextInput.currentCommand = "none";
 					facing = "east";
