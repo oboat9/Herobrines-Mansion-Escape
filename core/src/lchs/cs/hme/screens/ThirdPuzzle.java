@@ -51,7 +51,6 @@ public class ThirdPuzzle implements Screen{
 	Texture compassWest;
 	Texture compassEast;
 	
-	// TODO
 	Texture lvl1Description;
 	
 	Texture bg1;
@@ -71,7 +70,6 @@ public class ThirdPuzzle implements Screen{
 	// Sounds
 	Sound clickSound;
 	Sound badCommandSound;
-	// TODO
 	Sound pistonDoorSound;
 	Sound puzzleClearSound;
 	Sound victorySound;
@@ -86,8 +84,7 @@ public class ThirdPuzzle implements Screen{
 		this.game = game;
 		
 		// sets the initial background
-		// TODO
-		currentBackground = "lvl1doorclosed";
+		currentBackground = "Entrance";
 	}
 	
 	// runs when the game starts (loads the assets into memory from the file)
@@ -124,8 +121,6 @@ public class ThirdPuzzle implements Screen{
 		victorySound = Gdx.audio.newSound(Gdx.files.internal("sounds/victorymusic.wav"));
 		puzzleClearSound = Gdx.audio.newSound(Gdx.files.internal("sounds/puzzleclear.wav"));
 		
-		//start music
-		TutorialPuzzle.puzzleMusic.play();
 	}
 
 	/*
@@ -178,29 +173,53 @@ public class ThirdPuzzle implements Screen{
 			case "none":
 				break;
 			
-			//opens the door
-			case "use lever":
-				//opens the door if it is still closed
-				if (currentBackground == "lvl1doorclosed") {
-					pistonDoorSound.play(1.0f);
-					currentBackground = "lvl1dooropen";
-					TextInput.currentCommand = "none";
-				}
-				break;
-			//goes through the door
+            /*
+             * For this puzzle you move north once to the main solving area
+             * and type in "puzzle answer" to open exit door
+             * 
+             * 
+             * Then you repeatedly type the north command in until you get into
+             * the elevator (after dropping into hole, player should move into elevator
+             * and into next level automatically with space of time between
+             */
+				
 			case "north":
 			case "n":
-				//goes through the door only if it is open
-				if (currentBackground == "lvl1dooropen") {
+				//goes to puzzle area
+				if (currentBackground == "Entrance") {
+					facing = "north";
+					currentBackground = "PuzzleOverview";
 					TextInput.currentCommand = "none";
-					TutorialPuzzle.puzzleMusic.pause();
-					puzzleClearSound.play();
-					isComplete = true;
-				} else {
-					badCommandSound.play();
+				}
+				//exit opens
+				else if (currentBackground == "PuzzleSolved") {
+					currentBackground = "PuzzleExit";
+					TextInput.currentCommand = "none";
+					
+				}
+				//dropping into hole
+				else if (currentBackground == "PuzzleExit") {
+					currentBackground = "ExitTunnel";
+					TextInput.currentCommand = "none";
+					
+				}
+				//moving towards elevator
+				else if (currentBackground == "ExitTunnel") {
+					currentBackground = "ExitElevator";
+					TextInput.currentCommand = "none";
+					
+				}
+				break;
+				//after solving puzzle
+			case "puzzle answer":
+				if (currentBackground == "PuzzleOverview") {
+					facing = "north";
+					currentBackground = "PuzzleSolved";
 					TextInput.currentCommand = "none";
 				}
 				break;
+			
+				
 			//runs if the player enters an invalid command
 			default:
 				badCommandSound.play();
@@ -229,7 +248,7 @@ public class ThirdPuzzle implements Screen{
 		int minutes = (int) ((MainMenuScreen.time % 3600) / 60);
 		int seconds = (int) (MainMenuScreen.time % 60);
 		// updates the timer in the title bar
-		Gdx.graphics.setTitle("Herobrine's Mansion Escape - " + "Colour Puzzle" + " - Time Remaining: " + (9-minutes) + ":" + (59-seconds));
+		Gdx.graphics.setTitle("Herobrine's Mansion Escape " + "Third Puzzle" + " - Time Remaining: " + (9-minutes) + ":" + (59-seconds));
 		
 		//clears the screen before drawing every frame
 		Gdx.gl.glClearColor(0, 0, 0, 1);
@@ -244,12 +263,57 @@ public class ThirdPuzzle implements Screen{
 		 */
 		switch (currentBackground) {
 			//at the beginning of the level
-			case "lvl1doorclosed":
+			case "Entrance":
 				game.batch.draw(bg1, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
 				break;
-			//after the player types "use lever"
-			case "lvl1dooropen":
+			//after player walks to overview of puzzle (second pic)
+			case "PuzzleOverview":
 				game.batch.draw(bg2, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+				break;
+				
+			//puzzle wall colours
+				
+			case "CyanWall":
+				game.batch.draw(bgcyan, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+				break;	
+			case "GreenWall":
+				game.batch.draw(bggreen, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+				break;	
+			case "OrangeWall":
+				game.batch.draw(bgorange, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+				break;	
+			case "PinkWall":
+				game.batch.draw(bgpink, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+				break;	
+			case "PurpleWall":
+				game.batch.draw(bgpurple, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+				break;	
+			case "RedWall":
+				game.batch.draw(bgred, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+				break;	
+			case "WhiteWall":
+				game.batch.draw(bgwhite, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+				break;	
+				
+				
+				
+			
+				
+			//after player solved puzzle
+			case "PuzzleSolved":
+				game.batch.draw(bg4, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+				break;
+			//player walks to exit
+			case "PuzzleExit":
+				game.batch.draw(bg5, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+				break;
+			//after goes into exit hole
+			case "ExitTunnel":
+				game.batch.draw(bg6, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+				break;
+			//after goes into exit hole
+			case "ExitElevator":
+				game.batch.draw(bg7, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
 				break;
 		}
 
