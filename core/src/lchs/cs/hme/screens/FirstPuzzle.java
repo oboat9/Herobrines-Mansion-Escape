@@ -60,6 +60,7 @@ public class FirstPuzzle implements Screen{
 	Texture bg4;
 	Texture bg5;
 	Texture bg6;
+	Texture bg7;
 	Texture lvl1Description;
 	
 	// Sounds
@@ -94,6 +95,7 @@ public class FirstPuzzle implements Screen{
 		bg4 = new Texture ("images/backgrounds/leveltwo/bg4.png");
 		bg5 = new Texture ("images/backgrounds/leveltwo/bg5.png");
 		bg6 = new Texture ("images/backgrounds/leveltwo/bg6.png");
+		bg7 = new Texture ("images/backgrounds/leveltwo/bg7.png");
 		
 		lvl1Description = new Texture ("images/scenedescriptions/levelone.png");
 		
@@ -170,14 +172,20 @@ public class FirstPuzzle implements Screen{
 					hasStone = true;
 					currentBackground = "bg7";
 					TextInput.currentCommand = "none";
+				} else {
+					badCommandSound.play();
+					TextInput.currentCommand = "none";
 				}
 			
 			//opens the door
 			case "use bridge":
-				//opens the door if it is still closed
-				if ((currentBackground == "bg4") && (hasStone == true)) {
+
+				if ((currentBackground == "bg3") && (hasStone == true)) {
 					bridgeBuilt = true;
 					currentBackground = "bg6";
+					TextInput.currentCommand = "none";
+				} else {
+					badCommandSound.play();
 					TextInput.currentCommand = "none";
 				}
 				break;
@@ -199,12 +207,8 @@ public class FirstPuzzle implements Screen{
 					facing = "south";
 					currentBackground = "bg4";
 					
-				} else if(currentBackground.equals("bg5")) {
-					TextInput.currentCommand = "none";
-					facing = "south";
-					currentBackground = "bg4";
+				} 
 					
-				}
 				else {
 					badCommandSound.play();
 					TextInput.currentCommand = "none";
@@ -217,6 +221,9 @@ public class FirstPuzzle implements Screen{
 					TextInput.currentCommand = "none";
 					facing = "south";
 					currentBackground = "bg3";
+				} else {
+					badCommandSound.play();
+					TextInput.currentCommand = "none";
 				}
 			case "south":
 			case "s":
@@ -225,11 +232,26 @@ public class FirstPuzzle implements Screen{
 					TextInput.currentCommand = "none";
 					facing = "east";
 					currentBackground = "bg5";
-				} else if(currentBackground.equals("bg3") && (bridgeBuilt == true)) {
-					
+				} else if(currentBackground.equals("bg6") && (bridgeBuilt == true)) {
+					TextInput.currentCommand = "none";
+					TutorialPuzzle.puzzleMusic.pause();
+					puzzleClearSound.play();
+					isComplete = true;
 				}
 				break;
-				 
+				
+			case "north":
+			case "n":
+				if((currentBackground.equals("bg5"))) {
+					TextInput.currentCommand = "none";
+					facing = "south";
+					currentBackground = "bg4";
+					break;
+				} else {
+					badCommandSound.play();
+					TextInput.currentCommand = "none";
+				}
+				
 
 			//runs if the player enters an invalid command
 			default:
@@ -287,7 +309,11 @@ public class FirstPuzzle implements Screen{
 				break;
 				//after the player types "use lever"
 			case "bg4":
-				game.batch.draw(bg4, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+				if(hasStone == true) {
+					game.batch.draw(bg7, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+				} else{
+					game.batch.draw(bg4, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+				}
 				break;
 				//after the player types "use lever"
 			case "bg5":
@@ -295,7 +321,11 @@ public class FirstPuzzle implements Screen{
 				break;
 				//after the player types "use lever"
 			case "bg6":
+				System.out.println("bg6 rendering");
 				game.batch.draw(bg6, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+				break;
+			case "bg7":
+				game.batch.draw(bg7, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
 				break;
 		}
 		
