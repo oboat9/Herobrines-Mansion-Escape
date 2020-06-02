@@ -33,7 +33,7 @@ public class FirstPuzzle implements Screen{
 	//a timer to wait the puzzle complete chime to finish before going to the next scene
 	double winChimeWaiter = 0;
 	
-	String facing = "north";
+	String facing = "west";
 	
 	/*
 	 *  INIT ASSETS
