@@ -51,9 +51,21 @@ public class ThirdPuzzle implements Screen{
 	Texture compassWest;
 	Texture compassEast;
 	
-	Texture lvl1doorClosedTex;
-	Texture lvl1doorOpenTex;
 	Texture lvl1Description;
+	
+	Texture bg1;
+	Texture bg2;
+	Texture bgwhite;
+	Texture bgred;
+	Texture bgcyan;
+	Texture bgpink;
+	Texture bgpurple;
+	Texture bgorange;
+	Texture bggreen;
+	Texture bg4;
+	Texture bg5;
+	Texture bg6;
+	Texture bg7;
 	
 	// Sounds
 	Sound clickSound;
@@ -81,8 +93,20 @@ public class ThirdPuzzle implements Screen{
 	public void show() {
 		
 		//load images
-		lvl1doorClosedTex = new Texture ("images/backgrounds/leveltwo/lvl2background1.png");
-		lvl1doorOpenTex = new Texture ("images/backgrounds/leveltwo/lvl2background2.png");
+		bg1 = new Texture ("images/backgrounds/levelfour/bg1.png");
+		bg2 = new Texture ("images/backgrounds/levelfour/bg2.png");
+		bgwhite = new Texture ("images/backgrounds/levelfour/bgwhite.png");
+		bgred = new Texture ("images/backgrounds/levelfour/bgred.png");
+		bgcyan = new Texture ("images/backgrounds/levelfour/bgcyan.png");
+		bgpink = new Texture ("images/backgrounds/levelfour/bgpink.png");
+		bgpurple = new Texture ("images/backgrounds/levelfour/bgpurple.png");
+		bgorange = new Texture ("images/backgrounds/levelfour/bgorange.png");
+		bggreen = new Texture ("images/backgrounds/levelfour/bggreen.png");
+		bg4 = new Texture ("images/backgrounds/levelfour/bg4.png");
+		bg5 = new Texture ("images/backgrounds/levelfour/bg5.png");
+		bg6 = new Texture ("images/backgrounds/levelfour/bg6.png");
+		bg7 = new Texture ("images/backgrounds/levelfour/bg7.png");
+		
 		lvl1Description = new Texture ("images/scenedescriptions/levelone.png");
 
 		compassNorth = new Texture ("images/compass/compass-north.gif");
@@ -91,7 +115,7 @@ public class ThirdPuzzle implements Screen{
 		compassEast = new Texture ("images/compass/compass-east.gif");
 		
 		//load sound
-		pistonDoorSound = Gdx.audio.newSound(Gdx.files.internal("sounds/pistondoor.wav"));
+		//pistonDoorSound = Gdx.audio.newSound(Gdx.files.internal("sounds/pistondoor.wav"));
 		clickSound = Gdx.audio.newSound(Gdx.files.internal("sounds/buttonclick.wav"));
 		badCommandSound = Gdx.audio.newSound(Gdx.files.internal("sounds/badcommand.wav"));
 		victorySound = Gdx.audio.newSound(Gdx.files.internal("sounds/victorymusic.wav"));
@@ -218,11 +242,11 @@ public class ThirdPuzzle implements Screen{
 		switch (currentBackground) {
 			//at the beginning of the level
 			case "lvl1doorclosed":
-				game.batch.draw(lvl1doorClosedTex, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+				game.batch.draw(bg1, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
 				break;
 			//after the player types "use lever"
 			case "lvl1dooropen":
-				game.batch.draw(lvl1doorOpenTex, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+				game.batch.draw(bg2, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
 				break;
 		}
 
@@ -255,8 +279,6 @@ public class ThirdPuzzle implements Screen{
 	@Override
 	public void dispose() {
 		//dispose textures
-		lvl1doorClosedTex.dispose();
-		lvl1doorOpenTex.dispose();
 		lvl1Description.dispose();
 		
 		//dispose audio
