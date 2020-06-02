@@ -51,7 +51,7 @@ public class FourthPuzzle implements Screen{
 	Texture compassWest;
 	Texture compassEast;
 
-	// TODO
+
 	Texture lvl1Description;
 	
 	//acutal textures used
@@ -64,7 +64,6 @@ public class FourthPuzzle implements Screen{
 	// Sounds
 	Sound clickSound;
 	Sound badCommandSound;
-	// TODO
 	Sound pistonDoorSound;
 	Sound puzzleClearSound;
 	Sound victorySound;
@@ -197,6 +196,7 @@ public class FourthPuzzle implements Screen{
 			//complete's puzzle
 			case "1234":
 				if (currentBackground == "lvl5Keypad") {
+					pistonDoorSound.play(1.0f);
 					facing = "north";
 					currentBackground = "lvl5Exit";
 					TextInput.currentCommand = "none";
@@ -297,6 +297,7 @@ public class FourthPuzzle implements Screen{
 	@Override
 	public void dispose() {
 		//dispose textures
+
 		lvl1Description.dispose();
 		
 		lvl5EntranceTex.dispose();
