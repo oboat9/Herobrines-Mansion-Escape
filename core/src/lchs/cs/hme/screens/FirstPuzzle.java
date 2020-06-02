@@ -172,13 +172,20 @@ public class FirstPuzzle implements Screen{
 					hasStone = true;
 					currentBackground = "bg7";
 					TextInput.currentCommand = "none";
-				} else {
+					
+				} else if ((currentBackground == "bg3") && (hasStone == true)) {
+					bridgeBuilt = true;
+					currentBackground = "bg6";
+					TextInput.currentCommand = "none";
+				}
+				else {
 					badCommandSound.play();
 					TextInput.currentCommand = "none";
 				}
 				break;
 			//opens the door
 			case "use bridge":
+			case "build bridge":
 
 				if ((currentBackground == "bg3") && (hasStone == true)) {
 					bridgeBuilt = true;
@@ -225,6 +232,8 @@ public class FirstPuzzle implements Screen{
 					badCommandSound.play();
 					TextInput.currentCommand = "none";
 				}
+				break;
+				
 			case "south":
 			case "s":
 				//goes through the door only if it is open
@@ -325,6 +334,9 @@ public class FirstPuzzle implements Screen{
 				break;
 			case "bg7":
 				game.batch.draw(bg7, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+				break;
+			default:
+				game.setScreen(new LoadingScreen(game,"crash"));
 				break;
 		}
 		
