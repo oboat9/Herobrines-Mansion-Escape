@@ -59,6 +59,7 @@ public class SecondPuzzle implements Screen{
 	Texture bg6;
 	Texture bg7;
 	Texture bgblack;
+	Texture bgblackmap;
 	
 	// TODO
 	Texture lvl1Description;
@@ -98,6 +99,7 @@ public class SecondPuzzle implements Screen{
 		bg6 = new Texture ("images/backgrounds/levelthree/bg6.png");
 		bg7 = new Texture ("images/backgrounds/levelthree/bg7.png");
 		bgblack = new Texture ("images/backgrounds/levelthree/bgblack.png");
+		bgblackmap = new Texture ("images/backgrounds/levelthree/bgblackmap.png");
 		
 		lvl1Description = new Texture ("images/scenedescriptions/levelone.png");
 
@@ -294,8 +296,13 @@ public class SecondPuzzle implements Screen{
 				break;
 				
 			case "bgblack":
-				game.batch.draw(bgblack, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
-				break;
+				if(FirstPuzzle.foundMap) {
+					game.batch.draw(bgblackmap, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+					break;					
+				} else {
+					game.batch.draw(bgblack, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+					break;					
+				}
 				
 			default:
 				game.setScreen(new LoadingScreen(game,"crash"));
