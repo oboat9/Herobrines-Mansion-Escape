@@ -216,15 +216,15 @@ public class FirstPuzzle implements Screen{
 					facing = "south";
 					currentBackground = "bg4";
 					
-				} if((currentBackground.equals("bg5"))) {
+				} else if((currentBackground.equals("bg5"))) {
 					TextInput.currentCommand = "none";
 					facing = "south";
 					currentBackground = "bg4";
-					break;
 					
 				} else {
 					badCommandSound.play();
 					TextInput.currentCommand = "none";
+					System.err.println("bad");
 				}
 				break;
 			
@@ -242,8 +242,11 @@ public class FirstPuzzle implements Screen{
 				
 			case "south":
 			case "s":
-				//goes through the door only if it is open
-				if((currentBackground.equals("bg4")) || currentBackground.equals("bg7")) {
+				
+				if(currentBackground.equals("bg3") && (bridgeBuilt == false)) {
+					badCommandSound.play();
+					TextInput.currentCommand = "none";
+				} else if((currentBackground.equals("bg4")) || currentBackground.equals("bg7")) {
 					TextInput.currentCommand = "none";
 					foundMap = true;
 					facing = "east";
@@ -253,6 +256,9 @@ public class FirstPuzzle implements Screen{
 					TutorialPuzzle.puzzleMusic.pause();
 					puzzleClearSound.play();
 					isComplete = true;
+				} else {
+					badCommandSound.play();
+					TextInput.currentCommand = "none";
 				}
 				break;
 				
