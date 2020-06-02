@@ -161,7 +161,7 @@ public class TutorialPuzzle implements Screen{
 			//opens the door
 			case "use lever":
 				//opens the door if it is still closed
-				if (currentBackground == "lvl1doorclosed") {
+				if (currentBackground.equals("lvl1doorclosed")) {
 					pistonDoorSound.play(1.0f);
 					currentBackground = "lvl1dooropen";
 					TextInput.currentCommand = "none";
@@ -171,7 +171,7 @@ public class TutorialPuzzle implements Screen{
 			case "north":
 			case "n":
 				//goes through the door only if it is open
-				if (currentBackground == "lvl1dooropen") {
+				if (currentBackground.equals("lvl1dooropen")) {
 					TextInput.currentCommand = "none";
 					puzzleMusic.pause();
 					puzzleClearSound.play();
@@ -209,7 +209,7 @@ public class TutorialPuzzle implements Screen{
 		int minutes = (int) ((MainMenuScreen.time % 3600) / 60);
 		int seconds = (int) (MainMenuScreen.time % 60);
 		// updates the timer in the title bar
-		Gdx.graphics.setTitle("Herobrine's Mansion Escape " + "Tutorial Puzzle" + " - Time Remaining: " + (9-minutes) + ":" + (59-seconds));
+		Gdx.graphics.setTitle("Herobrine's Mansion Escape - " + "Lever Puzzle" + " - Time Remaining: " + (9-minutes) + ":" + (59-seconds));
 		
 		//clears the screen before drawing every frame
 		Gdx.gl.glClearColor(0, 0, 0, 1);
