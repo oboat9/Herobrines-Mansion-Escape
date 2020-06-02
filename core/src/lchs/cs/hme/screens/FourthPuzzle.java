@@ -230,6 +230,15 @@ public class FourthPuzzle implements Screen{
 		if(facing.equals("north")) {
 			game.batch.draw(compassNorth, (HerobrineEscape.WIDTH-160), HerobrineEscape.HEIGHT-160, 160, 160);
 		}
+		if(facing.equals("south")) {
+			game.batch.draw(compassSouth, (HerobrineEscape.WIDTH-160), HerobrineEscape.HEIGHT-160, 160, 160);
+		}
+		if(facing.equals("west")) {
+			game.batch.draw(compassWest, (HerobrineEscape.WIDTH-160), HerobrineEscape.HEIGHT-160, 160, 160);
+		}
+		if(facing.equals("east")) {
+			game.batch.draw(compassEast, (HerobrineEscape.WIDTH-160), HerobrineEscape.HEIGHT-160, 160, 160);
+		}
 		
 		//if the observation text is supposed to be open it renders it
 		if (isObserving) {
