@@ -33,7 +33,7 @@ public class SecondPuzzle implements Screen{
 	//a timer to wait the puzzle complete chime to finish before going to the next scene
 	double winChimeWaiter = 0;
 	
-	String facing = "north";
+	String facing = "east";
 	
 	/*
 	 *  INIT ASSETS
@@ -177,17 +177,25 @@ public class SecondPuzzle implements Screen{
 			//goes through the door
 			case "north":
 			case "n":
-				//goes through the door only if it is open
-				if (currentBackground == "lvl1dooropen") {
+				break;
+			case "south":
+			case "s":
+				break;
+			case "east":
+			case "e":
+				if(currentBackground.equals("bg1")) {
 					TextInput.currentCommand = "none";
-					TutorialPuzzle.puzzleMusic.pause();
-					puzzleClearSound.play();
-					isComplete = true;
+					currentBackground = "bg2";
 				} else {
 					badCommandSound.play();
 					TextInput.currentCommand = "none";
 				}
 				break;
+			case "west":
+			case "w":
+				break;
+				
+				
 			//runs if the player enters an invalid command
 			default:
 				badCommandSound.play();
