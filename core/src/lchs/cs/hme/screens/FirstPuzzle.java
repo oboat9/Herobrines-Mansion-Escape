@@ -30,11 +30,14 @@ public class FirstPuzzle implements Screen{
 	
 	// turns to true when the player solves the puzzle
 	boolean isComplete = false;
+	
 	//a timer to wait the puzzle complete chime to finish before going to the next scene
 	double winChimeWaiter = 0;
 	
 	String facing = "west";
 	
+	boolean hasStone = false;
+	boolean bridgeBuilt = false;
 	/*
 	 *  INIT ASSETS
 	 */
@@ -160,12 +163,21 @@ public class FirstPuzzle implements Screen{
 			case "none":
 				break;
 			
+				
+			case "use stone":
+			case "use blocks":
+				if(currentBackground.equals("bg4")) {
+					hasStone = true;
+					currentBackground = "bg7";
+					TextInput.currentCommand = "none";
+				}
+			
 			//opens the door
-			case "use lever":
+			case "use bridge":
 				//opens the door if it is still closed
-				if (currentBackground == "lvl1doorclosed") {
-					pistonDoorSound.play(1.0f);
-					currentBackground = "lvl1dooropen";
+				if ((currentBackground == "bg4") && (hasStone == true)) {
+					bridgeBuilt = true;
+					currentBackground = "bg6";
 					TextInput.currentCommand = "none";
 				}
 				break;
@@ -181,6 +193,7 @@ public class FirstPuzzle implements Screen{
 					TextInput.currentCommand = "none";
 					facing = "south";
 					currentBackground = "bg3";
+					
 				} else if (currentBackground.equals("bg3")) {
 					TextInput.currentCommand = "none";
 					facing = "south";
@@ -197,22 +210,33 @@ public class FirstPuzzle implements Screen{
 					TextInput.currentCommand = "none";
 				}
 				break;
-				
+			
+			case "east":
+			case "e":
+				if(currentBackground.equals("bg4") || currentBackground.equals("bg7")) {
+					TextInput.currentCommand = "none";
+					facing = "south";
+					currentBackground = "bg3";
+				}
 			case "south":
 			case "s":
 				//goes through the door only if it is open
-				if(currentBackground.equals("bg4")) {
+				if((currentBackground.equals("bg4")) || currentBackground.equals("bg7")) {
 					TextInput.currentCommand = "none";
 					facing = "east";
 					currentBackground = "bg5";
+				} else if(currentBackground.equals("bg3") && (bridgeBuilt == true)) {
+					
 				}
 				break;
+				 
+
 			//runs if the player enters an invalid command
 			default:
 				badCommandSound.play();
 				TextInput.currentCommand = "none";
 				break;
-		}// CLOSES TEXT INPUT
+		} // CLOSES TEXT INPUT
 		
 		
 		// runs if the user goes through the open door
