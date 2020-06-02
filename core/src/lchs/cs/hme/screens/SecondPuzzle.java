@@ -196,6 +196,7 @@ public class SecondPuzzle implements Screen{
 					
 				} else if (currentBackground.equals("bg4")){
 					TextInput.currentCommand = "none";
+					currentMazePos = 1;
 					currentBackground = "bgblack";
 					
 				} else {
@@ -251,7 +252,13 @@ public class SecondPuzzle implements Screen{
 					break;
 				case "west":
 				case "w":
+					currentMazePos = 2;
+					TextInput.currentCommand = "none";
 				break;
+				default:
+					badCommandSound.play();
+					TextInput.currentCommand = "none";
+					break;
 			}
 			
 		} else if(currentMazePos == 2) {
@@ -262,12 +269,20 @@ public class SecondPuzzle implements Screen{
 				break;
 			case "south":
 			case "s":
+				currentMazePos = 3;
+				TextInput.currentCommand = "none";
 				break;
 			case "east":
 			case "e":
 				break;
 			case "west":
 			case "w":
+				break;
+			case "none":
+				break;
+			default:
+				badCommandSound.play();
+				TextInput.currentCommand = "none";
 				break;
 			}
 			
@@ -282,9 +297,17 @@ public class SecondPuzzle implements Screen{
 				break;
 			case "east":
 			case "e":
+				currentMazePos = 4;
+				TextInput.currentCommand = "none";
 				break;
 			case "west":
 			case "w":
+				break;
+			case "none":
+				break;
+			default:
+				badCommandSound.play();
+				TextInput.currentCommand = "none";
 				break;
 			}	
 			
@@ -296,12 +319,20 @@ public class SecondPuzzle implements Screen{
 				break;
 			case "south":
 			case "s":
+				currentMazePos = 5;
+				TextInput.currentCommand = "none";
 				break;
 			case "east":
 			case "e":
 				break;
 			case "west":
 			case "w":
+				break;
+			case "none":
+				break;
+			default:
+				badCommandSound.play();
+				TextInput.currentCommand = "none";
 				break;
 			}
 			
@@ -319,6 +350,14 @@ public class SecondPuzzle implements Screen{
 				break;
 			case "west":
 			case "w":
+				currentMazePos = 6;
+				TextInput.currentCommand = "none";
+				break;
+			case "none":
+				break;
+			default:
+				badCommandSound.play();
+				TextInput.currentCommand = "none";
 				break;
 			}
 			
@@ -327,6 +366,8 @@ public class SecondPuzzle implements Screen{
 			
 			case "north":
 			case "n":
+				currentMazePos = 7;
+				TextInput.currentCommand = "none";
 				break;
 			case "south":
 			case "s":
@@ -336,6 +377,12 @@ public class SecondPuzzle implements Screen{
 				break;
 			case "west":
 			case "w":
+				break;
+			case "none":
+				break;
+			default:
+				badCommandSound.play();
+				TextInput.currentCommand = "none";
 				break;
 			}
 			
@@ -353,6 +400,14 @@ public class SecondPuzzle implements Screen{
 				break;
 			case "west":
 			case "w":
+				currentMazePos = 8;
+				TextInput.currentCommand = "none";
+				break;
+			case "none":
+				break;
+			default:
+				badCommandSound.play();
+				TextInput.currentCommand = "none";
 				break;
 			}
 			
@@ -364,12 +419,20 @@ public class SecondPuzzle implements Screen{
 				break;
 			case "south":
 			case "s":
+				currentMazePos = 9;
+				TextInput.currentCommand = "none";
 				break;
 			case "east":
 			case "e":
 				break;
 			case "west":
 			case "w":
+				break;
+			case "none":
+				break;
+			default:
+				badCommandSound.play();
+				TextInput.currentCommand = "none";
 				break;
 			}
 			
@@ -384,9 +447,17 @@ public class SecondPuzzle implements Screen{
 				break;
 			case "east":
 			case "e":
+				currentMazePos = 10;
+				TextInput.currentCommand = "none";
 				break;
 			case "west":
 			case "w":
+				break;
+			case "none":
+				break;
+			default:
+				badCommandSound.play();
+				TextInput.currentCommand = "none";
 				break;
 			}
 			
@@ -395,6 +466,8 @@ public class SecondPuzzle implements Screen{
 			
 			case "north":
 			case "n":
+				currentMazePos = 11;
+				TextInput.currentCommand = "none";
 				break;
 			case "south":
 			case "s":
@@ -404,6 +477,12 @@ public class SecondPuzzle implements Screen{
 				break;
 			case "west":
 			case "w":
+				break;
+			case "none":
+				break;
+			default:
+				badCommandSound.play();
+				TextInput.currentCommand = "none";
 				break;
 			}
 			
@@ -418,9 +497,17 @@ public class SecondPuzzle implements Screen{
 				break;
 			case "east":
 			case "e":
+				currentMazePos = 12;
+				TextInput.currentCommand = "none";
 				break;
 			case "west":
 			case "w":
+				break;
+			case "none":
+				break;
+			default:
+				badCommandSound.play();
+				TextInput.currentCommand = "none";
 				break;
 			}
 			
@@ -429,6 +516,8 @@ public class SecondPuzzle implements Screen{
 			
 			case "north":
 			case "n":
+				currentBackground = "bg5";
+				TextInput.currentCommand = "none";
 				break;
 			case "south":
 			case "s":
@@ -438,6 +527,12 @@ public class SecondPuzzle implements Screen{
 				break;
 			case "west":
 			case "w":
+				break;
+			case "none":
+				break;
+			default:
+				badCommandSound.play();
+				TextInput.currentCommand = "none";
 				break;
 			}
 		}
@@ -507,6 +602,7 @@ public class SecondPuzzle implements Screen{
 				break;
 				
 			case "bgblack":
+				System.out.println(currentMazePos);
 				if(FirstPuzzle.foundMap) {
 					game.batch.draw(bgblackmap, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
 					break;					
