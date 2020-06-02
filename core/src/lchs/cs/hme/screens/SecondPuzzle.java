@@ -58,6 +58,7 @@ public class SecondPuzzle implements Screen{
 	Texture bg5;
 	Texture bg6;
 	Texture bg7;
+	Texture bgblack;
 	
 	Texture lvl1Description;
 	
@@ -94,6 +95,7 @@ public class SecondPuzzle implements Screen{
 		bg5 = new Texture ("images/backgrounds/levelthree/bg5.png");
 		bg6 = new Texture ("images/backgrounds/levelthree/bg6.png");
 		bg7 = new Texture ("images/backgrounds/levelthree/bg7.png");
+		bgblack = new Texture ("images/backgrounds/levelthree/bgblack.png");
 		
 		lvl1Description = new Texture ("images/scenedescriptions/levelone.png");
 
@@ -183,6 +185,9 @@ public class SecondPuzzle implements Screen{
 				if(currentBackground.equals("bg3")) {
 					TextInput.currentCommand = "none";
 					currentBackground = "bg4";
+				} else if (currentBackground.equals("bg4")){
+					TextInput.currentCommand = "none";
+					currentBackground = "bgblack";
 				} else {
 					badCommandSound.play();
 					TextInput.currentCommand = "none";
@@ -195,6 +200,7 @@ public class SecondPuzzle implements Screen{
 					currentBackground = "bg2";
 				} else if(currentBackground.equals("bg2")){
 					TextInput.currentCommand = "none";
+					facing = "south";
 					currentBackground = "bg3";
 				} else {
 					badCommandSound.play();
@@ -275,19 +281,28 @@ public class SecondPuzzle implements Screen{
 			case "bg7":
 				game.batch.draw(bg7, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
 				break;
+				
+			case "bgblack":
+				game.batch.draw(bgblack, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+				break;
+			default:
+				game.setScreen(new LoadingScreen(game,"crash"));
+				break;
+				
 		}
-		
-		if(facing.equals("north")) {
-			game.batch.draw(compassNorth, (HerobrineEscape.WIDTH-160), HerobrineEscape.HEIGHT-160, 160, 160);
-		}
-		if(facing.equals("south")) {
-			game.batch.draw(compassSouth, (HerobrineEscape.WIDTH-160), HerobrineEscape.HEIGHT-160, 160, 160);
-		}
-		if(facing.equals("west")) {
-			game.batch.draw(compassWest, (HerobrineEscape.WIDTH-160), HerobrineEscape.HEIGHT-160, 160, 160);
-		}
-		if(facing.equals("east")) {
-			game.batch.draw(compassEast, (HerobrineEscape.WIDTH-160), HerobrineEscape.HEIGHT-160, 160, 160);
+		if(!currentBackground.equals("bgblack")) {
+			if(facing.equals("north")) {
+				game.batch.draw(compassNorth, (HerobrineEscape.WIDTH-160), HerobrineEscape.HEIGHT-160, 160, 160);
+			}
+			if(facing.equals("south")) {
+				game.batch.draw(compassSouth, (HerobrineEscape.WIDTH-160), HerobrineEscape.HEIGHT-160, 160, 160);
+			}
+			if(facing.equals("west")) {
+				game.batch.draw(compassWest, (HerobrineEscape.WIDTH-160), HerobrineEscape.HEIGHT-160, 160, 160);
+			}
+			if(facing.equals("east")) {
+				game.batch.draw(compassEast, (HerobrineEscape.WIDTH-160), HerobrineEscape.HEIGHT-160, 160, 160);
+			}
 		}
 		
 		//if the observation text is supposed to be open it renders it
