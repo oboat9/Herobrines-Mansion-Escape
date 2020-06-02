@@ -33,7 +33,7 @@ public class FourthPuzzle implements Screen{
 	//a timer to wait the puzzle complete chime to finish before going to the next scene
 	double winChimeWaiter = 0;
 	
-	String facing = "north";
+	String facing = "west";
 	
 	/*
 	 *  INIT ASSETS
@@ -172,17 +172,22 @@ public class FourthPuzzle implements Screen{
 
 		    //level's puzzle commands
 				
-			
-			case "north":
-			case "n":
+			case "west":
+			case "w":
 				//goes to puzzle completing area
 				if (currentBackground == "lvl5Entrance") {
+					facing = "west";
 					currentBackground = "lvl5Keypad";
 					TextInput.currentCommand = "none";
 				}
 				
+			break; 
+			case "north":
+			case "n":
+
 				//goes outside after finishing puzzle
-				else if (currentBackground == "lvl5Exit") {
+				if (currentBackground == "lvl5Exit") {
+					facing = "north";
 					currentBackground = "Outside";
 					TextInput.currentCommand = "none";
 				}
@@ -192,6 +197,7 @@ public class FourthPuzzle implements Screen{
 			//complete's puzzle
 			case "1234":
 				if (currentBackground == "lvl5Keypad") {
+					facing = "north";
 					currentBackground = "lvl5Exit";
 					TextInput.currentCommand = "none";
 				}
