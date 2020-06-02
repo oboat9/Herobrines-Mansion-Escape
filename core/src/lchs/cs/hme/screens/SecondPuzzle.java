@@ -51,8 +51,14 @@ public class SecondPuzzle implements Screen{
 	Texture compassWest;
 	Texture compassEast;
 	
-	Texture lvl1doorClosedTex;
-	Texture lvl1doorOpenTex;
+	Texture bg1;
+	Texture bg2;
+	Texture bg3;
+	Texture bg4;
+	Texture bg5;
+	Texture bg6;
+	Texture bg7;
+	
 	Texture lvl1Description;
 	
 	// Sounds
@@ -81,9 +87,16 @@ public class SecondPuzzle implements Screen{
 	public void show() {
 		
 		//load images
-		lvl1doorClosedTex = new Texture ("images/backgrounds/leveltwo/lvl2background1.png");
-		lvl1doorOpenTex = new Texture ("images/backgrounds/leveltwo/lvl2background2.png");
+		bg1 = new Texture ("images/backgrounds/levelthree/bg1.png");
+		bg2 = new Texture ("images/backgrounds/levelthree/bg2.png");
+		bg3 = new Texture ("images/backgrounds/levelthree/bg3.png");
+		bg4 = new Texture ("images/backgrounds/levelthree/bg4.png");
+		bg5 = new Texture ("images/backgrounds/levelthree/bg5.png");
+		bg6 = new Texture ("images/backgrounds/levelthree/bg6.png");
+		bg7 = new Texture ("images/backgrounds/levelthree/bg7.png");
+		
 		lvl1Description = new Texture ("images/scenedescriptions/levelone.png");
+
 		
 		
 		compassNorth = new Texture ("images/compass/compass-north.gif");
@@ -219,11 +232,11 @@ public class SecondPuzzle implements Screen{
 		switch (currentBackground) {
 			//at the beginning of the level
 			case "lvl1doorclosed":
-				game.batch.draw(lvl1doorClosedTex, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+				game.batch.draw(bg1, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
 				break;
 			//after the player types "use lever"
 			case "lvl1dooropen":
-				game.batch.draw(lvl1doorOpenTex, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+				game.batch.draw(bg2, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
 				break;
 		}
 		
@@ -256,8 +269,6 @@ public class SecondPuzzle implements Screen{
 	@Override
 	public void dispose() {
 		//dispose textures
-		lvl1doorClosedTex.dispose();
-		lvl1doorOpenTex.dispose();
 		lvl1Description.dispose();
 		
 		//dispose audio

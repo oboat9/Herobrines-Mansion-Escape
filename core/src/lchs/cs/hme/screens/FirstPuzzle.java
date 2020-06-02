@@ -321,7 +321,6 @@ public class FirstPuzzle implements Screen{
 				break;
 				//after the player types "use lever"
 			case "bg6":
-				System.out.println("bg6 rendering");
 				game.batch.draw(bg6, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
 				break;
 			case "bg7":
