@@ -78,7 +78,7 @@ public class SecondPuzzle implements Screen{
 		this.game = game;
 		
 		// sets the initial background
-		currentBackground = "lvl1doorclosed";
+		currentBackground = "bg1";
 	}
 	
 	// runs when the game starts (loads the assets into memory from the file)
@@ -180,12 +180,22 @@ public class SecondPuzzle implements Screen{
 				break;
 			case "south":
 			case "s":
+				if(currentBackground.equals("bg3")) {
+					TextInput.currentCommand = "none";
+					currentBackground = "bg4";
+				} else {
+					badCommandSound.play();
+					TextInput.currentCommand = "none";
+				}
 				break;
 			case "east":
 			case "e":
 				if(currentBackground.equals("bg1")) {
 					TextInput.currentCommand = "none";
 					currentBackground = "bg2";
+				} else if(currentBackground.equals("bg2")){
+					TextInput.currentCommand = "none";
+					currentBackground = "bg3";
 				} else {
 					badCommandSound.play();
 					TextInput.currentCommand = "none";
@@ -194,7 +204,6 @@ public class SecondPuzzle implements Screen{
 			case "west":
 			case "w":
 				break;
-				
 				
 			//runs if the player enters an invalid command
 			default:
@@ -238,13 +247,33 @@ public class SecondPuzzle implements Screen{
 		 * checks what the currentBackground string says and renders the appropriate background every frame
 		 */
 		switch (currentBackground) {
-			//at the beginning of the level
-			case "lvl1doorclosed":
+
+			case "bg1":
 				game.batch.draw(bg1, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
 				break;
-			//after the player types "use lever"
-			case "lvl1dooropen":
+
+			case "bg2":
 				game.batch.draw(bg2, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+				break;
+				
+			case "bg3":
+				game.batch.draw(bg3, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+				break;
+				
+			case "bg4":
+				game.batch.draw(bg4, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+				break;
+				
+			case "bg5":
+				game.batch.draw(bg5, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+				break;
+				
+			case "bg6":
+				game.batch.draw(bg6, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+				break;
+				
+			case "bg7":
+				game.batch.draw(bg7, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
 				break;
 		}
 		
