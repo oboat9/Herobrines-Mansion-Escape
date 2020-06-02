@@ -242,15 +242,16 @@ public class SecondPuzzle implements Screen{
 				
 				case "north":
 				case "n":
-					
+					break;
 				case "south":
 				case "s":
-					
+					break;
 				case "east":
 				case "e":
-					
+					break;
 				case "west":
 				case "w":
+				break;
 			}
 			
 		} else if(currentMazePos == 2) {
@@ -258,15 +259,16 @@ public class SecondPuzzle implements Screen{
 			
 			case "north":
 			case "n":
-				
+				break;
 			case "south":
 			case "s":
-				
+				break;
 			case "east":
 			case "e":
-				
+				break;
 			case "west":
 			case "w":
+				break;
 			}
 			
 		} else if(currentMazePos == 3) {
@@ -274,15 +276,16 @@ public class SecondPuzzle implements Screen{
 			
 			case "north":
 			case "n":
-				
+				break;
 			case "south":
 			case "s":
-				
+				break;
 			case "east":
 			case "e":
-				
+				break;
 			case "west":
 			case "w":
+				break;
 			}	
 			
 		} else if(currentMazePos == 4) {
@@ -290,15 +293,16 @@ public class SecondPuzzle implements Screen{
 			
 			case "north":
 			case "n":
-				
+				break;
 			case "south":
 			case "s":
-				
+				break;
 			case "east":
 			case "e":
-				
+				break;
 			case "west":
 			case "w":
+				break;
 			}
 			
 		} else if(currentMazePos == 5) {
@@ -306,15 +310,16 @@ public class SecondPuzzle implements Screen{
 			
 			case "north":
 			case "n":
-				
+				break;
 			case "south":
 			case "s":
-				
+				break;
 			case "east":
 			case "e":
-				
+				break;
 			case "west":
 			case "w":
+				break;
 			}
 			
 		} else if(currentMazePos == 6) {
@@ -322,15 +327,16 @@ public class SecondPuzzle implements Screen{
 			
 			case "north":
 			case "n":
-				
+				break;
 			case "south":
 			case "s":
-				
+				break;
 			case "east":
 			case "e":
-				
+				break;
 			case "west":
 			case "w":
+				break;
 			}
 			
 		} else if(currentMazePos == 7) {
@@ -338,15 +344,16 @@ public class SecondPuzzle implements Screen{
 			
 			case "north":
 			case "n":
-				
+				break;
 			case "south":
 			case "s":
-				
+				break;
 			case "east":
 			case "e":
-				
+				break;
 			case "west":
 			case "w":
+				break;
 			}
 			
 		} else if(currentMazePos == 8) {
@@ -354,15 +361,16 @@ public class SecondPuzzle implements Screen{
 			
 			case "north":
 			case "n":
-				
+				break;
 			case "south":
 			case "s":
-				
+				break;
 			case "east":
 			case "e":
-				
+				break;
 			case "west":
 			case "w":
+				break;
 			}
 			
 		} else if(currentMazePos == 9) {
@@ -370,15 +378,16 @@ public class SecondPuzzle implements Screen{
 			
 			case "north":
 			case "n":
-				
+				break;
 			case "south":
 			case "s":
-				
+				break;
 			case "east":
 			case "e":
-				
+				break;
 			case "west":
 			case "w":
+				break;
 			}
 			
 		} else if(currentMazePos == 10) {
@@ -386,15 +395,16 @@ public class SecondPuzzle implements Screen{
 			
 			case "north":
 			case "n":
-				
+				break;
 			case "south":
 			case "s":
-				
+				break;
 			case "east":
 			case "e":
-				
+				break;
 			case "west":
 			case "w":
+				break;
 			}
 			
 		} else if(currentMazePos == 11) {
@@ -402,15 +412,16 @@ public class SecondPuzzle implements Screen{
 			
 			case "north":
 			case "n":
-				
+				break;
 			case "south":
 			case "s":
-				
+				break;
 			case "east":
 			case "e":
-				
+				break;
 			case "west":
 			case "w":
+				break;
 			}
 			
 		} else if(currentMazePos == 12) {
@@ -418,15 +429,16 @@ public class SecondPuzzle implements Screen{
 			
 			case "north":
 			case "n":
-				
+				break;
 			case "south":
 			case "s":
-				
+				break;
 			case "east":
 			case "e":
-				
+				break;
 			case "west":
 			case "w":
+				break;
 			}
 		}
 		
