@@ -1,7 +1,7 @@
 package lchs.cs.hme.screens;
 
 /*
- * First (real) Puzzle
+ *Last / Fifth Puzzle
  * Author: Owen Stevnson
  */
 
@@ -55,6 +55,12 @@ public class FourthPuzzle implements Screen{
 	Texture lvl1doorOpenTex;
 	Texture lvl1Description;
 	
+	//acutal textures used
+	Texture lvl5EntranceTex;
+	Texture lvl5KeypadTex;
+	Texture lvl5ExitTex;
+	Texture lvl5OutsideTex;
+	
 	
 	// Sounds
 	Sound clickSound;
@@ -73,7 +79,7 @@ public class FourthPuzzle implements Screen{
 		this.game = game;
 		
 		// sets the initial background
-		currentBackground = "lvl1doorclosed";
+		currentBackground = "lvl5Entrance";
 	}
 	
 	// runs when the game starts (loads the assets into memory from the file)
@@ -82,10 +88,14 @@ public class FourthPuzzle implements Screen{
 	public void show() {
 		
 		//load images
-		lvl1doorClosedTex = new Texture ("images/backgrounds/leveltwo/lvl2background1.png");
-		lvl1doorOpenTex = new Texture ("images/backgrounds/leveltwo/lvl2background2.png");
 		lvl1Description = new Texture ("images/scenedescriptions/levelone.png");
-
+		
+		
+		lvl5EntranceTex = new Texture ("images/backgrounds/levelfive/bg1.png");
+		lvl5KeypadTex = new Texture("images/backgrounds/levelfive/bg2.png");
+		lvl5ExitTex = new Texture("images/backgrounds/levelfive/bg3.png");
+		lvl5OutsideTex = new Texture("images/backgrounds/levelfive/bg4.png");
+		
 		compassNorth = new Texture ("images/compass/compass-north.gif");
 		compassSouth = new Texture ("images/compass/compass-south.gif");
 		compassWest = new Texture ("images/compass/compass-west.gif");
@@ -98,8 +108,15 @@ public class FourthPuzzle implements Screen{
 		victorySound = Gdx.audio.newSound(Gdx.files.internal("sounds/victorymusic.wav"));
 		puzzleClearSound = Gdx.audio.newSound(Gdx.files.internal("sounds/puzzleclear.wav"));
 		
-		//start music
-		TutorialPuzzle.puzzleMusic.play();
+		
+		/*
+		lvl5EntranceTex
+		lvl5KeypadTex
+		lvl5ExitTex
+		lvl5OutsideTex
+		*/
+		
+
 	}
 
 	/*
@@ -152,29 +169,37 @@ public class FourthPuzzle implements Screen{
 			case "none":
 				break;
 			
-			//opens the door
-			case "use lever":
-				//opens the door if it is still closed
-				if (currentBackground == "lvl1doorclosed") {
-					pistonDoorSound.play(1.0f);
-					currentBackground = "lvl1dooropen";
-					TextInput.currentCommand = "none";
-				}
-				break;
-			//goes through the door
+
+		    //level's puzzle commands
+				
+			
 			case "north":
 			case "n":
-				//goes through the door only if it is open
-				if (currentBackground == "lvl1dooropen") {
+				//goes to puzzle completing area
+				if (currentBackground == "lvl5Entrance") {
+					currentBackground = "lvl5Keypad";
 					TextInput.currentCommand = "none";
-					TutorialPuzzle.puzzleMusic.pause();
-					puzzleClearSound.play();
-					isComplete = true;
-				} else {
-					badCommandSound.play();
+				}
+				
+				//goes outside after finishing puzzle
+				else if (currentBackground == "lvl5Exit") {
+					currentBackground = "Outside";
+					TextInput.currentCommand = "none";
+				}
+				
+				break;
+			
+			//complete's puzzle
+			case "1234":
+				if (currentBackground == "lvl5Keypad") {
+					currentBackground = "lvl5Exit";
 					TextInput.currentCommand = "none";
 				}
 				break;
+			
+
+		
+			
 			//runs if the player enters an invalid command
 			default:
 				badCommandSound.play();
@@ -218,12 +243,22 @@ public class FourthPuzzle implements Screen{
 		 */
 		switch (currentBackground) {
 			//at the beginning of the level
-			case "lvl1doorclosed":
-				game.batch.draw(lvl1doorClosedTex, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+			case "lvl5Entrance":
+				game.batch.draw(lvl5EntranceTex, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
 				break;
-			//after the player types "use lever"
-			case "lvl1dooropen":
-				game.batch.draw(lvl1doorOpenTex, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+
+			//after player walks to keypad
+			case "lvl5Keypad":
+				game.batch.draw(lvl5KeypadTex, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+				break;
+			
+			//after riddle is solved
+			case "lvl5Exit":
+				game.batch.draw(lvl5ExitTex, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+				break;
+			//outside screen
+			case "Outside":
+				game.batch.draw(lvl5OutsideTex, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
 				break;
 		}
 
@@ -259,6 +294,11 @@ public class FourthPuzzle implements Screen{
 		lvl1doorClosedTex.dispose();
 		lvl1doorOpenTex.dispose();
 		lvl1Description.dispose();
+		
+		lvl5EntranceTex.dispose();
+		lvl5KeypadTex.dispose();
+		lvl5ExitTex.dispose();
+		lvl5OutsideTex.dispose();
 		
 		//dispose audio
 		pistonDoorSound.dispose();
