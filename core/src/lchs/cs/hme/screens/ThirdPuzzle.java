@@ -51,6 +51,7 @@ public class ThirdPuzzle implements Screen{
 	Texture compassWest;
 	Texture compassEast;
 	
+	// TODO
 	Texture lvl1Description;
 	
 	Texture bg1;
@@ -70,6 +71,7 @@ public class ThirdPuzzle implements Screen{
 	// Sounds
 	Sound clickSound;
 	Sound badCommandSound;
+	// TODO
 	Sound pistonDoorSound;
 	Sound puzzleClearSound;
 	Sound victorySound;
@@ -84,6 +86,7 @@ public class ThirdPuzzle implements Screen{
 		this.game = game;
 		
 		// sets the initial background
+		// TODO
 		currentBackground = "lvl1doorclosed";
 	}
 	

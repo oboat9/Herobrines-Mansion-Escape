@@ -51,8 +51,7 @@ public class FourthPuzzle implements Screen{
 	Texture compassWest;
 	Texture compassEast;
 
-	Texture lvl1doorClosedTex;
-	Texture lvl1doorOpenTex;
+	// TODO
 	Texture lvl1Description;
 	
 	//acutal textures used
@@ -65,6 +64,7 @@ public class FourthPuzzle implements Screen{
 	// Sounds
 	Sound clickSound;
 	Sound badCommandSound;
+	// TODO
 	Sound pistonDoorSound;
 	Sound puzzleClearSound;
 	Sound victorySound;
@@ -291,8 +291,6 @@ public class FourthPuzzle implements Screen{
 	@Override
 	public void dispose() {
 		//dispose textures
-		lvl1doorClosedTex.dispose();
-		lvl1doorOpenTex.dispose();
 		lvl1Description.dispose();
 		
 		lvl5EntranceTex.dispose();

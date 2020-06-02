@@ -60,11 +60,13 @@ public class SecondPuzzle implements Screen{
 	Texture bg7;
 	Texture bgblack;
 	
+	// TODO
 	Texture lvl1Description;
 	
 	// Sounds
 	Sound clickSound;
 	Sound badCommandSound;
+	// TODO
 	Sound pistonDoorSound;
 	Sound puzzleClearSound;
 	Sound victorySound;
@@ -156,7 +158,7 @@ public class SecondPuzzle implements Screen{
 		
 		// text input handling
 		switch(TextInput.getText()) {
-			//opens the obervation text
+			//opens the observation text
 			case "look":
 			case "l":
 				isObserving = true;
@@ -167,46 +169,54 @@ public class SecondPuzzle implements Screen{
 			case "none":
 				break;
 			
-			//opens the door
+
 			case "use lever":
-				//opens the door if it is still closed
+
 				if (currentBackground == "lvl1doorclosed") {
 					pistonDoorSound.play(1.0f);
 					currentBackground = "lvl1dooropen";
 					TextInput.currentCommand = "none";
 				}
 				break;
-			//goes through the door
+				
+
 			case "north":
 			case "n":
 				break;
+				
 			case "south":
 			case "s":
 				if(currentBackground.equals("bg3")) {
 					TextInput.currentCommand = "none";
 					currentBackground = "bg4";
+					
 				} else if (currentBackground.equals("bg4")){
 					TextInput.currentCommand = "none";
 					currentBackground = "bgblack";
+					
 				} else {
 					badCommandSound.play();
 					TextInput.currentCommand = "none";
 				}
 				break;
+				
 			case "east":
 			case "e":
 				if(currentBackground.equals("bg1")) {
 					TextInput.currentCommand = "none";
 					currentBackground = "bg2";
-				} else if(currentBackground.equals("bg2")){
+					
+				} else if(currentBackground.equals("bg2")) {
 					TextInput.currentCommand = "none";
 					facing = "south";
 					currentBackground = "bg3";
+					
 				} else {
 					badCommandSound.play();
 					TextInput.currentCommand = "none";
 				}
 				break;
+				
 			case "west":
 			case "w":
 				break;
@@ -216,10 +226,11 @@ public class SecondPuzzle implements Screen{
 				badCommandSound.play();
 				TextInput.currentCommand = "none";
 				break;
+				
 		}// CLOSES TEXT INPUT
 		
 		
-		// runs if the user goes through the open door
+
 		if(isComplete) {
 			winChimeWaiter += Gdx.graphics.getDeltaTime();			
 		}
@@ -285,6 +296,7 @@ public class SecondPuzzle implements Screen{
 			case "bgblack":
 				game.batch.draw(bgblack, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
 				break;
+				
 			default:
 				game.setScreen(new LoadingScreen(game,"crash"));
 				break;
@@ -320,6 +332,19 @@ public class SecondPuzzle implements Screen{
 	 */
 	@Override
 	public void dispose() {
+		bg1.dispose();
+		bg2.dispose();
+		bg3.dispose();
+		bg4.dispose();
+		bg5.dispose();
+		bg6.dispose();
+		bg7.dispose();
+		bgblack.dispose();
+		
+		compassNorth.dispose();
+		compassSouth.dispose();
+		compassEast.dispose();
+		compassWest.dispose();
 		//dispose textures
 		lvl1Description.dispose();
 		
