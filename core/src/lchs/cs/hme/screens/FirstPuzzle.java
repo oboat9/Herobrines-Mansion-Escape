@@ -51,8 +51,12 @@ public class FirstPuzzle implements Screen{
 	Texture compassWest;
 	Texture compassEast;
 	
-	Texture lvl1doorClosedTex;
-	Texture lvl1doorOpenTex;
+	Texture bg1;
+	Texture bg2;
+	Texture bg3;
+	Texture bg4;
+	Texture bg5;
+	Texture bg6;
 	Texture lvl1Description;
 	
 	// Sounds
@@ -72,7 +76,7 @@ public class FirstPuzzle implements Screen{
 		this.game = game;
 		
 		// sets the initial background
-		currentBackground = "lvl1doorclosed";
+		currentBackground = "bg1";
 	}
 	
 	// runs when the game starts (loads the assets into memory from the file)
@@ -81,8 +85,13 @@ public class FirstPuzzle implements Screen{
 	public void show() {
 		
 		//load images
-		lvl1doorClosedTex = new Texture ("images/backgrounds/leveltwo/lvl2background1.png");
-		lvl1doorOpenTex = new Texture ("images/backgrounds/leveltwo/lvl2background2.png");
+		bg1 = new Texture ("images/backgrounds/leveltwo/bg1.png");
+		bg2 = new Texture ("images/backgrounds/leveltwo/bg2.png");
+		bg3 = new Texture ("images/backgrounds/leveltwo/bg3.png");
+		bg4 = new Texture ("images/backgrounds/leveltwo/bg4.png");
+		bg5 = new Texture ("images/backgrounds/leveltwo/bg5.png");
+		bg6 = new Texture ("images/backgrounds/leveltwo/bg6.png");
+		
 		lvl1Description = new Texture ("images/scenedescriptions/levelone.png");
 		
 		compassNorth = new Texture ("images/compass/compass-north.gif");
@@ -161,10 +170,10 @@ public class FirstPuzzle implements Screen{
 				}
 				break;
 			//goes through the door
-			case "north":
-			case "n":
+			case "west":
+			case "w":
 				//goes through the door only if it is open
-				if (currentBackground == "lvl1dooropen") {
+				if (currentBackground == "bg1") {
 					TextInput.currentCommand = "none";
 					TutorialPuzzle.puzzleMusic.pause();
 					puzzleClearSound.play();
@@ -217,17 +226,42 @@ public class FirstPuzzle implements Screen{
 		 */
 		switch (currentBackground) {
 			//at the beginning of the level
-			case "lvl1doorclosed":
-				game.batch.draw(lvl1doorClosedTex, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+			case "bg1":
+				game.batch.draw(bg1, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
 				break;
 			//after the player types "use lever"
-			case "lvl1dooropen":
-				game.batch.draw(lvl1doorOpenTex, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+			case "bg2":
+				game.batch.draw(bg2, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+				break;
+				//after the player types "use lever"
+			case "bg3":
+				game.batch.draw(bg3, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+				break;
+				//after the player types "use lever"
+			case "bg4":
+				game.batch.draw(bg4, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+				break;
+				//after the player types "use lever"
+			case "bg5":
+				game.batch.draw(bg5, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+				break;
+				//after the player types "use lever"
+			case "bg6":
+				game.batch.draw(bg6, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
 				break;
 		}
 		
 		if(facing.equals("north")) {
 			game.batch.draw(compassNorth, (HerobrineEscape.WIDTH-160), HerobrineEscape.HEIGHT-160, 160, 160);
+		}
+		if(facing.equals("south")) {
+			game.batch.draw(compassSouth, (HerobrineEscape.WIDTH-160), HerobrineEscape.HEIGHT-160, 160, 160);
+		}
+		if(facing.equals("west")) {
+			game.batch.draw(compassWest, (HerobrineEscape.WIDTH-160), HerobrineEscape.HEIGHT-160, 160, 160);
+		}
+		if(facing.equals("east")) {
+			game.batch.draw(compassEast, (HerobrineEscape.WIDTH-160), HerobrineEscape.HEIGHT-160, 160, 160);
 		}
 		
 		//if the observation text is supposed to be open it renders it
@@ -248,8 +282,8 @@ public class FirstPuzzle implements Screen{
 	@Override
 	public void dispose() {
 		//dispose textures
-		lvl1doorClosedTex.dispose();
-		lvl1doorOpenTex.dispose();
+		bg1.dispose();
+		bg2.dispose();
 		lvl1Description.dispose();
 		
 		//dispose audio
