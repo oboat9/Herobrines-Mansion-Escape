@@ -22,8 +22,8 @@ public class FirstPuzzle implements Screen{
 	 */
 	
 	// the obervation text size (in pixels)
-	private final int OBSERVEWIDTH = 600;
-	private final int OBSERVEHEIGHT = 100;
+	private final int OBSERVEWIDTH = 1280;
+	private final int OBSERVEHEIGHT = 720;
 	
 	// starts the game with you looking at the observation text
 	boolean isObserving = true;
