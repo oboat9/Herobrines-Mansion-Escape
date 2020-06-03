@@ -36,7 +36,8 @@ public class ThirdPuzzle implements Screen{
 	double colorTimer = 0;
 	
 	//allows incrementing through colours via index++
-	String[] colorBackgrounds = {"bgwhite","bgred", "bgcyan", "bgpink", "bgpurple", "bgorange", "bggreen"}; 
+	String[] colorBackgrounds = {"","bgwhite", "bgred", "bgcyan", "bgpink", "bgpurple", "bgorange", "bggreen", "bgafter"}; 
+	int colorBackgroundsIndex = 0;
 	
 	String facing = "north";
 	
@@ -111,6 +112,7 @@ public class ThirdPuzzle implements Screen{
 		bg5 = new Texture ("images/backgrounds/levelfour/bg5.png");
 		bg6 = new Texture ("images/backgrounds/levelfour/bg6.png");
 		bg7 = new Texture ("images/backgrounds/levelfour/bg7.png");
+		
 		
 		lvl1Description = new Texture ("images/scenedescriptions/levelone.png");
 
@@ -198,7 +200,8 @@ public class ThirdPuzzle implements Screen{
 					currentBackground = "PuzzleOverview";
 					TextInput.currentCommand = "none";
 				} else if(currentBackground.equals("PuzzleOverview")) {
-					
+					currentBackground = "bgwhite";
+					TextInput.currentCommand = "none";
 				}
 				//exit opens
 				else if (currentBackground.equals("PuzzleSolved")) {
@@ -236,6 +239,18 @@ public class ThirdPuzzle implements Screen{
 				break;
 		}// CLOSES TEXT INPUT
 		
+		
+		if(currentBackground.equals("bgwhite") || currentBackground.equals("bgred") || currentBackground.equals("bgcyan") || currentBackground.equals("bgpink") || currentBackground.equals("bgpurple") || currentBackground.equals("bgorange") || currentBackground.equals("bgpink")) 
+		{
+			colorTimer += Gdx.graphics.getDeltaTime();
+			
+			if ((colorTimer > 1) && !(colorBackgroundsIndex >= 8)) {
+				colorTimer = 0;
+				colorBackgroundsIndex++;
+			} else if (colorBackgroundsIndex > 8){
+				currentBackground = "bgafter";
+			}
+		}
 		
 		// runs if the user goes through the open door
 		if(isComplete) {
@@ -279,35 +294,6 @@ public class ThirdPuzzle implements Screen{
 			case "PuzzleOverview":
 				game.batch.draw(bg2, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
 				break;
-				
-			//puzzle wall colours
-				
-			case "bgcyan":
-				game.batch.draw(bgcyan, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
-				break;	
-			case "bggreen":
-				game.batch.draw(bggreen, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
-				break;	
-			case "bgorange":
-				game.batch.draw(bgorange, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
-				break;	
-			case "bgpink":
-				game.batch.draw(bgpink, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
-				break;	
-			case "bgpurple":
-				game.batch.draw(bgpurple, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
-				break;	
-			case "bgred":
-				game.batch.draw(bgred, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
-				break;	
-			case "bgwhite":
-				game.batch.draw(bgwhite, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
-				break;	
-				
-				
-				
-			
-				
 			//after player solved puzzle
 			case "PuzzleSolved":
 				game.batch.draw(bg4, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
@@ -324,7 +310,41 @@ public class ThirdPuzzle implements Screen{
 			case "ExitElevator":
 				game.batch.draw(bg7, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
 				break;
+			default:
+				game.batch.draw(bgwhite, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+				//System.err.println("this probably should be happening (blackscreen waiting)");
+				break;
 		}
+		
+		switch(colorBackgrounds[colorBackgroundsIndex]) {
+		//puzzle wall colours
+			
+		case "bgcyan":
+			game.batch.draw(bgcyan, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+			break;	
+		case "bggreen":
+			game.batch.draw(bggreen, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+			break;	
+		case "bgorange":
+			game.batch.draw(bgorange, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+			break;	
+		case "bgpink":
+			game.batch.draw(bgpink, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+			break;	
+		case "bgpurple":
+			game.batch.draw(bgpurple, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+			break;	
+		case "bgred":
+			game.batch.draw(bgred, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+			break;	
+		case "bgwhite":
+			game.batch.draw(bgwhite, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+			break;	
+		case "bgafter":
+			game.batch.draw(bgwhite, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+		default:
+			break;
+	}
 
 		if(facing.equals("north")) {
 			game.batch.draw(compassNorth, (HerobrineEscape.WIDTH-160), HerobrineEscape.HEIGHT-160, 160, 160);
@@ -346,6 +366,8 @@ public class ThirdPuzzle implements Screen{
 		
 		// stop drawing things to the screen
 		game.batch.end();
+		
+		System.out.println("rendering background: " + currentBackground);
 		
 	}
 	
