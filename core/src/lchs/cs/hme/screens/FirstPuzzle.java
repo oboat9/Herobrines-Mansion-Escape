@@ -27,6 +27,7 @@ public class FirstPuzzle implements Screen{
 	
 	// starts the game with you looking at the observation text
 	boolean isObserving = true;
+	String currentObservations = "P2S1";
 	
 	// turns to true when the player solves the puzzle
 	boolean isComplete = false;
@@ -64,6 +65,7 @@ public class FirstPuzzle implements Screen{
 	Texture bg6;
 	Texture bg7;
 	Texture P2S1;
+	Texture P2S2;
 	
 	// Sounds
 	Sound clickSound;
@@ -100,6 +102,7 @@ public class FirstPuzzle implements Screen{
 		bg7 = new Texture ("images/backgrounds/leveltwo/bg7.png");
 		
 		P2S1 = new Texture ("images/scenedescriptions/secondlevel/P2S1.png");
+		P2S2 = new Texture ("images/scenedescriptions/secondlevel/P2S2.png");
 		
 		compassNorth = new Texture ("images/compass/compass-north.gif");
 		compassSouth = new Texture ("images/compass/compass-south.gif");
@@ -336,6 +339,7 @@ public class FirstPuzzle implements Screen{
 				break;
 				//after the player types "use lever"
 			case "bg3":
+				currentObservations = "P2S2";
 				game.batch.draw(bg3, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
 				break;
 				//after the player types "use lever"
@@ -377,7 +381,14 @@ public class FirstPuzzle implements Screen{
 		
 		//if the observation text is supposed to be open it renders it
 		if (isObserving) {
-			game.batch.draw(P2S1, (HerobrineEscape.WIDTH/2)-(OBSERVEWIDTH/2), HerobrineEscape.HEIGHT/2-(OBSERVEHEIGHT/2), OBSERVEWIDTH, OBSERVEHEIGHT);					
+			switch(currentObservations) {
+				case "P2S1":
+					game.batch.draw(P2S1, (HerobrineEscape.WIDTH/2)-(OBSERVEWIDTH/2), HerobrineEscape.HEIGHT/2-(OBSERVEHEIGHT/2), OBSERVEWIDTH, OBSERVEHEIGHT);					
+					break;
+				case "P2S2":
+					game.batch.draw(P2S2, (HerobrineEscape.WIDTH/2)-(OBSERVEWIDTH/2), HerobrineEscape.HEIGHT/2-(OBSERVEHEIGHT/2), OBSERVEWIDTH, OBSERVEHEIGHT);					
+					break;
+			}
 		}
 		
 		
