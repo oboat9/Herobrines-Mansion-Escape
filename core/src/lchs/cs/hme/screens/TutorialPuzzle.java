@@ -168,7 +168,6 @@ public class TutorialPuzzle implements Screen{
 				if (currentBackground.equals("lvl1doorclosed")) {
 					pistonDoorSound.play(1.0f);
 					currentBackground = "lvl1dooropen";
-					currentObservations = "P1S2";
 					isObserving = true;
 					TextInput.currentCommand = "none";
 				}
@@ -231,10 +230,12 @@ public class TutorialPuzzle implements Screen{
 		switch (currentBackground) {
 			//at the beginning of the level
 			case "lvl1doorclosed":
+				currentObservations = "P1S1";
 				game.batch.draw(lvl1doorClosedTex, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
 				break;
 			//after the player types "use lever"
 			case "lvl1dooropen":
+				currentObservations = "P1S2";
 				game.batch.draw(lvl1doorOpenTex, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
 				break;
 		}
