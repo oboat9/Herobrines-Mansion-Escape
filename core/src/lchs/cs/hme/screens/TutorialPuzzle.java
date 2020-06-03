@@ -29,6 +29,7 @@ public class TutorialPuzzle implements Screen{
 	
 	// starts the game with you looking at the observation text
 	boolean isObserving = true;
+	String currentObservations = "P1S1";
 	
 	// turns to true when the player solves the puzzle
 	boolean isComplete = false;
@@ -55,7 +56,8 @@ public class TutorialPuzzle implements Screen{
 	
 	Texture lvl1doorClosedTex;
 	Texture lvl1doorOpenTex;
-	Texture p1s1Desc;
+	Texture p1s1;
+	Texture p1s2;
 	
 	// Sounds
 	Sound clickSound;
@@ -88,7 +90,8 @@ public class TutorialPuzzle implements Screen{
 		//load images
 		lvl1doorClosedTex = new Texture ("images/backgrounds/levelone/doorclosed.png");
 		lvl1doorOpenTex = new Texture ("images/backgrounds/levelone/dooropen.png");
-		p1s1Desc = new Texture ("images/scenedescriptions/firstlevel/P1S1.png");
+		p1s1 = new Texture ("images/scenedescriptions/firstlevel/P1S1.png");
+		p1s2 = new Texture ("images/scenedescriptions/firstlevel/P1S2.png");
 		
 		compassNorth = new Texture ("images/compass/compass-north.gif");
 		compassSouth = new Texture ("images/compass/compass-south.gif");
@@ -165,6 +168,8 @@ public class TutorialPuzzle implements Screen{
 				if (currentBackground.equals("lvl1doorclosed")) {
 					pistonDoorSound.play(1.0f);
 					currentBackground = "lvl1dooropen";
+					currentObservations = "P1S2";
+					isObserving = true;
 					TextInput.currentCommand = "none";
 				}
 				break;
@@ -249,7 +254,14 @@ public class TutorialPuzzle implements Screen{
 		
 		//if the observation text is supposed to be open it renders it
 		if (isObserving) {
-			game.batch.draw(p1s1Desc, (HerobrineEscape.WIDTH/2)-(OBSERVEWIDTH/2), HerobrineEscape.HEIGHT/2-(OBSERVEHEIGHT/2), OBSERVEWIDTH, OBSERVEHEIGHT);					
+			switch(currentObservations) {
+			case "P1S1":
+				game.batch.draw(p1s1, (HerobrineEscape.WIDTH/2)-(OBSERVEWIDTH/2), HerobrineEscape.HEIGHT/2-(OBSERVEHEIGHT/2), OBSERVEWIDTH, OBSERVEHEIGHT);									
+				break;
+			case "P1S2":
+				game.batch.draw(p1s2, (HerobrineEscape.WIDTH/2)-(OBSERVEWIDTH/2), HerobrineEscape.HEIGHT/2-(OBSERVEHEIGHT/2), OBSERVEWIDTH, OBSERVEHEIGHT);									
+				break;
+			}
 		}
 		
 		// stop drawing things to the screen
@@ -265,7 +277,7 @@ public class TutorialPuzzle implements Screen{
 		//dispose textures
 		lvl1doorClosedTex.dispose();
 		lvl1doorOpenTex.dispose();
-		p1s1Desc.dispose();
+		p1s1.dispose();
 		
 		//dispose audio
 		//puzzleMusic.dispose();
