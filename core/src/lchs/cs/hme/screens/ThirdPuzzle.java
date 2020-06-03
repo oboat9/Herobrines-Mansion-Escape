@@ -33,6 +33,11 @@ public class ThirdPuzzle implements Screen{
 	//a timer to wait the puzzle complete chime to finish before going to the next scene
 	double winChimeWaiter = 0;
 	
+	double colorTimer = 0;
+	
+	//allows incrementing through colours via index++
+	String[] colorBackgrounds = {"bgwhite","bgred", "bgcyan", "bgpink", "bgpurple", "bgorange", "bggreen"}; 
+	
 	String facing = "north";
 	
 	/*
@@ -277,25 +282,25 @@ public class ThirdPuzzle implements Screen{
 				
 			//puzzle wall colours
 				
-			case "CyanWall":
+			case "bgcyan":
 				game.batch.draw(bgcyan, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
 				break;	
-			case "GreenWall":
+			case "bggreen":
 				game.batch.draw(bggreen, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
 				break;	
-			case "OrangeWall":
+			case "bgorange":
 				game.batch.draw(bgorange, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
 				break;	
-			case "PinkWall":
+			case "bgpink":
 				game.batch.draw(bgpink, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
 				break;	
-			case "PurpleWall":
+			case "bgpurple":
 				game.batch.draw(bgpurple, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
 				break;	
-			case "RedWall":
+			case "bgred":
 				game.batch.draw(bgred, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
 				break;	
-			case "WhiteWall":
+			case "bgwhite":
 				game.batch.draw(bgwhite, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
 				break;	
 				
