@@ -173,6 +173,11 @@ public class FirstPuzzle implements Screen{
 				
 			case "use stone":
 			case "use blocks":
+			case "pickup stone":
+			case "pickup blocks":
+			case "break stone":
+			case "break blocks":
+				
 				if(currentBackground.equals("bg4")) {
 					hasStone = true;
 					currentBackground = "bg7";
@@ -191,6 +196,9 @@ public class FirstPuzzle implements Screen{
 			//opens the door
 			case "use bridge":
 			case "build bridge":
+			case "repair bridge":
+			case "fix bridge":
+			
 
 				if ((currentBackground == "bg3") && (hasStone == true)) {
 					bridgeBuilt = true;
