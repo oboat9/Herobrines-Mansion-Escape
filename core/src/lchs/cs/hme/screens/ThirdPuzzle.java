@@ -37,7 +37,13 @@ public class ThirdPuzzle implements Screen{
 	
 	//allows incrementing through colours via index++
 	String[] colorBackgrounds = {"","bgwhite", "bgred", "bgcyan", "bgpink", "bgpurple", "bgorange", "bggreen", "bgafter"}; 
+	String[] correctColorSequence = {"red", "cyan", "pink", "purple", "orange", "green"};
+	
+	int colorSequenceInputIndex = 0;
 	int colorBackgroundsIndex = 0;
+	boolean colorHasPlayed = false;
+	
+	boolean colorComplete = false;
 	
 	String facing = "north";
 	
@@ -170,6 +176,7 @@ public class ThirdPuzzle implements Screen{
 		}
 		
 		// text input handling
+		if((!(currentBackground.equals("bgafter"))) && (!(currentBackground.equals("bgwhite")))){
 		switch(TextInput.getText()) {
 			//opens the obervation text
 			case "look":
@@ -238,7 +245,7 @@ public class ThirdPuzzle implements Screen{
 				TextInput.currentCommand = "none";
 				break;
 		}// CLOSES TEXT INPUT
-		
+		}
 		
 		if(currentBackground.equals("bgwhite") || currentBackground.equals("bgred") || currentBackground.equals("bgcyan") || currentBackground.equals("bgpink") || currentBackground.equals("bgpurple") || currentBackground.equals("bgorange") || currentBackground.equals("bgpink")) 
 		{
@@ -247,8 +254,30 @@ public class ThirdPuzzle implements Screen{
 			if ((colorTimer > 1) && !(colorBackgroundsIndex >= 8)) {
 				colorTimer = 0;
 				colorBackgroundsIndex++;
-			} else if (colorBackgroundsIndex > 8){
+			} else if (colorBackgroundsIndex >= 8){
 				currentBackground = "bgafter";
+				colorHasPlayed = true;
+				System.out.println("bgafter triggered");
+			}
+		}
+		
+		if(colorHasPlayed && (currentBackground.equals("bgafter") || currentBackground.equals("bgwhite"))) {
+			System.out.println("you what this means");
+			if(TextInput.getText().equals(correctColorSequence[colorSequenceInputIndex])) {
+				System.out.println("now what does this mean: "+ TextInput.currentCommand);
+				if(colorSequenceInputIndex >= 5) {
+					currentBackground = "PuzzleSolved";
+				}
+				colorBackgroundsIndex = 0;
+				System.out.println("color sequence input index get: " + colorSequenceInputIndex);
+				TextInput.currentCommand = "none";
+				colorSequenceInputIndex++;
+			} else if (!(TextInput.getText().equals("none"))) {
+				colorSequenceInputIndex = 0;
+				TextInput.currentCommand = "none";
+				badCommandSound.play();
+			} else {
+				
 			}
 		}
 		
