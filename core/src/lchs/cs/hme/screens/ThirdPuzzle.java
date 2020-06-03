@@ -27,6 +27,7 @@ public class ThirdPuzzle implements Screen{
 	
 	// starts the game with you looking at the observation text
 	boolean isObserving = true;
+	String currentObservations = "P4S1";
 	
 	// turns to true when the player solves the puzzle
 	boolean isComplete = false;
@@ -63,7 +64,12 @@ public class ThirdPuzzle implements Screen{
 	Texture compassWest;
 	Texture compassEast;
 	
-	Texture lvl1Description;
+	Texture P4S1;
+	Texture P4S2;
+	Texture P4S3;
+	Texture P4S4;
+	Texture P4S5;
+	Texture P4S6;
 	
 	Texture bg1;
 	Texture bg2;
@@ -120,7 +126,12 @@ public class ThirdPuzzle implements Screen{
 		bg7 = new Texture ("images/backgrounds/levelfour/bg7.png");
 		
 		
-		lvl1Description = new Texture ("images/scenedescriptions/levelone.png");
+		P4S1 = new Texture ("images/scenedescriptions/fourthlevel/P4S1.png");
+		P4S2 = new Texture ("images/scenedescriptions/fourthlevel/P4S2.png");
+		P4S3 = new Texture ("images/scenedescriptions/fourthlevel/P4S3.png");
+		P4S4 = new Texture ("images/scenedescriptions/fourthlevel/P4S4.png");
+		P4S5 = new Texture ("images/scenedescriptions/fourthlevel/P4S5.png");
+		P4S6 = new Texture ("images/scenedescriptions/fourthlevel/P4S6.png");
 
 		compassNorth = new Texture ("images/compass/compass-north.gif");
 		compassSouth = new Texture ("images/compass/compass-south.gif");
@@ -224,6 +235,9 @@ public class ThirdPuzzle implements Screen{
 				}
 				//moving towards elevator
 				else if (currentBackground.equals("ExitTunnel")) {
+					TutorialPuzzle.puzzleMusic.pause();
+					puzzleClearSound.play();
+					isComplete = true;
 					currentBackground = "ExitElevator";
 					TextInput.currentCommand = "none";
 					
@@ -317,26 +331,32 @@ public class ThirdPuzzle implements Screen{
 		switch (currentBackground) {
 			//at the beginning of the level
 			case "Entrance":
+				currentObservations = "P4S1";
 				game.batch.draw(bg1, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
 				break;
 			//after player walks to overview of puzzle (second pic)
 			case "PuzzleOverview":
+				currentObservations = "P4S2";
 				game.batch.draw(bg2, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
 				break;
 			//after player solved puzzle
 			case "PuzzleSolved":
+				currentObservations = "P4S4";
 				game.batch.draw(bg4, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
 				break;
 			//player walks to exit
 			case "PuzzleExit":
+				currentObservations = "P4S5";
 				game.batch.draw(bg5, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
 				break;
 			//after goes into exit hole
 			case "ExitTunnel":
+				currentObservations = "P4S6";
 				game.batch.draw(bg6, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
 				break;
 			//after goes into exit hole
 			case "ExitElevator":
+				currentObservations = "none";
 				game.batch.draw(bg7, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
 				break;
 			default:
@@ -390,7 +410,26 @@ public class ThirdPuzzle implements Screen{
 		
 		//if the observation text is supposed to be open it renders it
 		if (isObserving) {
-			game.batch.draw(lvl1Description, (HerobrineEscape.WIDTH/2)-(OBSERVEWIDTH/2), HerobrineEscape.HEIGHT/2-(OBSERVEHEIGHT/2), OBSERVEWIDTH, OBSERVEHEIGHT);					
+			switch(currentObservations) {
+				case "P4S1":
+					game.batch.draw(P4S1, (HerobrineEscape.WIDTH/2)-(OBSERVEWIDTH/2), HerobrineEscape.HEIGHT/2-(OBSERVEHEIGHT/2), OBSERVEWIDTH, OBSERVEHEIGHT);					
+					break;
+				case "P4S2":
+					game.batch.draw(P4S2, (HerobrineEscape.WIDTH/2)-(OBSERVEWIDTH/2), HerobrineEscape.HEIGHT/2-(OBSERVEHEIGHT/2), OBSERVEWIDTH, OBSERVEHEIGHT);					
+					break;
+				case "P4S3":
+					game.batch.draw(P4S3, (HerobrineEscape.WIDTH/2)-(OBSERVEWIDTH/2), HerobrineEscape.HEIGHT/2-(OBSERVEHEIGHT/2), OBSERVEWIDTH, OBSERVEHEIGHT);					
+					break;
+				case "P4S4":
+					game.batch.draw(P4S4, (HerobrineEscape.WIDTH/2)-(OBSERVEWIDTH/2), HerobrineEscape.HEIGHT/2-(OBSERVEHEIGHT/2), OBSERVEWIDTH, OBSERVEHEIGHT);					
+					break;
+				case "P4S5":
+					game.batch.draw(P4S5, (HerobrineEscape.WIDTH/2)-(OBSERVEWIDTH/2), HerobrineEscape.HEIGHT/2-(OBSERVEHEIGHT/2), OBSERVEWIDTH, OBSERVEHEIGHT);					
+					break;
+				case "P4S6":
+					game.batch.draw(P4S6, (HerobrineEscape.WIDTH/2)-(OBSERVEWIDTH/2), HerobrineEscape.HEIGHT/2-(OBSERVEHEIGHT/2), OBSERVEWIDTH, OBSERVEHEIGHT);					
+					break;
+			}
 		}
 		
 		// stop drawing things to the screen
@@ -406,7 +445,7 @@ public class ThirdPuzzle implements Screen{
 	@Override
 	public void dispose() {
 		//dispose textures
-		lvl1Description.dispose();
+		P4S1.dispose();
 		
 		//dispose audio
 		pistonDoorSound.dispose();
