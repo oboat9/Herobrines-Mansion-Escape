@@ -107,7 +107,7 @@ public class FirstPuzzle implements Screen{
 		compassEast = new Texture ("images/compass/compass-east.gif");
 		
 		//load sound
-		walkSound = Gdx.audio.newSound(Gdx.files.internal("sounds/walksound.wav"));
+		walkSound = Gdx.audio.newSound(Gdx.files.internal("sounds/walkstone.wav"));
 		clickSound = Gdx.audio.newSound(Gdx.files.internal("sounds/buttonclick.wav"));
 		badCommandSound = Gdx.audio.newSound(Gdx.files.internal("sounds/badcommand.wav"));
 		victorySound = Gdx.audio.newSound(Gdx.files.internal("sounds/victorymusic.wav"));
