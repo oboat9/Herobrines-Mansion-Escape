@@ -70,7 +70,7 @@ public class SecondPuzzle implements Screen{
 	Sound clickSound;
 	Sound badCommandSound;
 	// TODO
-	Sound pistonDoorSound;
+	Sound walkSound;
 	Sound puzzleClearSound;
 	Sound victorySound;
 	
@@ -113,7 +113,7 @@ public class SecondPuzzle implements Screen{
 		compassEast = new Texture ("images/compass/compass-east.gif");
 		
 		//load sound
-		pistonDoorSound = Gdx.audio.newSound(Gdx.files.internal("sounds/pistondoor.wav"));
+		walkSound = Gdx.audio.newSound(Gdx.files.internal("sounds/walkstone.wav"));
 		clickSound = Gdx.audio.newSound(Gdx.files.internal("sounds/buttonclick.wav"));
 		badCommandSound = Gdx.audio.newSound(Gdx.files.internal("sounds/badcommand.wav"));
 		victorySound = Gdx.audio.newSound(Gdx.files.internal("sounds/victorymusic.wav"));
@@ -173,17 +173,6 @@ public class SecondPuzzle implements Screen{
 			//if there is no command entered
 			case "none":
 				break;
-			
-
-			case "use lever":
-
-				if (currentBackground == "lvl1doorclosed") {
-					pistonDoorSound.play(1.0f);
-					currentBackground = "lvl1dooropen";
-					TextInput.currentCommand = "none";
-				}
-				break;
-				
 
 			case "north":
 			case "n":
@@ -192,14 +181,24 @@ public class SecondPuzzle implements Screen{
 			case "south":
 			case "s":
 				if(currentBackground.equals("bg3")) {
+					walkSound.play();
 					TextInput.currentCommand = "none";
 					currentBackground = "bg4";
 					
 				} else if (currentBackground.equals("bg4")){
+					walkSound.play();
 					TextInput.currentCommand = "none";
 					currentMazePos = 1;
 					currentBackground = "bgblack";
 					
+				} else if (currentBackground.equals("bg5")) {
+					walkSound.play();
+					TextInput.currentCommand = "none";
+					currentBackground = "bg6";
+				} else if (currentBackground.equals("bg6")) {
+					walkSound.play();
+					TextInput.currentCommand = "none";
+					currentBackground = "bg7";
 				} else {
 					badCommandSound.play();
 					TextInput.currentCommand = "none";
@@ -209,10 +208,12 @@ public class SecondPuzzle implements Screen{
 			case "east":
 			case "e":
 				if(currentBackground.equals("bg1")) {
+					walkSound.play();
 					TextInput.currentCommand = "none";
 					currentBackground = "bg2";
 					
 				} else if(currentBackground.equals("bg2")) {
+					walkSound.play();
 					TextInput.currentCommand = "none";
 					facing = "south";
 					currentBackground = "bg3";
@@ -242,17 +243,9 @@ public class SecondPuzzle implements Screen{
 		if(currentMazePos == 1) {
 			switch(TextInput.getText()){
 			
-				case "north":
-				case "n":
-					break;
-				case "south":
-				case "s":
-					break;
-				case "east":
-				case "e":
-					break;
 				case "west":
 				case "w":
+					walkSound.play();
 					currentMazePos = 2;
 					TextInput.currentCommand = "none";
 					break;
@@ -266,19 +259,11 @@ public class SecondPuzzle implements Screen{
 		} else if(currentMazePos == 2) {
 			switch(TextInput.getText()){
 			
-			case "north":
-			case "n":
-				break;
 			case "south":
 			case "s":
+				walkSound.play();
 				currentMazePos = 3;
 				TextInput.currentCommand = "none";
-				break;
-			case "east":
-			case "e":
-				break;
-			case "west":
-			case "w":
 				break;
 			case "none":
 				break;
@@ -289,20 +274,12 @@ public class SecondPuzzle implements Screen{
 			}
 		} else if(currentMazePos == 3) {
 			switch(TextInput.getText()){
-			
-			case "north":
-			case "n":
-				break;
-			case "south":
-			case "s":
-				break;
+		
 			case "east":
 			case "e":
+				walkSound.play();
 				currentMazePos = 4;
 				TextInput.currentCommand = "none";
-				break;
-			case "west":
-			case "w":
 				break;
 			case "none":
 				break;
@@ -314,20 +291,12 @@ public class SecondPuzzle implements Screen{
 			
 		} else if(currentMazePos == 4) {
 			switch(TextInput.getText()){
-			
-			case "north":
-			case "n":
-				break;
+
 			case "south":
 			case "s":
+				walkSound.play();
 				currentMazePos = 5;
 				TextInput.currentCommand = "none";
-				break;
-			case "east":
-			case "e":
-				break;
-			case "west":
-			case "w":
 				break;
 			case "none":
 				break;
@@ -340,19 +309,12 @@ public class SecondPuzzle implements Screen{
 		} else if(currentMazePos == 5) {
 			switch(TextInput.getText()){
 			
-			case "north":
-			case "n":
-				break;
-			case "south":
-			case "s":
 				break;
 			case "east":
 			case "e":
+				walkSound.play();
 				currentMazePos = 6;
 				TextInput.currentCommand = "none";
-				break;
-			case "west":
-			case "w":
 				break;
 			case "none":
 				break;
@@ -367,17 +329,9 @@ public class SecondPuzzle implements Screen{
 			
 			case "north":
 			case "n":
+				walkSound.play();
 				currentMazePos = 7;
 				TextInput.currentCommand = "none";
-				break;
-			case "south":
-			case "s":
-				break;
-			case "east":
-			case "e":
-				break;
-			case "west":
-			case "w":
 				break;
 			case "none":
 				break;
@@ -390,19 +344,11 @@ public class SecondPuzzle implements Screen{
 		} else if(currentMazePos == 7) {
 			switch(TextInput.getText()){
 			
-			case "north":
-			case "n":
-				break;
-			case "south":
-			case "s":
-				break;
 			case "east":
 			case "e":
+				walkSound.play();
 				currentMazePos = 8;
 				TextInput.currentCommand = "none";
-				break;
-			case "west":
-			case "w":
 				break;
 			case "none":
 				break;
@@ -415,19 +361,11 @@ public class SecondPuzzle implements Screen{
 		} else if(currentMazePos == 8) {
 			switch(TextInput.getText()){
 			
-			case "north":
-			case "n":
-				break;
 			case "south":
 			case "s":
+				walkSound.play();
 				currentMazePos = 9;
 				TextInput.currentCommand = "none";
-				break;
-			case "east":
-			case "e":
-				break;
-			case "west":
-			case "w":
 				break;
 			case "none":
 				break;
@@ -441,16 +379,9 @@ public class SecondPuzzle implements Screen{
 			switch(TextInput.getText()){
 			
 			case "north":
-			case "n":
-				break;
-			case "south":
-			case "s":
-				break;
-			case "east":
-			case "e":
-				break;
 			case "west":
 			case "w":
+				walkSound.play();
 				currentMazePos = 10;
 				TextInput.currentCommand = "none";
 				break;
@@ -467,17 +398,9 @@ public class SecondPuzzle implements Screen{
 			
 			case "north":
 			case "n":
+				walkSound.play();
 				currentMazePos = 11;
 				TextInput.currentCommand = "none";
-				break;
-			case "south":
-			case "s":
-				break;
-			case "east":
-			case "e":
-				break;
-			case "west":
-			case "w":
 				break;
 			case "none":
 				break;
@@ -490,17 +413,9 @@ public class SecondPuzzle implements Screen{
 		} else if(currentMazePos == 11) {
 			switch(TextInput.getText()){
 			
-			case "north":
-			case "n":
-				break;
-			case "south":
-			case "s":
-				break;
-			case "east":
-			case "e":
-				break;
 			case "west":
 			case "w":
+				walkSound.play();
 				currentMazePos = 12;
 				TextInput.currentCommand = "none";
 				break;
@@ -515,20 +430,14 @@ public class SecondPuzzle implements Screen{
 		} else if(currentMazePos == 12) {
 			switch(TextInput.getText()){
 			
-			case "north":
-			case "n":
-				break;
 			case "south":
 			case "s":
+				walkSound.play();
+				currentMazePos = 0;
 				currentBackground = "bg5";
 				TextInput.currentCommand = "none";
 				break;
-			case "east":
-			case "e":
-				break;
-			case "west":
-			case "w":
-				break;
+		
 			case "none":
 				break;
 			default:
@@ -664,7 +573,7 @@ public class SecondPuzzle implements Screen{
 		lvl1Description.dispose();
 		
 		//dispose audio
-		pistonDoorSound.dispose();
+		walkSound.dispose();
 		puzzleClearSound.dispose();
 		victorySound.dispose();
 		clickSound.dispose();
