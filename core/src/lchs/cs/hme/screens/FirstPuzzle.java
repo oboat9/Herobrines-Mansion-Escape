@@ -63,7 +63,7 @@ public class FirstPuzzle implements Screen{
 	Texture bg5;
 	Texture bg6;
 	Texture bg7;
-	Texture lvl1Description;
+	Texture P2S1;
 	
 	// Sounds
 	Sound clickSound;
@@ -99,7 +99,7 @@ public class FirstPuzzle implements Screen{
 		bg6 = new Texture ("images/backgrounds/leveltwo/bg6.png");
 		bg7 = new Texture ("images/backgrounds/leveltwo/bg7.png");
 		
-		lvl1Description = new Texture ("images/scenedescriptions/levelone.png");
+		P2S1 = new Texture ("images/scenedescriptions/secondlevel/P2S1.png");
 		
 		compassNorth = new Texture ("images/compass/compass-north.gif");
 		compassSouth = new Texture ("images/compass/compass-south.gif");
@@ -377,7 +377,7 @@ public class FirstPuzzle implements Screen{
 		
 		//if the observation text is supposed to be open it renders it
 		if (isObserving) {
-			game.batch.draw(lvl1Description, (HerobrineEscape.WIDTH/2)-(OBSERVEWIDTH/2), HerobrineEscape.HEIGHT/2-(OBSERVEHEIGHT/2), OBSERVEWIDTH, OBSERVEHEIGHT);					
+			game.batch.draw(P2S1, (HerobrineEscape.WIDTH/2)-(OBSERVEWIDTH/2), HerobrineEscape.HEIGHT/2-(OBSERVEHEIGHT/2), OBSERVEWIDTH, OBSERVEHEIGHT);					
 		}
 		
 		
@@ -395,7 +395,7 @@ public class FirstPuzzle implements Screen{
 		//dispose textures
 		bg1.dispose();
 		bg2.dispose();
-		lvl1Description.dispose();
+		P2S1.dispose();
 		
 		//dispose audio
 		walkSound.dispose();
