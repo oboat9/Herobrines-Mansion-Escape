@@ -33,6 +33,11 @@ public class SecondPuzzle implements Screen{
 	//a timer to wait the puzzle complete chime to finish before going to the next scene
 	double winChimeWaiter = 0;
 	
+	
+	boolean falling = false;
+	double fallWaiter = 0;
+	boolean hasFell = false;
+	
 	String facing = "east";
 	
 	int currentMazePos = 0;
@@ -203,6 +208,7 @@ public class SecondPuzzle implements Screen{
 				} else if(currentBackground.equals("bg7")){
 					walkSound.play();
 					fallThenSplashSound.play();
+					falling = true;
 					TextInput.currentCommand = "none";
 					currentBackground = "bg8";
 					
@@ -456,6 +462,15 @@ public class SecondPuzzle implements Screen{
 		
 		
 
+		if(falling) {
+			fallWaiter += Gdx.graphics.getDeltaTime();
+		} if (fallWaiter > 2.75 && hasFell == false) {
+			hasFell = true;
+			TutorialPuzzle.puzzleMusic.pause();
+			puzzleClearSound.play();
+			isComplete = true;
+		}
+		
 		if(isComplete) {
 			winChimeWaiter += Gdx.graphics.getDeltaTime();			
 		}
