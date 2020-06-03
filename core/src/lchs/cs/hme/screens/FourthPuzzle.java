@@ -26,6 +26,7 @@ public class FourthPuzzle implements Screen{
 	
 	// starts the game with you looking at the observation text
 	boolean isObserving = true;
+	String currentObservations = "P5S1";
 	
 	// turns to true when the player solves the puzzle
 	boolean isComplete = false;
@@ -33,6 +34,7 @@ public class FourthPuzzle implements Screen{
 	double winChimeWaiter = 0;
 	
 	String facing = "west";
+	
 	
 	/*
 	 *  INIT ASSETS
@@ -51,7 +53,10 @@ public class FourthPuzzle implements Screen{
 	Texture compassEast;
 
 
-	Texture lvl1Description;
+	Texture P5S1;
+	Texture P5S2;
+	Texture P5S3;
+	Texture P5S4;
 	
 	//acutal textures used
 	Texture lvl5EntranceTex;
@@ -86,7 +91,10 @@ public class FourthPuzzle implements Screen{
 	public void show() {
 		
 		//load images
-		lvl1Description = new Texture ("images/scenedescriptions/levelone.png");
+		P5S1 = new Texture ("images/scenedescriptions/fifthlevel/P5S1.png");
+		P5S2 = new Texture ("images/scenedescriptions/fifthlevel/P5S2.png");
+		P5S3 = new Texture ("images/scenedescriptions/fifthlevel/P5S3.png");
+		P5S4 = new Texture ("images/scenedescriptions/fifthlevel/P5S4.png");
 		
 		
 		lvl5EntranceTex = new Texture ("images/backgrounds/levelfive/bg1.png");
@@ -193,7 +201,7 @@ public class FourthPuzzle implements Screen{
 				break;
 			
 			//complete's puzzle
-			case "1234":
+			case "75463":
 				if (currentBackground == "lvl5Keypad") {
 					pistonDoorSound.play(1.0f);
 					facing = "north";
@@ -249,20 +257,24 @@ public class FourthPuzzle implements Screen{
 		switch (currentBackground) {
 			//at the beginning of the level
 			case "lvl5Entrance":
+				currentObservations = "P5S1";
 				game.batch.draw(lvl5EntranceTex, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
 				break;
 
 			//after player walks to keypad
 			case "lvl5Keypad":
+				currentObservations = "P5S2";
 				game.batch.draw(lvl5KeypadTex, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
 				break;
 			
 			//after riddle is solved
 			case "lvl5Exit":
+				currentObservations = "P5S3";
 				game.batch.draw(lvl5ExitTex, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
 				break;
 			//outside screen
 			case "Outside":
+				currentObservations = "P5S4";
 				game.batch.draw(lvl5OutsideTex, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
 				break;
 		}
@@ -282,7 +294,20 @@ public class FourthPuzzle implements Screen{
 		
 		//if the observation text is supposed to be open it renders it
 		if (isObserving) {
-			game.batch.draw(lvl1Description, (HerobrineEscape.WIDTH/2)-(OBSERVEWIDTH/2), HerobrineEscape.HEIGHT/2-(OBSERVEHEIGHT/2), OBSERVEWIDTH, OBSERVEHEIGHT);					
+			switch(currentObservations) {
+			case "P5S1":
+				game.batch.draw(P5S1, (HerobrineEscape.WIDTH/2)-(OBSERVEWIDTH/2), HerobrineEscape.HEIGHT/2-(OBSERVEHEIGHT/2), OBSERVEWIDTH, OBSERVEHEIGHT);									
+				break;
+			case "P5S2":
+				game.batch.draw(P5S2, (HerobrineEscape.WIDTH/2)-(OBSERVEWIDTH/2), HerobrineEscape.HEIGHT/2-(OBSERVEHEIGHT/2), OBSERVEWIDTH, OBSERVEHEIGHT);									
+				break;
+			case "P5S3":
+				game.batch.draw(P5S3, (HerobrineEscape.WIDTH/2)-(OBSERVEWIDTH/2), HerobrineEscape.HEIGHT/2-(OBSERVEHEIGHT/2), OBSERVEWIDTH, OBSERVEHEIGHT);									
+				break;
+			case "P5S4":
+				game.batch.draw(P5S4, (HerobrineEscape.WIDTH/2)-(OBSERVEWIDTH/2), HerobrineEscape.HEIGHT/2-(OBSERVEHEIGHT/2), OBSERVEWIDTH, OBSERVEHEIGHT);									
+				break;
+			}
 		}
 		
 		// stop drawing things to the screen
@@ -297,7 +322,7 @@ public class FourthPuzzle implements Screen{
 	public void dispose() {
 		//dispose textures
 
-		lvl1Description.dispose();
+		P5S1.dispose();
 		
 		lvl5EntranceTex.dispose();
 		lvl5KeypadTex.dispose();
