@@ -64,8 +64,12 @@ public class FirstPuzzle implements Screen{
 	Texture bg5;
 	Texture bg6;
 	Texture bg7;
+	
 	Texture P2S1;
 	Texture P2S2;
+	Texture P2S4;
+	Texture P2S5;
+	Texture P2S6;
 	
 	// Sounds
 	Sound clickSound;
@@ -103,6 +107,9 @@ public class FirstPuzzle implements Screen{
 		
 		P2S1 = new Texture ("images/scenedescriptions/secondlevel/P2S1.png");
 		P2S2 = new Texture ("images/scenedescriptions/secondlevel/P2S2.png");
+		P2S4 = new Texture ("images/scenedescriptions/secondlevel/P2S4.png");
+		P2S5 = new Texture ("images/scenedescriptions/secondlevel/P2S5.png");
+		P2S6 = new Texture ("images/scenedescriptions/secondlevel/P2S6.png");
 		
 		compassNorth = new Texture ("images/compass/compass-north.gif");
 		compassSouth = new Texture ("images/compass/compass-south.gif");
@@ -354,16 +361,20 @@ public class FirstPuzzle implements Screen{
 			case "bg4":
 				if(hasStone == true) {
 					game.batch.draw(bg7, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+					currentObservations = "P2S4";
 				} else{
 					game.batch.draw(bg4, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+					currentObservations = "P2S4";
 				}
 				break;
-				//after the player types "use lever"
+
 			case "bg5":
 				game.batch.draw(bg5, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+				currentObservations = "P2S5";
 				break;
-				//after the player types "use lever"
+
 			case "bg6":
+				currentObservations = "P2S6";
 				game.batch.draw(bg6, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
 				break;
 			case "bg7":
@@ -396,6 +407,10 @@ public class FirstPuzzle implements Screen{
 				case "P2S2":
 					game.batch.draw(P2S2, (HerobrineEscape.WIDTH/2)-(OBSERVEWIDTH/2), HerobrineEscape.HEIGHT/2-(OBSERVEHEIGHT/2), OBSERVEWIDTH, OBSERVEHEIGHT);					
 					break;
+				case "P2S4":
+					game.batch.draw(P2S4, (HerobrineEscape.WIDTH/2)-(OBSERVEWIDTH/2), HerobrineEscape.HEIGHT/2-(OBSERVEHEIGHT/2), OBSERVEWIDTH, OBSERVEHEIGHT);					
+					break;
+				
 			}
 		}
 		
