@@ -68,7 +68,7 @@ public class FirstPuzzle implements Screen{
 	// Sounds
 	Sound clickSound;
 	Sound badCommandSound;
-	Sound pistonDoorSound;
+	Sound walkSound;
 	Sound puzzleClearSound;
 	Sound victorySound;
 	
@@ -107,7 +107,7 @@ public class FirstPuzzle implements Screen{
 		compassEast = new Texture ("images/compass/compass-east.gif");
 		
 		//load sound
-		pistonDoorSound = Gdx.audio.newSound(Gdx.files.internal("sounds/pistondoor.wav"));
+		walkSound = Gdx.audio.newSound(Gdx.files.internal("sounds/walksound.wav"));
 		clickSound = Gdx.audio.newSound(Gdx.files.internal("sounds/buttonclick.wav"));
 		badCommandSound = Gdx.audio.newSound(Gdx.files.internal("sounds/badcommand.wav"));
 		victorySound = Gdx.audio.newSound(Gdx.files.internal("sounds/victorymusic.wav"));
@@ -203,20 +203,24 @@ public class FirstPuzzle implements Screen{
 			case "w":
 				//goes through the door only if it is open
 				if (currentBackground.equals("bg1")) {
+					walkSound.play();
 					TextInput.currentCommand = "none";
 					currentBackground = "bg2";
 					
 				} else if (currentBackground.equals("bg2")){
+					walkSound.play();
 					TextInput.currentCommand = "none";
 					facing = "south";
 					currentBackground = "bg3";
 					
 				} else if (currentBackground.equals("bg3")) {
+					walkSound.play();
 					TextInput.currentCommand = "none";
 					facing = "south";
 					currentBackground = "bg4";
 					
 				} else if((currentBackground.equals("bg5"))) {
+					walkSound.play();
 					TextInput.currentCommand = "none";
 					facing = "south";
 					currentBackground = "bg4";
@@ -231,6 +235,7 @@ public class FirstPuzzle implements Screen{
 			case "east":
 			case "e":
 				if(currentBackground.equals("bg4") || currentBackground.equals("bg7")) {
+					walkSound.play();
 					TextInput.currentCommand = "none";
 					facing = "south";
 					currentBackground = "bg3";
@@ -244,14 +249,17 @@ public class FirstPuzzle implements Screen{
 			case "s":
 				
 				if(currentBackground.equals("bg3") && (bridgeBuilt == false)) {
+					walkSound.play();
 					badCommandSound.play();
 					TextInput.currentCommand = "none";
 				} else if((currentBackground.equals("bg4")) || currentBackground.equals("bg7")) {
+					walkSound.play();
 					TextInput.currentCommand = "none";
 					foundMap = true;
 					facing = "east";
 					currentBackground = "bg5";
 				} else if(currentBackground.equals("bg6") && (bridgeBuilt == true)) {
+					walkSound.play();
 					TextInput.currentCommand = "none";
 					TutorialPuzzle.puzzleMusic.pause();
 					puzzleClearSound.play();
@@ -265,6 +273,7 @@ public class FirstPuzzle implements Screen{
 			case "north":
 			case "n":
 				if((currentBackground.equals("bg5"))) {
+					walkSound.play();
 					TextInput.currentCommand = "none";
 					facing = "south";
 					currentBackground = "bg4";
@@ -389,7 +398,7 @@ public class FirstPuzzle implements Screen{
 		lvl1Description.dispose();
 		
 		//dispose audio
-		pistonDoorSound.dispose();
+		walkSound.dispose();
 		puzzleClearSound.dispose();
 		victorySound.dispose();
 		clickSound.dispose();
