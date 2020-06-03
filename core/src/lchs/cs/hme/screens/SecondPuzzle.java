@@ -179,10 +179,6 @@ public class SecondPuzzle implements Screen{
 			//if there is no command entered
 			case "none":
 				break;
-
-			case "north":
-			case "n":
-				break;
 				
 			case "south":
 			case "s":
@@ -236,10 +232,6 @@ public class SecondPuzzle implements Screen{
 					badCommandSound.play();
 					TextInput.currentCommand = "none";
 				}
-				break;
-				
-			case "west":
-			case "w":
 				break;
 				
 			//runs if the player enters an invalid command
