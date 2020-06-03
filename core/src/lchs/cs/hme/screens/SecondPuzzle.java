@@ -69,7 +69,13 @@ public class SecondPuzzle implements Screen{
 	Texture bgblackmap;
 	
 	// TODO
-	Texture lvl1Description;
+	Texture P3S1;
+	Texture P3S2;
+	Texture P3S3;
+	Texture P3S4;
+	Texture P3S5;
+	Texture P3S6;
+	Texture P3S7;
 	
 	// Sounds
 	Sound clickSound;
@@ -108,7 +114,13 @@ public class SecondPuzzle implements Screen{
 		bgblack = new Texture ("images/backgrounds/levelthree/bgblack.png");
 		bgblackmap = new Texture ("images/backgrounds/levelthree/bgblackmap.png");
 		
-		lvl1Description = new Texture ("images/scenedescriptions/levelone.png");
+		P3S1 = new Texture ("images/scenedescriptions/thirdlevel/P3S1.png");
+		P3S2 = new Texture ("images/scenedescriptions/thirdlevel/P3S2.png");
+		P3S3 = new Texture ("images/scenedescriptions/thirdlevel/P3S3.png");
+		P3S4 = new Texture ("images/scenedescriptions/thirdlevel/P3S4.png");
+		P3S5 = new Texture ("images/scenedescriptions/thirdlevel/P3S5.png");
+		P3S6 = new Texture ("images/scenedescriptions/thirdlevel/P3S6.png");
+		P3S7 = new Texture ("images/scenedescriptions/thirdlevel/P3S7.png");
 
 		
 		
@@ -560,7 +572,7 @@ public class SecondPuzzle implements Screen{
 		
 		//if the observation text is supposed to be open it renders it
 		if (isObserving) {
-			game.batch.draw(lvl1Description, (HerobrineEscape.WIDTH/2)-(OBSERVEWIDTH/2), HerobrineEscape.HEIGHT/2-(OBSERVEHEIGHT/2), OBSERVEWIDTH, OBSERVEHEIGHT);					
+			game.batch.draw(P3S1, (HerobrineEscape.WIDTH/2)-(OBSERVEWIDTH/2), HerobrineEscape.HEIGHT/2-(OBSERVEHEIGHT/2), OBSERVEWIDTH, OBSERVEHEIGHT);					
 		}
 		
 		// stop drawing things to the screen
@@ -587,7 +599,7 @@ public class SecondPuzzle implements Screen{
 		compassEast.dispose();
 		compassWest.dispose();
 		//dispose textures
-		lvl1Description.dispose();
+		P3S1.dispose();
 		
 		//dispose audio
 		walkSound.dispose();
