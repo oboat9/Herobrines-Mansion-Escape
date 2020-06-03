@@ -22,9 +22,10 @@ When you type a recognizable command you will see the corrisponding action repre
 
 ### Command list
 
-A basic command list for the game (extremely subject to change)
+A basic command list for the game
 
-The commands after the dash is an alias and they work exactly the same as the main command but are just faster to type
+The commands after the dash is an alias and they work exactly the same as the main command but are just faster to type.
+Commands are not case sensitive!
 
 - North - N
 - South - S
@@ -32,7 +33,8 @@ The commands after the dash is an alias and they work exactly the same as the ma
 - West - W
 
 - Use {Object Name}
-- Look - L
+- Look - L (use this frequently)
+- THERE ARE SOME COMMANDS THAT ARE NOT IN THIS LIST YOU WILL HAVE TO PLAY TO FIND THEM
 
 ### Credits
 
@@ -48,13 +50,3 @@ The commands after the dash is an alias and they work exactly the same as the ma
 ### To Run
 
 - [Java 1.8+](https://www.java.com/)
-- For the latest "Stable" Build (For Mr. Wain) go to the [Releases](https://github.com/oboat9/Herobrines-Mansion-Escape/releases)
-- Latest Unstable Build is located in /desktop/build/libs/
-
-### To Contribute
-
-The IDE setup is based [this tutorial](https://youtu.be/YCGmXVCvogY?list=PLrnO5Pu2zAHKAIjRtTLAXtZKMSA6JWnmf) (don't bother with the android SDK part) its best you follow this to set up your development environment properly
-
-- [Java 1.8+](https://www.java.com/)
-- Java Compatible IDE (Preferably [Eclipse IDE](eclipse.org/downloads/packages/installer)) (BlueJ isn't ideal for a project like this.)
-- Gradle for Eclipse. just import the Gradle project into eclipse
