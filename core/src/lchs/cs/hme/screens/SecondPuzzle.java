@@ -27,7 +27,7 @@ public class SecondPuzzle implements Screen{
 	
 	// starts the game with you looking at the observation text
 	boolean isObserving = true;
-	
+	String currentObservations = "P3S1";
 	// turns to true when the player solves the puzzle
 	boolean isComplete = false;
 	//a timer to wait the puzzle complete chime to finish before going to the next scene
@@ -511,30 +511,37 @@ public class SecondPuzzle implements Screen{
 
 			case "bg1":
 				game.batch.draw(bg1, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+				currentObservations = "P3S1";
 				break;
 
 			case "bg2":
 				game.batch.draw(bg2, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+				currentObservations = "P3S2";
 				break;
 				
 			case "bg3":
 				game.batch.draw(bg3, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+				currentObservations = "P3S3";
 				break;
 				
 			case "bg4":
 				game.batch.draw(bg4, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+				currentObservations = "P3S4";
 				break;
 				
 			case "bg5":
 				game.batch.draw(bg5, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+				currentObservations = "P3S5";
 				break;
 				
 			case "bg6":
 				game.batch.draw(bg6, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+				currentObservations = "P3S6";
 				break;
 				
 			case "bg7":
 				game.batch.draw(bg7, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+				currentObservations = "P3S7";
 				break;
 			
 			case "bg8":
@@ -572,7 +579,29 @@ public class SecondPuzzle implements Screen{
 		
 		//if the observation text is supposed to be open it renders it
 		if (isObserving) {
-			game.batch.draw(P3S1, (HerobrineEscape.WIDTH/2)-(OBSERVEWIDTH/2), HerobrineEscape.HEIGHT/2-(OBSERVEHEIGHT/2), OBSERVEWIDTH, OBSERVEHEIGHT);					
+			switch(currentObservations) {
+			case "P3S1":
+				game.batch.draw(P3S1, (HerobrineEscape.WIDTH/2)-(OBSERVEWIDTH/2), HerobrineEscape.HEIGHT/2-(OBSERVEHEIGHT/2), OBSERVEWIDTH, OBSERVEHEIGHT);					
+				break;
+			case "P3S2":
+				game.batch.draw(P3S2, (HerobrineEscape.WIDTH/2)-(OBSERVEWIDTH/2), HerobrineEscape.HEIGHT/2-(OBSERVEHEIGHT/2), OBSERVEWIDTH, OBSERVEHEIGHT);					
+				break;
+			case "P3S3":
+				game.batch.draw(P3S3, (HerobrineEscape.WIDTH/2)-(OBSERVEWIDTH/2), HerobrineEscape.HEIGHT/2-(OBSERVEHEIGHT/2), OBSERVEWIDTH, OBSERVEHEIGHT);					
+				break;
+			case "P3S4":
+				game.batch.draw(P3S4, (HerobrineEscape.WIDTH/2)-(OBSERVEWIDTH/2), HerobrineEscape.HEIGHT/2-(OBSERVEHEIGHT/2), OBSERVEWIDTH, OBSERVEHEIGHT);					
+				break;
+			case "P3S5":
+				game.batch.draw(P3S5, (HerobrineEscape.WIDTH/2)-(OBSERVEWIDTH/2), HerobrineEscape.HEIGHT/2-(OBSERVEHEIGHT/2), OBSERVEWIDTH, OBSERVEHEIGHT);					
+				break;
+			case "P3S6":
+				game.batch.draw(P3S6, (HerobrineEscape.WIDTH/2)-(OBSERVEWIDTH/2), HerobrineEscape.HEIGHT/2-(OBSERVEHEIGHT/2), OBSERVEWIDTH, OBSERVEHEIGHT);					
+				break;
+			case "P3S7":
+				game.batch.draw(P3S7, (HerobrineEscape.WIDTH/2)-(OBSERVEWIDTH/2), HerobrineEscape.HEIGHT/2-(OBSERVEHEIGHT/2), OBSERVEWIDTH, OBSERVEHEIGHT);					
+				break;
+			}
 		}
 		
 		// stop drawing things to the screen
