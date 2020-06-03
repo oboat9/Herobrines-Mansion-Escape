@@ -257,7 +257,7 @@ public class ThirdPuzzle implements Screen{
 		int minutes = (int) ((MainMenuScreen.time % 3600) / 60);
 		int seconds = (int) (MainMenuScreen.time % 60);
 		// updates the timer in the title bar
-		Gdx.graphics.setTitle("Herobrine's Mansion Escape " + "Third Puzzle" + " - Time Remaining: " + (9-minutes) + ":" + (59-seconds));
+		Gdx.graphics.setTitle("Herobrine's Mansion Escape - " + "Colour Puzzle" + " - Time Remaining: " + (9-minutes) + ":" + (59-seconds));
 		
 		//clears the screen before drawing every frame
 		Gdx.gl.glClearColor(0, 0, 0, 1);
