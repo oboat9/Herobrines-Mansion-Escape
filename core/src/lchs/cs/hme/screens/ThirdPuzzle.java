@@ -242,16 +242,7 @@ public class ThirdPuzzle implements Screen{
 					TextInput.currentCommand = "none";
 					
 				}
-				break;
-				//after solving puzzle
-			case "puzzle answer":
-				if (currentBackground.equals("PuzzleOverview")) {
-					facing = "north";
-					currentBackground = "PuzzleSolved";
-					TextInput.currentCommand = "none";
-				}
-				break;
-			
+				break;			
 				
 			//runs if the player enters an invalid command
 			default:
@@ -271,23 +262,25 @@ public class ThirdPuzzle implements Screen{
 			} else if (colorBackgroundsIndex >= 8){
 				currentBackground = "bgafter";
 				colorHasPlayed = true;
-				System.out.println("bgafter triggered");
+				//System.out.println("bgafter triggered");
 			}
 		}
 		
 		if(colorHasPlayed && (currentBackground.equals("bgafter") || currentBackground.equals("bgwhite"))) {
-			System.out.println("you what this means");
+			//System.out.println("you what this means");
 			if(TextInput.getText().equals(correctColorSequence[colorSequenceInputIndex])) {
-				System.out.println("now what does this mean: "+ TextInput.currentCommand);
+				//System.out.println("now what does this mean: "+ TextInput.currentCommand);
 				if(colorSequenceInputIndex >= 5) {
 					currentBackground = "PuzzleSolved";
 				}
 				colorBackgroundsIndex = 0;
-				System.out.println("color sequence input index get: " + colorSequenceInputIndex);
+				//System.out.println("color sequence input index get: " + colorSequenceInputIndex);
 				TextInput.currentCommand = "none";
 				colorSequenceInputIndex++;
 			} else if (!(TextInput.getText().equals("none"))) {
 				colorSequenceInputIndex = 0;
+				currentBackground = "bgwhite";
+				colorHasPlayed = false;
 				TextInput.currentCommand = "none";
 				badCommandSound.play();
 			} else {
@@ -435,7 +428,7 @@ public class ThirdPuzzle implements Screen{
 		// stop drawing things to the screen
 		game.batch.end();
 		
-		System.out.println("rendering background: " + currentBackground);
+		//System.out.println("rendering background: " + currentBackground);
 		
 	}
 	
@@ -448,7 +441,7 @@ public class ThirdPuzzle implements Screen{
 		P4S1.dispose();
 		
 		//dispose audio
-		pistonDoorSound.dispose();
+		//pistonDoorSound.dispose();
 		puzzleClearSound.dispose();
 		victorySound.dispose();
 		clickSound.dispose();

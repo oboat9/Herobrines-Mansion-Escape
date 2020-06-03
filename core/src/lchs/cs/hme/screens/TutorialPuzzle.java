@@ -202,7 +202,7 @@ public class TutorialPuzzle implements Screen{
 		// waits for the puzzle end chime to end before going to the next level
 		if(winChimeWaiter > 8) {
 			this.dispose();
-			game.setScreen(new LoadingScreen(game, "FirstPuzzle"));
+			game.setScreen(new LoadingScreen(game, "FourthPuzzle"));
 		}
 		
 		// runs the escape timer (realtime)

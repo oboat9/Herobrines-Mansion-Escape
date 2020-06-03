@@ -114,6 +114,7 @@ public class FourthPuzzle implements Screen{
 		victorySound = Gdx.audio.newSound(Gdx.files.internal("sounds/victorymusic.wav"));
 		puzzleClearSound = Gdx.audio.newSound(Gdx.files.internal("sounds/puzzleclear.wav"));
 		
+		TutorialPuzzle.puzzleMusic.play();
 		
 		/*
 		lvl5EntranceTex
@@ -187,6 +188,16 @@ public class FourthPuzzle implements Screen{
 					TextInput.currentCommand = "none";
 				}
 				
+				else if(currentBackground.equals("Outside")) {
+					TextInput.currentCommand = "none";
+					TutorialPuzzle.puzzleMusic.pause();
+					puzzleClearSound.play();
+					isComplete = true;
+				} else {
+					badCommandSound.play();
+					TextInput.currentCommand = "none";
+				}
+				
 			break; 
 			case "north":
 			case "n":
@@ -196,10 +207,49 @@ public class FourthPuzzle implements Screen{
 					facing = "north";
 					currentBackground = "Outside";
 					TextInput.currentCommand = "none";
+					
+				} else if(currentBackground.equals("Outside")) {
+					TextInput.currentCommand = "none";
+					TutorialPuzzle.puzzleMusic.pause();
+					puzzleClearSound.play();
+					isComplete = true;
+				} 
+				
+				else {
+					badCommandSound.play();
+					TextInput.currentCommand = "none";
 				}
 				
+				
+				
 				break;
-			
+				
+			case "south":
+			case "s":
+				if(currentBackground.equals("Outside")) {
+					TextInput.currentCommand = "none";
+					TutorialPuzzle.puzzleMusic.pause();
+					puzzleClearSound.play();
+					isComplete = true;
+				} else {
+					badCommandSound.play();
+					TextInput.currentCommand = "none";
+				}
+				break;
+				
+			case "east":
+			case "e":
+				if(currentBackground.equals("Outside")) {
+					TextInput.currentCommand = "none";
+					TutorialPuzzle.puzzleMusic.pause();
+					puzzleClearSound.play();
+					isComplete = true;
+				} else {
+					badCommandSound.play();
+					TextInput.currentCommand = "none";
+				}
+				break;
+				
 			//complete's puzzle
 			case "75463":
 				if (currentBackground == "lvl5Keypad") {

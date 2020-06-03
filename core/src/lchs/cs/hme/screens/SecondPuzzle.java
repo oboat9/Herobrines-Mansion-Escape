@@ -548,7 +548,7 @@ public class SecondPuzzle implements Screen{
 				break;
 				
 			case "bgblack":
-				System.out.println(currentMazePos);
+				//System.out.println(currentMazePos);
 				if(FirstPuzzle.foundMap) {
 					game.batch.draw(bgblackmap, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
 					break;					
