@@ -188,25 +188,27 @@ public class ThirdPuzzle implements Screen{
 			case "north":
 			case "n":
 				//goes to puzzle area
-				if (currentBackground == "Entrance") {
+				if (currentBackground.equals("Entrance")) {
 					facing = "north";
 					currentBackground = "PuzzleOverview";
 					TextInput.currentCommand = "none";
+				} else if(currentBackground.equals("PuzzleOverview")) {
+					
 				}
 				//exit opens
-				else if (currentBackground == "PuzzleSolved") {
+				else if (currentBackground.equals("PuzzleSolved")) {
 					currentBackground = "PuzzleExit";
 					TextInput.currentCommand = "none";
 					
 				}
 				//dropping into hole
-				else if (currentBackground == "PuzzleExit") {
+				else if (currentBackground.equals("PuzzleExit")) {
 					currentBackground = "ExitTunnel";
 					TextInput.currentCommand = "none";
 					
 				}
 				//moving towards elevator
-				else if (currentBackground == "ExitTunnel") {
+				else if (currentBackground.equals("ExitTunnel")) {
 					currentBackground = "ExitElevator";
 					TextInput.currentCommand = "none";
 					
@@ -214,7 +216,7 @@ public class ThirdPuzzle implements Screen{
 				break;
 				//after solving puzzle
 			case "puzzle answer":
-				if (currentBackground == "PuzzleOverview") {
+				if (currentBackground.equals("PuzzleOverview")) {
 					facing = "north";
 					currentBackground = "PuzzleSolved";
 					TextInput.currentCommand = "none";
