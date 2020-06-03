@@ -309,7 +309,6 @@ public class SecondPuzzle implements Screen{
 		} else if(currentMazePos == 5) {
 			switch(TextInput.getText()){
 			
-				break;
 			case "east":
 			case "e":
 				walkSound.play();
