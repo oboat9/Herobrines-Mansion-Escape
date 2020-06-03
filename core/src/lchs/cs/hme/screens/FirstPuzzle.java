@@ -410,6 +410,12 @@ public class FirstPuzzle implements Screen{
 				case "P2S4":
 					game.batch.draw(P2S4, (HerobrineEscape.WIDTH/2)-(OBSERVEWIDTH/2), HerobrineEscape.HEIGHT/2-(OBSERVEHEIGHT/2), OBSERVEWIDTH, OBSERVEHEIGHT);					
 					break;
+				case "P2S5":
+					game.batch.draw(P2S5, (HerobrineEscape.WIDTH/2)-(OBSERVEWIDTH/2), HerobrineEscape.HEIGHT/2-(OBSERVEHEIGHT/2), OBSERVEWIDTH, OBSERVEHEIGHT);					
+					break;
+				case "P2S6":
+					game.batch.draw(P2S6, (HerobrineEscape.WIDTH/2)-(OBSERVEWIDTH/2), HerobrineEscape.HEIGHT/2-(OBSERVEHEIGHT/2), OBSERVEWIDTH, OBSERVEHEIGHT);					
+					break;
 				
 			}
 		}
