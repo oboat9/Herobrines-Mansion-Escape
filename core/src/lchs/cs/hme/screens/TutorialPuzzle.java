@@ -55,7 +55,7 @@ public class TutorialPuzzle implements Screen{
 	
 	Texture lvl1doorClosedTex;
 	Texture lvl1doorOpenTex;
-	Texture lvl1Description;
+	Texture p1s1Desc;
 	
 	// Sounds
 	Sound clickSound;
@@ -88,7 +88,7 @@ public class TutorialPuzzle implements Screen{
 		//load images
 		lvl1doorClosedTex = new Texture ("images/backgrounds/levelone/doorclosed.png");
 		lvl1doorOpenTex = new Texture ("images/backgrounds/levelone/dooropen.png");
-		lvl1Description = new Texture ("images/scenedescriptions/levelone.png");
+		p1s1Desc = new Texture ("images/scenedescriptions/firstlevel/P1S1.png");
 		
 		compassNorth = new Texture ("images/compass/compass-north.gif");
 		compassSouth = new Texture ("images/compass/compass-south.gif");
@@ -249,7 +249,7 @@ public class TutorialPuzzle implements Screen{
 		
 		//if the observation text is supposed to be open it renders it
 		if (isObserving) {
-			game.batch.draw(lvl1Description, (HerobrineEscape.WIDTH/2)-(OBSERVEWIDTH/2), HerobrineEscape.HEIGHT/2-(OBSERVEHEIGHT/2), OBSERVEWIDTH, OBSERVEHEIGHT);					
+			game.batch.draw(p1s1Desc, (HerobrineEscape.WIDTH/2)-(OBSERVEWIDTH/2), HerobrineEscape.HEIGHT/2-(OBSERVEHEIGHT/2), OBSERVEWIDTH, OBSERVEHEIGHT);					
 		}
 		
 		// stop drawing things to the screen
@@ -265,7 +265,7 @@ public class TutorialPuzzle implements Screen{
 		//dispose textures
 		lvl1doorClosedTex.dispose();
 		lvl1doorOpenTex.dispose();
-		lvl1Description.dispose();
+		p1s1Desc.dispose();
 		
 		//dispose audio
 		//puzzleMusic.dispose();
