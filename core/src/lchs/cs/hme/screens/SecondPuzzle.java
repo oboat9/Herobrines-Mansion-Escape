@@ -69,7 +69,7 @@ public class SecondPuzzle implements Screen{
 	// Sounds
 	Sound clickSound;
 	Sound badCommandSound;
-	// TODO
+	Sound fallThenSplashSound;
 	Sound walkSound;
 	Sound puzzleClearSound;
 	Sound victorySound;
@@ -114,6 +114,7 @@ public class SecondPuzzle implements Screen{
 		
 		//load sound
 		walkSound = Gdx.audio.newSound(Gdx.files.internal("sounds/walkstone.wav"));
+		fallThenSplashSound = Gdx.audio.newSound(Gdx.files.internal("sounds/fallthensplash.ogg"));
 		clickSound = Gdx.audio.newSound(Gdx.files.internal("sounds/buttonclick.wav"));
 		badCommandSound = Gdx.audio.newSound(Gdx.files.internal("sounds/badcommand.wav"));
 		victorySound = Gdx.audio.newSound(Gdx.files.internal("sounds/victorymusic.wav"));
@@ -199,7 +200,14 @@ public class SecondPuzzle implements Screen{
 					walkSound.play();
 					TextInput.currentCommand = "none";
 					currentBackground = "bg7";
-				} else {
+				} else if(currentBackground.equals("bg7")){
+					walkSound.play();
+					fallThenSplashSound.play();
+					TextInput.currentCommand = "none";
+					currentBackground = "bg8";
+					
+				} 
+				else {
 					badCommandSound.play();
 					TextInput.currentCommand = "none";
 				}
@@ -508,6 +516,9 @@ public class SecondPuzzle implements Screen{
 				
 			case "bg7":
 				game.batch.draw(bg7, 0, 0, HerobrineEscape.WIDTH, HerobrineEscape.HEIGHT);
+				break;
+			
+			case "bg8":
 				break;
 				
 			case "bgblack":
