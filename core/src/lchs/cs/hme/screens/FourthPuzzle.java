@@ -2,7 +2,6 @@ package lchs.cs.hme.screens;
 
 /*
  *Last / Fifth Puzzle
- * Author: Owen Stevnson
  */
 
 import com.badlogic.gdx.Gdx;

@@ -1,7 +1,8 @@
 package lchs.cs.hme.screens;
 
 /*
- * Tutorial Puzzle
+ * First Puzzle
+ * Mostly A Tutorial
  * Author: Owen Stevnson
  */
 
