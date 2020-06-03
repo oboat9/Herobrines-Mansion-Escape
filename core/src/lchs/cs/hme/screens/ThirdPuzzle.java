@@ -121,6 +121,8 @@ public class ThirdPuzzle implements Screen{
 		victorySound = Gdx.audio.newSound(Gdx.files.internal("sounds/victorymusic.wav"));
 		puzzleClearSound = Gdx.audio.newSound(Gdx.files.internal("sounds/puzzleclear.wav"));
 		
+		//start music
+		TutorialPuzzle.puzzleMusic.play();
 	}
 
 	/*
