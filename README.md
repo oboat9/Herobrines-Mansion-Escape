@@ -2,6 +2,8 @@
 
 A project for our Grade 11 Computer Science class where we have to code an escape themed game in **Java**
 
+[Releases](https://github.com/oboat9/Herobrines-Mansion-Escape/releases)
+
 ## Overview
 
 ![main menu](core/assets/screenshots/lowresMainMenu.png)
