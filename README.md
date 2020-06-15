@@ -2,17 +2,15 @@
 
 A project for our Grade 11 Computer Science class where we have to code an escape themed game in **Java**
 
-[Releases](https://github.com/oboat9/Herobrines-Mansion-Escape/releases)
-
-## Overview
+[Mostly Stable Releases](https://github.com/oboat9/Herobrines-Mansion-Escape/releases)
 
 ![main menu](core/assets/screenshots/lowresMainMenu.png)
 
-### About the Game
+## About the Game
 
 This is a semi text-based game. The player interacts with the game using text, the game responds to the player using visuals and audio.
 
-#### Instructions
+### Instructions
 
 Press SPACE to bring up the command window and then you can start typing your command
 
@@ -35,7 +33,7 @@ Commands are not case sensitive!
 - West - W
 
 - Use {Object Name}
-- Look - L (use this frequently)
+- Look - L (use this frequently as it changes pretty much every time you move)
 - THERE ARE SOME COMMANDS THAT ARE NOT IN THIS LIST YOU WILL HAVE TO PLAY TO FIND THEM
 
 ### Credits
@@ -47,8 +45,12 @@ Commands are not case sensitive!
 - Carter Krause
 - Jackson Daigneault
 
+Not everyone contributed to the repo but they helped in other ways (like the background images)
+
 ## Requirements
 
-### To Run
-
 - [Java 1.8+](https://www.java.com/)
+
+## Extra Notes
+
+This game was slapped together mostly over the course of two or three days. Don't expect any sort of quality because there is none. I tried to fix most of the game breaking bugs and it should be somewhat playable but just barely. The group was just glad to get this done by the deadline. It's probably a good idea to look at some of my newer projects (probably made in Unity) if you want to see some slightly more playable games (although i won't be able to guarantee top quality on those either).
